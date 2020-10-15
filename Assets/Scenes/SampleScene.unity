@@ -525,8 +525,13 @@ MonoBehaviour:
   runSpeed: 10
   climbSpeed: 6
   jumpHeight: {x: 0, y: 15}
+  projectile_force: {x: 100, y: 100}
   naturalGravity: 4
   jumpback: 2
+  dropped_item: {fileID: 8364760223243996235, guid: 01fadadcbc5553745b78f87c39bc0e23,
+    type: 3}
+  projectile: {fileID: 5166582595985205136, guid: e5df10b23b70c10469f9952f885c7ae4,
+    type: 3}
   rope: {fileID: 0}
   climb: 0
 --- !u!1 &788290823
