@@ -9,15 +9,16 @@ public class player : MonoBehaviour
     public float runSpeed = 10f;
     public float climbSpeed = 1f;
     public Vector2 jumpHeight = new Vector2(0f,12f);
-    public Vector2 projectile_force = new Vector2(10f,10f);
-    private float face_direction; // record where player faces. because transform.forward doesn't work in 2D
+    public Vector2 projectile_force = new Vector2(1.0f,1.0f); // projectile (thrown item) force
+    private float charged_time = 1.0f; // for accumulated projectile charged time. 0 will become "drop".
+    private float face_direction = 1.0f; // record where player faces. because transform.forward doesn't work in 2D
     public float naturalGravity;
     public int jumpback;
     public GameObject dropped_item; // prefab of dropped item
     private GameObject cur_dropped_item; //  current dropped item
 
-    public GameObject projectile;
-    private GameObject cur_projectile;
+    public GameObject projectile; // prefab of projectile
+    private GameObject cur_projectile; // current projectile
     [HideInInspector] public rope rope;
     [HideInInspector] public bool climb = false;
 
@@ -34,7 +35,6 @@ public class player : MonoBehaviour
         naturalGravity = rb.gravityScale;
         bar = GameObject.Find("bar").GetComponent<bar>();
         startPos = transform.position;
-        face_direction = 1.0f;
     }
 
     // Update is called once per frame
@@ -49,15 +49,32 @@ public class player : MonoBehaviour
         if (transform.position.y <= -10f){
             Restart();
         }
+
+        // MuseButton 0: left ; 1 : right.        
+        // count accumlated charged time for projectile
+        if (Input.GetMouseButton(0)){
+            charged_time += Time.deltaTime;
+            charged_time = (charged_time > 3f ? 3f : charged_time);
+        }
+
+        if (Input.GetMouseButtonUp(0)){
+            Vector2 charged_projectile_force = charged_time * projectile_force;
+            ProjectItem(face_direction, charged_projectile_force);
+            charged_time = 1f;
+        }
+        
+        if (Input.GetMouseButtonUp(1)){
+            DropItem();
+        }
     }
     void FixedUpdate ()
     {
         float inputX = Input.GetAxis("Horizontal");
-        float inputY = Input.GetAxis("Vertical");
         float inputX_Raw = Input.GetAxisRaw("Horizontal"); // record face direction
+        float inputY = Input.GetAxis("Vertical");
         float posY = transform.position.y;
         float posX = transform.position.x;
-
+        
         // detect where player faces
         if (inputX_Raw != 0f){
             face_direction = inputX_Raw;
@@ -83,35 +100,27 @@ public class player : MonoBehaviour
             move *= Time.deltaTime;
             transform.Translate(move);
         }
-        
-        // call drop and project here because we may use inputX 
-        if (Input.GetButtonDown("Fire1")){
-            DropItem();
-        }
-
-        if (Input.GetButtonDown("Fire2")){
-            ProjectItem(face_direction);
-        }
-
         // if (Input.GetButtonDown("Crouch")){
         //     crouch = true;
         // } else if (Input.GetButtonUp("Crouch")){
         //     crouch = false;
         // }
     }
-
-    private void DropItem(){
-        cur_dropped_item = Instantiate(dropped_item, transform.position, Quaternion.identity);
-        Rigidbody2D cur_dropped_rb = cur_dropped_item.GetComponent<Rigidbody2D>();
-        cur_dropped_rb.angularVelocity = 0f;
-    }
-
-    private void ProjectItem(float face_direction){
+    
+    // project prefab from (player's coordinate + some hight)
+    private void ProjectItem(float face_direction, Vector2 charged_projectile_force){
         // need last moving direction to determine project
         cur_projectile = Instantiate(projectile, transform.position + new Vector3 (0.0f,0.5f,0.0f), Quaternion.identity);
         Rigidbody2D cur_projectile_rb = cur_projectile.GetComponent<Rigidbody2D>();
         cur_projectile_rb.angularVelocity = 0f;
-        cur_projectile_rb.AddForce(new Vector2(projectile_force.x *face_direction,projectile_force.y));
+        cur_projectile_rb.AddForce(new Vector2(charged_projectile_force.x * face_direction, charged_projectile_force.y));
+    }
+    
+    // drop prefab from player's coordinate
+    private void DropItem(){
+        cur_dropped_item = Instantiate(dropped_item, transform.position, Quaternion.identity);
+        Rigidbody2D cur_dropped_rb = cur_dropped_item.GetComponent<Rigidbody2D>();
+        cur_dropped_rb.angularVelocity = 0f;
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
