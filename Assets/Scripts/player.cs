@@ -39,13 +39,13 @@ public class player : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
-
+        // jump
         if (Input.GetButtonDown("Jump") && jump){
             jump = false;
             rb.AddForce(jumpHeight, ForceMode2D.Impulse);
             rb.gravityScale = naturalGravity;
         }
-
+        // if player jump too down  
         if (transform.position.y <= -10f){
             Restart();
         }
@@ -80,10 +80,11 @@ public class player : MonoBehaviour
             face_direction = inputX_Raw;
         }
 
-        //jump
+        //jump  
         if (climb && inputY != 0){
             float ropeX = rope.transform.position.x;
             if (Mathf.Abs(posX - ropeX) <= 0.3f){
+                // gravity set to zero when jump
                 rb.gravityScale =0;
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX | 
                     RigidbodyConstraints2D.FreezeRotation;
@@ -100,11 +101,6 @@ public class player : MonoBehaviour
             move *= Time.deltaTime;
             transform.Translate(move);
         }
-        // if (Input.GetButtonDown("Crouch")){
-        //     crouch = true;
-        // } else if (Input.GetButtonUp("Crouch")){
-        //     crouch = false;
-        // }
     }
     
     // project prefab from (player's coordinate + some hight)
@@ -133,7 +129,7 @@ public class player : MonoBehaviour
     private void dropItem(){
 
     }
-    public void touchMonster(int direction){
+    public void touchMonster(int direction, int damageAmount){
         Vector2 layback;
         layback = new Vector2(direction*jumpback,8);
         // print(layback);
@@ -141,11 +137,11 @@ public class player : MonoBehaviour
         // rb.AddForce(layback, ForceMode2D.Impulse);
         int moveForce = 20;
         int jumpForce = 15;
-        rb.velocity = new Vector2(direction * moveForce , jumpForce);
+        rb.velocity = new Vector2(direction * moveForce, jumpForce);
 
-        healthSystem.Damage(10);
+        healthSystem.Damage(damageAmount);
         bar.ChangeHealthStatus(healthSystem.GetHealth());
-
+        
         if (healthSystem.GetHealth() == 0){
             Restart();
         }
@@ -156,8 +152,11 @@ public class player : MonoBehaviour
         bar.ChangeHealthStatus(healthSystem.GetHealth());
     }
 
+    //Restart when health equal 0
     public void Restart(){
         transform.position = startPos;
+        healthSystem.Reset();
+        bar.ChangeHealthStatus(healthSystem.GetHealth());
     }
 
 }

@@ -6,17 +6,15 @@ public class rope : MonoBehaviour
 {
     // Start is called before the first frame update
     private player player;
-    public float speed = 10;
     void Start()
     {
         player = GameObject.Find("player").GetComponent<player>();
     }
     private void OnTriggerEnter2D(Collider2D other) {
         print(other.gameObject.tag);
-        if (other.gameObject.tag == "Player"){
+        if (other.gameObject.tag == "Player"){ 
             player.climb = true;
             player.rope = this;
-            // other.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
         }
     }
     // private void OnTriggerStay2D(Collider2D other) {

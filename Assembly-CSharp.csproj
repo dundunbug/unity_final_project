@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\bar.cs" />
      <Compile Include="Assets\Scripts\enemy_1.cs" />
      <Compile Include="Assets\Scripts\healthSystem.cs" />

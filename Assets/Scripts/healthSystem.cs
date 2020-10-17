@@ -14,7 +14,7 @@ public class healthSystem
     }
 
     public float GetHealthPercent(){
-        return (float)health / healthMax;
+        return (float) health / healthMax;
     }
     
     public void Damage(int damageAmount){
@@ -22,7 +22,6 @@ public class healthSystem
         if(health < 0){
             health = 0;
         }
-
     }
 
     public void Heal(int healAmount){
@@ -30,6 +29,9 @@ public class healthSystem
         if (health > healthMax){
             health = healthMax;
         }
+    }
 
+    public void Reset(){
+        health = healthMax;
     }
 }
