@@ -11,7 +11,7 @@ public class rope : MonoBehaviour
         player = GameObject.Find("player").GetComponent<player>();
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        print(other.gameObject.tag);
+        // print(other.gameObject.tag);
         if (other.gameObject.tag == "Player"){ 
             player.climb = true;
             player.rope = this;

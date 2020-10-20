@@ -9,11 +9,12 @@ public class player : MonoBehaviour
     public float runSpeed = 10f;
     public float climbSpeed = 1f;
     public Vector2 jumpHeight = new Vector2(0f,12f);
+    public int moveForce = 5;
+    public int jumpForce = 5;
     public Vector2 projectile_force = new Vector2(1.0f,1.0f); // projectile (thrown item) force
     private float charged_time = 1.0f; // for accumulated projectile charged time. 0 will become "drop".
     private float face_direction = 1.0f; // record where player faces. because transform.forward doesn't work in 2D
     public float naturalGravity;
-    public int jumpback;
     public GameObject dropped_item; // prefab of dropped item
     private GameObject cur_dropped_item; //  current dropped item
 
@@ -24,7 +25,7 @@ public class player : MonoBehaviour
 
     private Vector3 startPos;
     private bool jump = true;
-    private bool crouch = false;
+    // private bool crouch = false;
     private Rigidbody2D rb;
     private bar bar;
     private healthSystem healthSystem = new healthSystem(100);
@@ -42,12 +43,13 @@ public class player : MonoBehaviour
         // jump
         if (Input.GetButtonDown("Jump") && jump){
             jump = false;
+            print("jump");
             rb.AddForce(jumpHeight, ForceMode2D.Impulse);
             rb.gravityScale = naturalGravity;
         }
-        // if player jump too down  
-        if (transform.position.y <= -10f){
-            Restart();
+        // if player jump too down or too high
+        if (transform.position.y <= -10f || transform.position.y >= 100f){
+            transform.position = startPos;
         }
 
         // MuseButton 0: left ; 1 : right.        
@@ -80,11 +82,11 @@ public class player : MonoBehaviour
             face_direction = inputX_Raw;
         }
 
-        //jump  
+        //climb  
         if (climb && inputY != 0){
             float ropeX = rope.transform.position.x;
             if (Mathf.Abs(posX - ropeX) <= 0.3f){
-                // gravity set to zero when jump
+                // gravity set to zero when climb
                 rb.gravityScale =0;
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX | 
                     RigidbodyConstraints2D.FreezeRotation;
@@ -122,6 +124,7 @@ public class player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         // print(other.gameObject.tag);
         if (other.gameObject.tag== "Ground"){
+            print(other.gameObject.tag);
             jump = true;
         }
     }
@@ -130,14 +133,9 @@ public class player : MonoBehaviour
 
     }
     public void touchMonster(int direction, int damageAmount){
-        Vector2 layback;
-        layback = new Vector2(direction*jumpback,8);
-        // print(layback);
-        
-        // rb.AddForce(layback, ForceMode2D.Impulse);
-        int moveForce = 20;
-        int jumpForce = 15;
-        rb.velocity = new Vector2(direction * moveForce, jumpForce);
+        Vector2 layback = new Vector2(direction*moveForce,jumpForce);
+        rb.AddForce(layback, ForceMode2D.Impulse);
+        // rb.velocity = new Vector2(direction * moveForce, jumpForce);
 
         healthSystem.Damage(damageAmount);
         bar.ChangeHealthStatus(healthSystem.GetHealth());

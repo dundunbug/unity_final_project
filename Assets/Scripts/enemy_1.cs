@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class enemy_1 : MonoBehaviour
 {
+    public int jumpback_x=3;
+    public int jumpback_y=3;
     private player player_script;
     private float lastTime = 0f;
     private GameObject player;
@@ -26,7 +28,7 @@ public class enemy_1 : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        print(other.gameObject.tag);
+        // print(other.gameObject.tag);
         if (other.gameObject.tag== "Player"){
             if (Time.time - lastTime >= 0.8f ){
                 int direction;
@@ -43,6 +45,8 @@ public class enemy_1 : MonoBehaviour
     }
 
     public void attackMonster(int direction, int damageAmount){
+        Vector2 layback = new Vector2(direction*jumpback_x,jumpback_y);        
+        rb.AddForce(layback, ForceMode2D.Force);
         healthSystem.Damage(damageAmount);
         if (healthSystem.GetHealth() == 0){
             Destroy(gameObject);
