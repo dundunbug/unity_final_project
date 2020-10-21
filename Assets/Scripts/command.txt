@@ -1,0 +1,5 @@
+git clone https://axxxx
+
+mkdir xxx //create folder xxx
+cd xxx //go to xxx folder
+dir // show all items in file
