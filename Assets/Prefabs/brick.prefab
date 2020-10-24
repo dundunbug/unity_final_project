@@ -70,7 +70,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 14336
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 7996226715586823112}
   - component: {fileID: 7996226715586823111}
   - component: {fileID: 7996226715586823114}
+  - component: {fileID: 8736011413618255756}
   m_Layer: 13
   m_Name: brick
   m_TagString: Untagged
@@ -229,4 +230,18 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &8736011413618255756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7996226715586823109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3834843c3bb435b40ad77338f7c03b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBomb: 0
+  healthMax: 40

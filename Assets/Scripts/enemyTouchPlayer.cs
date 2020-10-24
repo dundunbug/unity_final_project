@@ -19,13 +19,13 @@ public class enemyTouchPlayer : MonoBehaviour
         if (other.gameObject.tag== "Player"){
             if (Time.time - lastTime >= 0.8f ){
                 int direction;
-                int damageAmount = 10;
+                int damageAmount = 5;
                 if (transform.position.x < other.gameObject.transform.position.x){
                     direction = 1;//The player is on the right side of the enemy
                 }else{
                     direction = -1;//Players on the left side of the enemy
                 }
-                player_script.touchMonster(direction, damageAmount);
+                player_script.attacked(direction, damageAmount);
                 lastTime = Time.time;
             }
         }

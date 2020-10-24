@@ -22,6 +22,9 @@ public class objectAttract : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius, enemyLayer);
         foreach(Collider2D nearbyObject in colliders){
             GameObject enemy = nearbyObject.gameObject;
+            if (nearbyObject.gameObject.tag == "Detector"){
+                continue;
+            }
             if (Mathf.Abs(enemy.transform.position.x - transform.position.x) >= posRange){
                 Vector2 pos = new Vector2(transform.position.x, enemy.transform.position.y);
                 enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, pos, speed * Time.deltaTime);

@@ -10,10 +10,12 @@ public class player : MonoBehaviour
     public float runSpeed = 10f;
     public float climbSpeed = 1f;
     public Vector2 jumpHeight = new Vector2(0f,12f);
+    public float naturalGravity;
+    // touched by monster 
     public int moveForce = 5;
     public int jumpForce = 5;
-
-    public float naturalGravity;
+    public float moveAfterSec = 0.5f;
+    //
     public GameObject dropped_item; // prefab of dropped item
     private GameObject cur_dropped_item; //  current dropped item
 
@@ -24,6 +26,7 @@ public class player : MonoBehaviour
 
     private Vector3 startPos;
     private bool jump = true;
+    private bool canMove = true;
     // private bool crouch = false;
     private Rigidbody2D rb;
     private bar bar;
@@ -57,7 +60,7 @@ public class player : MonoBehaviour
         // jump
         if (Input.GetButtonDown("Jump") && jump){
             jump = false;
-            print("jump");
+            // print("jump");
             rb.AddForce(jumpHeight, ForceMode2D.Impulse);
             rb.gravityScale = naturalGravity;
         }
@@ -119,8 +122,8 @@ public class player : MonoBehaviour
             rb.gravityScale = naturalGravity;
         }
         //move
-        if(inputX != 0){
-            Vector3 move = new Vector3(runSpeed * inputX , posY, 0);     
+        if(inputX != 0 && canMove){
+            Vector3 move = new Vector3(runSpeed * inputX , posY, 0);
             move *= Time.deltaTime;
             transform.Translate(move);
         }
@@ -184,11 +187,13 @@ public class player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         // print(other.gameObject.tag);
         if (other.gameObject.tag== "Ground"){
-            print(other.gameObject.tag);
+            // print(other.gameObject.tag);
             jump = true;
         }
     }
-    public void touchMonster(int direction, int damageAmount){
+    public void attacked(int direction, int damageAmount){
+        // stop move while being attacked
+        canMove = false;
         Vector2 layback = new Vector2(direction*moveForce,jumpForce);
         rb.AddForce(layback, ForceMode2D.Impulse);
         // rb.velocity = new Vector2(direction * moveForce, jumpForce);
@@ -199,8 +204,14 @@ public class player : MonoBehaviour
         if (healthSystem.GetHealth() == 0){
             Restart();
         }
+        // can move after n sec later
+        StartCoroutine(canMoveAfterSec(0.5f));
     }
 
+    IEnumerator canMoveAfterSec(float time){
+        yield return new WaitForSeconds (time);
+        canMove = true;
+    }
     public void healItem(){
         healthSystem.Heal(10);
         bar.ChangeHealthStatus(healthSystem.GetHealth());

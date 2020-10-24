@@ -28,15 +28,30 @@ Edvance
 */
 public class objectStatus : MonoBehaviour
 {
+    public bool isBomb = false;
+    public float radius = 4f;
+    public int healthMax = 40;
+    private healthSystem healthSystem;
+    private objectScript objectScript;
     // Start is called before the first frame update
     void Start()
     {
-        
+        objectScript = new objectScript(gameObject);
+        healthSystem = new healthSystem(healthMax);
     }
+    public void attackObject(int damageAmount){
+        if (healthSystem.GetHealth() != 0){
+            healthSystem.Damage(damageAmount);
+            print(healthSystem.GetHealth());
+            if (healthSystem.GetHealth() == 0){
+                if (isBomb){
+                    objectScript.Explode(radius);
+                }
+                else{
+                    Destroy(gameObject);
+                }
+            }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
