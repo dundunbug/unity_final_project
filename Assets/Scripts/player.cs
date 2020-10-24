@@ -31,12 +31,13 @@ public class player : MonoBehaviour
     // Start is called before the first frame update
 
     [Header("Projectile")]
-    public Vector2 projectile_force = new Vector2(1.0f,1.0f); // projectile (thrown item) force
+    public Vector2 projectile_force; // projectile (thrown item) force
     private float charged_time = 1.0f; // for accumulated projectile charged time. 0 will become "drop".
     private float face_direction = 1.0f; // record where player faces. because transform.forward doesn't work in 2D
     public LineRenderer projectile_line; // trajectory
     public int point_number; // trajectory's point number
-    public Vector2 projectile_velocity; // for newton formula
+    public Vector2 projectile_acc; // for newton formula
+    private Vector2 projectile_velocity;
     public float ground_y;
 
     void Start()
@@ -46,7 +47,8 @@ public class player : MonoBehaviour
         bar = GameObject.Find("bar").GetComponent<bar>();
         startPos = transform.position;
         projectile_line.useWorldSpace = true;
-        float ground_y = -3.37f;
+        ground_y = -3.37f;
+        projectile_acc = new Vector2(5.0f,5.0f);
     }
 
     // Update is called once per frame
@@ -66,13 +68,21 @@ public class player : MonoBehaviour
         // MuseButton 0: left ; 1 : right.        
         // count accumlated charged time for projectile
         if (Input.GetMouseButton(0)){
+            projectile_line.enabled = true;
             charged_time += Time.deltaTime;
             charged_time = (charged_time > 3f ? 3f : charged_time);
+            projectile_velocity = projectile_acc * charged_time;
+            // Input.mousePosition
+            Vector2 temp_projectile_velocity = new Vector2(projectile_velocity.x * face_direction, projectile_velocity.y * (Input.mousePosition.y / Screen.height));
+            projectile_velocity = 10 * temp_projectile_velocity / (temp_projectile_velocity.magnitude);
+            // CoRoutine should be here
+            print(projectile_velocity);
+            StartCoroutine(DrawTrajectory(projectile_velocity));
         }
 
         if (Input.GetMouseButtonUp(0)){
-            Vector2 charged_projectile_force = charged_time * projectile_force;
-            ProjectItem(face_direction, charged_projectile_force);
+            projectile_line.enabled = false;
+            ProjectItem();
             charged_time = 1f;
         }
         
@@ -117,17 +127,12 @@ public class player : MonoBehaviour
     }
     
     // project prefab from (player's coordinate + some hight)
-    private void ProjectItem(float face_direction, Vector2 charged_projectile_force){
-        Vector2 temp_velocity = new Vector2((charged_projectile_force.x * face_direction)/25, charged_projectile_force.y/ 25);
-        // Vector2 temp_velocity = new Vector2((charged_projectile_force.x * face_direction)/cur_projectile_rb.mass, charged_projectile_force.y/ cur_projectile_rb.mass);
-        StartCoroutine(DrawTrajectory(temp_velocity));
+    private void ProjectItem(){
         cur_projectile = Instantiate(projectile, transform.position + new Vector3 (0.0f,0.5f,0.0f), Quaternion.identity);
         Rigidbody2D cur_projectile_rb = cur_projectile.GetComponent<Rigidbody2D>();
         cur_projectile_rb.angularVelocity = 0f;
-        //cur_projectile_rb.AddForce(new Vector2(charged_projectile_force.x * face_direction, charged_projectile_force.y));
-        cur_projectile_rb.velocity += temp_velocity;
+        cur_projectile_rb.velocity += projectile_velocity;
         print("rb.velocity"+cur_projectile_rb.velocity);
-    
     }
     
     private IEnumerator DrawTrajectory(Vector2 prefab_velocity){
