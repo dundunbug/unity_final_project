@@ -36,9 +36,10 @@ public class player : MonoBehaviour
     private float face_direction = 1.0f; // record where player faces. because transform.forward doesn't work in 2D
     public LineRenderer projectile_line; // trajectory
     public int point_number; // trajectory's point number
-    public Vector2 projectile_acc; // for newton formula
+    private Vector2 projectile_acc = new Vector2 (1.0f, 1.0f); // for newton formula
     private Vector2 projectile_velocity;
     public float ground_y;
+    public float projectile_constant;
 
     void Start()
     {
@@ -48,7 +49,7 @@ public class player : MonoBehaviour
         startPos = transform.position;
         projectile_line.useWorldSpace = true;
         ground_y = -3.37f;
-        projectile_acc = new Vector2(5.0f,5.0f);
+        projectile_constant = (projectile_constant < 4f)? 4f : projectile_constant;
     }
 
     // Update is called once per frame
@@ -71,10 +72,9 @@ public class player : MonoBehaviour
             projectile_line.enabled = true;
             charged_time += Time.deltaTime;
             charged_time = (charged_time > 3f ? 3f : charged_time);
-            projectile_velocity = projectile_acc * charged_time;
             // Input.mousePosition
-            Vector2 temp_projectile_velocity = new Vector2(projectile_velocity.x * face_direction, projectile_velocity.y * (Input.mousePosition.y / Screen.height));
-            projectile_velocity = 10 * temp_projectile_velocity / (temp_projectile_velocity.magnitude);
+            Vector2 temp_projectile_velocity = new Vector2(projectile_acc.x * face_direction, projectile_acc.y * (Input.mousePosition.y / Screen.height));
+            projectile_velocity = projectile_constant * charged_time * temp_projectile_velocity / (temp_projectile_velocity.magnitude);
             // CoRoutine should be here
             print(projectile_velocity);
             StartCoroutine(DrawTrajectory(projectile_velocity));
