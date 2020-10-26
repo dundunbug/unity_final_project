@@ -209,7 +209,6 @@ public class player : MonoBehaviour
     public void attacked(int direction, int damageAmount){
         // stop move while being attacked
         canMove = false;
-        animator_player.SetBool("IsHurt", true);
         Vector2 layback = new Vector2(direction*moveForce,jumpForce);
         rb.AddForce(layback, ForceMode2D.Impulse);
         canJump = false;
@@ -224,12 +223,14 @@ public class player : MonoBehaviour
         }
         // can move after n sec later
         StartCoroutine(canMoveAfterSec(0.7f));
-        animator_player.SetBool("IsHurt", false);
+
     }
 
     IEnumerator canMoveAfterSec(float time){
+        animator_player.SetBool("IsHurt", true);
         yield return new WaitForSeconds (time);
         canMove = true;
+        animator_player.SetBool("IsHurt", false);
     }
 
     IEnumerator Settle_Delay(float time){
