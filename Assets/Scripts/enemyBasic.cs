@@ -30,12 +30,14 @@ public class enemyBasic : MonoBehaviour
     private bool isSamePlace = false;
     private Vector2 playerLastPos;
     private float height;
+    private SpriteRenderer SpriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 5;
         height = GetComponent<SpriteRenderer>().bounds.size.y;
+        SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -147,9 +149,11 @@ public class enemyBasic : MonoBehaviour
         if(movingRight == true){
             transform.eulerAngles = new Vector3(0, -180, 0);
             movingRight = false;
+            SpriteRenderer.flipX = true;
         }else{
             transform.eulerAngles = new Vector3(0, 0, 0);
             movingRight = true;
+            SpriteRenderer.flipX = false;
         }
     }
     void jump(GameObject player, int dir){

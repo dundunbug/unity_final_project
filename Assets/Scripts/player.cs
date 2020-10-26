@@ -24,15 +24,16 @@ public class player : MonoBehaviour
     [HideInInspector] public rope rope;
     private Vector3 startPos;
 
-
     // private bool crouch = false;
     private Rigidbody2D rb;
+    private SpriteRenderer SpriteRenderer;
     private bar bar;
     private healthSystem healthSystem = new healthSystem(100);
     // Start is called before the first frame update
     [Header("Status_Bool")]
     private bool canJump = false;
     private bool canMove = true;
+    private bool movingRight = true;
     [HideInInspector] public bool climb = false;
 
     [Header("Animator")]
@@ -58,6 +59,7 @@ public class player : MonoBehaviour
         projectile_line.useWorldSpace = true;
         ground_y = -3.37f;
         projectile_constant = (projectile_constant < 4f)? 4f : projectile_constant;
+        SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -139,12 +141,26 @@ public class player : MonoBehaviour
         }
         //move
         if(inputX != 0 && canMove){
+            if (inputX > 0 && !movingRight)
+                flip();
+            else if (inputX < 0 && movingRight)
+                flip();
             Vector3 move = new Vector3(runSpeed * inputX , posY, 0);
             move *= Time.deltaTime;
             transform.Translate(move);
         }
+        
     }
     
+    void flip(){
+        if(movingRight == true){
+            movingRight = false;
+            SpriteRenderer.flipX = true;
+        }else{
+            movingRight = true;
+            SpriteRenderer.flipX = false;
+        }
+    }
     // project prefab from (player's coordinate + some hight)
     private void ProjectItem(){
         cur_projectile = Instantiate(projectile, transform.position + new Vector3 (0.0f,0.5f,0.0f), Quaternion.identity);
