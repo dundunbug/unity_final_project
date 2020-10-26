@@ -79,7 +79,6 @@ public class player : MonoBehaviour
             Vector2 temp_projectile_velocity = new Vector2(projectile_acc.x * face_direction, projectile_acc.y * (Input.mousePosition.y / Screen.height));
             projectile_velocity = projectile_constant * charged_time * temp_projectile_velocity / (temp_projectile_velocity.magnitude);
             // CoRoutine should be here
-            print(projectile_velocity);
             StartCoroutine(DrawTrajectory(projectile_velocity));
         }
 
@@ -135,13 +134,11 @@ public class player : MonoBehaviour
         Rigidbody2D cur_projectile_rb = cur_projectile.GetComponent<Rigidbody2D>();
         cur_projectile_rb.angularVelocity = 0f;
         cur_projectile_rb.velocity += projectile_velocity;
-        print("rb.velocity"+cur_projectile_rb.velocity);
     }
     
     private IEnumerator DrawTrajectory(Vector2 prefab_velocity){
         projectile_line.positionCount = point_number;
         projectile_line.SetPositions(TrajectoryGenerator(prefab_velocity));
-        print("inDrawFunction");
         yield return null;
     }
 
