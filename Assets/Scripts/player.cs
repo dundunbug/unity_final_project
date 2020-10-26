@@ -22,16 +22,21 @@ public class player : MonoBehaviour
     public GameObject projectile; // prefab of projectile
     private GameObject cur_projectile; // current projectile
     [HideInInspector] public rope rope;
-    [HideInInspector] public bool climb = false;
-
     private Vector3 startPos;
-    private bool jump = true;
-    private bool canMove = true;
+
+
     // private bool crouch = false;
     private Rigidbody2D rb;
     private bar bar;
     private healthSystem healthSystem = new healthSystem(100);
     // Start is called before the first frame update
+    [Header("Status_Bool")]
+    private bool canJump = false;
+    private bool canMove = true;
+    [HideInInspector] public bool climb = false;
+
+    [Header("Animator")]
+    public Animator animator_player;
 
     [Header("Projectile")]
     public Vector2 projectile_force; // projectile (thrown item) force
@@ -58,20 +63,22 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update () {
         // jump
-        if (Input.GetButtonDown("Jump") && jump){
-            jump = false;
+        if (Input.GetButtonDown("Jump") && canJump){
+            canJump = false;
             // print("jump");
             rb.AddForce(jumpHeight, ForceMode2D.Impulse);
             rb.gravityScale = naturalGravity;
         }
+
         // if player jump too down or too high
         if (transform.position.y <= -10f || transform.position.y >= 100f){
             transform.position = startPos;
         }
- 
+
         // MuseButton 0: left ; 1 : right.        
         // count accumlated charged time for projectile
         if (Input.GetMouseButton(0)){
+            animator_player.SetBool("IsThrow", true);
             projectile_line.enabled = true;
             charged_time += Time.deltaTime;
             charged_time = (charged_time > 3f ? 3f : charged_time);
@@ -83,14 +90,19 @@ public class player : MonoBehaviour
         }
 
         if (Input.GetMouseButtonUp(0)){
+            animator_player.SetBool("IsThrow", false);
             projectile_line.enabled = false;
             ProjectItem();
             charged_time = 1f;
         }
         
         if (Input.GetMouseButtonUp(1)){
+            canMove = false;
             DropItem();
+            StartCoroutine(Settle_Delay(1.0f));          
         }
+
+
     }
     void FixedUpdate ()
     {
@@ -99,7 +111,10 @@ public class player : MonoBehaviour
         float inputY = Input.GetAxis("Vertical");
         float posY = transform.position.y;
         float posX = transform.position.x;
-        
+
+        // for animator
+        animator_player.SetFloat("Player_RunSpeed", Mathf.Abs(inputX));
+
         // detect where player faces
         if (inputX_Raw != 0f){
             face_direction = inputX_Raw;
@@ -107,6 +122,7 @@ public class player : MonoBehaviour
 
         //climb  
         if (climb && inputY != 0){
+            animator_player.SetBool("IsClimb", true);
             float ropeX = rope.transform.position.x;
             if (Mathf.Abs(posX - ropeX) <= 0.3f){
                 // gravity set to zero when climb
@@ -118,6 +134,7 @@ public class player : MonoBehaviour
             }
         }
         if(!climb){
+            animator_player.SetBool("IsClimb", false);
             rb.gravityScale = naturalGravity;
         }
         //move
@@ -180,19 +197,23 @@ public class player : MonoBehaviour
         Rigidbody2D cur_dropped_rb = cur_dropped_item.GetComponent<Rigidbody2D>();
         cur_dropped_rb.angularVelocity = 0f;
     }
-
+   
     private void OnCollisionEnter2D(Collision2D other) {
         // print(other.gameObject.tag);
         if (other.gameObject.tag== "Ground"){
             // print(other.gameObject.tag);
-            jump = true;
+            canJump = true;
         }
     }
+
     public void attacked(int direction, int damageAmount){
         // stop move while being attacked
         canMove = false;
+        animator_player.SetBool("IsHurt", true);
         Vector2 layback = new Vector2(direction*moveForce,jumpForce);
         rb.AddForce(layback, ForceMode2D.Impulse);
+        canJump = false;
+
         // rb.velocity = new Vector2(direction * moveForce, jumpForce);
 
         healthSystem.Damage(damageAmount);
@@ -202,11 +223,19 @@ public class player : MonoBehaviour
             Restart();
         }
         // can move after n sec later
-        StartCoroutine(canMoveAfterSec(0.5f));
+        StartCoroutine(canMoveAfterSec(0.7f));
+        animator_player.SetBool("IsHurt", false);
     }
 
     IEnumerator canMoveAfterSec(float time){
         yield return new WaitForSeconds (time);
+        canMove = true;
+    }
+
+    IEnumerator Settle_Delay(float time){
+        animator_player.SetBool("IsSettle", true);
+        yield return new WaitForSeconds (time);
+        animator_player.SetBool("IsSettle", false);
         canMove = true;
     }
     public void healItem(){
@@ -220,5 +249,4 @@ public class player : MonoBehaviour
         healthSystem.Reset();
         bar.ChangeHealthStatus(healthSystem.GetHealth());
     }
-
 }

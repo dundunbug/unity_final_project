@@ -579,7 +579,7 @@ Rigidbody2D:
   m_GravityScale: 4
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!212 &633748649
@@ -671,6 +671,7 @@ MonoBehaviour:
     type: 3}
   rope: {fileID: 0}
   climb: 0
+  animator_player: {fileID: 633748652}
   projectile_force: {x: 100, y: 100}
   projectile_line: {fileID: 1204342865}
   point_number: 200
