@@ -35,7 +35,7 @@ public class player : MonoBehaviour
     private bool canMove = true;
     private bool movingRight = true;
     [HideInInspector] public bool climb = false;
-
+    
     [Header("Animator")]
     public Animator animator_player;
 
@@ -50,6 +50,10 @@ public class player : MonoBehaviour
     public float ground_y;
     public float projectile_constant;
 
+    /*Inventory 各種*/
+   private Inventory inventory;
+    [SerializeField] public UI_Inventory uiInventory;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -60,6 +64,8 @@ public class player : MonoBehaviour
         ground_y = -3.37f;
         projectile_constant = (projectile_constant < 4f)? 4f : projectile_constant;
         SpriteRenderer = GetComponent<SpriteRenderer>();
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
     }
 
     // Update is called once per frame
