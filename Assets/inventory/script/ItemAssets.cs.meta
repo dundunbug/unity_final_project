@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 199493d9d68a46c43855c9a39ef8e526
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pfitplaced: {instanceID: 0}
+  - Bomb_LSprite: {fileID: 21300000, guid: a9d93466ea2e2e049bb891afb6405a34, type: 3}
+  - Bomb_SSprite: {fileID: 21300000, guid: a9d93466ea2e2e049bb891afb6405a34, type: 3}
+  - Bomb_TimerSprite: {fileID: 21300000, guid: a9d93466ea2e2e049bb891afb6405a34, type: 3}
+  - TeddySprite: {fileID: 21300000, guid: bc254eec1d5b1f645a7988d0cb819026, type: 3}
+  - TransferGateSprite: {fileID: 21300000, guid: 57c2671a6c894cb449247d76f5f206ea,
+      type: 3}
+  - LegoSprite: {fileID: 21300000, guid: 7f0644556e9321246895ab957b55cfaa, type: 3}
+  - CardBoardSprite: {fileID: 21300000, guid: 054e914d79feef54cab8d7d0f3abe41f, type: 3}
+  - BottleSprite: {fileID: 21300000, guid: 8d09c39fd3e32e04b8906ec73ebd280f, type: 3}
+  - CartonSprite: {fileID: 21300000, guid: 5b285f17bb7176644a1b2e4ad94d8c74, type: 3}
+  - PillowSprite: {fileID: 21300000, guid: 2404ee2a9a106b04aa886671b0b570ee, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
