@@ -53,6 +53,7 @@ public class player : MonoBehaviour
     /*Inventory 各種*/
    private Inventory inventory;
     [SerializeField] public UI_Inventory uiInventory;
+    public GameObject inventoryCanvas;
 
     void Start()
     {
@@ -85,7 +86,7 @@ public class player : MonoBehaviour
 
         // MuseButton 0: left ; 1 : right.        
         // count accumlated charged time for projectile
-        if (Input.GetMouseButton(0)){
+        if (Input.GetMouseButton(0) && !inventoryCanvas.active){
             animator_player.SetBool("IsThrow", true);
             projectile_line.enabled = true;
             charged_time += Time.deltaTime;
@@ -97,14 +98,14 @@ public class player : MonoBehaviour
             StartCoroutine(DrawTrajectory(projectile_velocity));
         }
 
-        if (Input.GetMouseButtonUp(0)){
+        if (Input.GetMouseButtonUp(0) && !inventoryCanvas.active){
             animator_player.SetBool("IsThrow", false);
             projectile_line.enabled = false;
             ProjectItem();
             charged_time = 1f;
         }
         
-        if (Input.GetMouseButtonUp(1)){
+        if (Input.GetMouseButtonUp(1) && !inventoryCanvas.active){
             canMove = false;
             DropItem();
             StartCoroutine(Settle_Delay(1.0f));          
@@ -183,8 +184,8 @@ public class player : MonoBehaviour
 
     private Vector3[] TrajectoryGenerator(Vector2 prefab_velocity){
         Vector3[] Generated_points = new Vector3[point_number];
-        point_number = (point_number == 0)? 200 : point_number; // avoid divided by 0
-        float point_density = Newton_Trajectory_HitGround_Time(ground_y, prefab_velocity).x / point_number;
+        point_number = (point_number == 0)? 50 : point_number; // avoid divided by 0
+        float point_density = Newton_Trajectory_HitGround_Time(ground_y, prefab_velocity).y / point_number;
         for (int i = 0; i < point_number; ++i){
             //float time_in_Newton = (float)(i / point_number); // input t for Newton Vo*t + 0.5*a*t^2
             float time_in_Newton = point_density * i;

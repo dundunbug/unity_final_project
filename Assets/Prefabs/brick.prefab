@@ -46,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.054103076}
+  m_Offset: {x: -0.010422587, y: -0.06758964}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.13614506, y: 0.029470801}
+  m_Size: {x: 0.5391532, y: 0.07814789}
   m_EdgeRadius: 0
 --- !u!251 &7996226714151402405
 PlatformEffector2D:
@@ -126,9 +126,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7996226715586823109}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.228, y: -1.01, z: -1.4385478}
-  m_LocalScale: {x: 15.407989, y: 13.873685, z: 1}
+  m_LocalScale: {x: 3.5266333, y: 4.3230267, z: 1}
   m_Children:
   - {fileID: 7996226714151402404}
   m_Father: {fileID: 0}
@@ -172,8 +172,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 4806979598904865115, guid: 25d33530732f44e45aca966baebba6a5,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -197,18 +198,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0012478605, y: 0.00080579147}
+  m_Offset: {x: -0.0126827955, y: -0.13057}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.132547, y: 0.12845635}
+  m_Size: {x: 0.54877746, y: 0.22458482}
   m_EdgeRadius: 0
 --- !u!50 &7996226715586823114
 Rigidbody2D:
@@ -244,4 +245,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBomb: 0
+  radius: 4
   healthMax: 40

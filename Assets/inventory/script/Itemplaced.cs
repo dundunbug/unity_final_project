@@ -21,7 +21,7 @@ public class Itemplaced : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = item.GetSprite();
+        // spriteRenderer.sprite = item.GetSprite();
     }
 
     public void SetItem(Item item)

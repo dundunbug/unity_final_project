@@ -1168,8 +1168,8 @@ MonoBehaviour:
   yrange: 1.5
   canAttack: 0
   wallDis: 2
-  groundDetection: {fileID: 0}
-  wallDetection: {fileID: 0}
+  groundDetection: {fileID: 234622303}
+  wallDetection: {fileID: 164559627}
 --- !u!212 &207012031
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2264,17 +2264,19 @@ MonoBehaviour:
   moveForce: 5
   jumpForce: 5
   moveAfterSec: 0.5
-  dropped_item: {fileID: 0}
-  projectile: {fileID: 0}
+  dropped_item: {fileID: 302027978495613263, guid: a6867931d62bae746aad5fc7c446dabf,
+    type: 3}
+  projectile: {fileID: 5166582595985205136, guid: e5df10b23b70c10469f9952f885c7ae4,
+    type: 3}
   rope: {fileID: 0}
   climb: 0
-  animator_player: {fileID: 0}
+  animator_player: {fileID: 633748652}
   projectile_force: {x: 0, y: 0}
-  projectile_line: {fileID: 0}
-  point_number: 0
-  ground_y: 0
-  projectile_constant: 0
-  uiInventory: {fileID: 0}
+  projectile_line: {fileID: 1204342865}
+  point_number: 50
+  ground_y: -3.37
+  projectile_constant: 5
+  uiInventory: {fileID: 798070154}
 --- !u!95 &633748652
 Animator:
   serializedVersion: 3

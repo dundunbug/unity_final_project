@@ -38,6 +38,7 @@ public class enemyBasic : MonoBehaviour
         rb.gravityScale = 5;
         height = GetComponent<SpriteRenderer>().bounds.size.y;
         SpriteRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer.flipX = true;
     }
 
     private void Update()
@@ -149,11 +150,9 @@ public class enemyBasic : MonoBehaviour
         if(movingRight == true){
             transform.eulerAngles = new Vector3(0, -180, 0);
             movingRight = false;
-            SpriteRenderer.flipX = true;
         }else{
             transform.eulerAngles = new Vector3(0, 0, 0);
             movingRight = true;
-            SpriteRenderer.flipX = false;
         }
     }
     void jump(GameObject player, int dir){

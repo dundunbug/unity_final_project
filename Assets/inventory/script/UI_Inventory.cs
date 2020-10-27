@@ -14,9 +14,10 @@ public class UI_Inventory : MonoBehaviour
     private void Awake()
     {
         itemslot = transform.Find("Panel2");
-        itemslotTemp = itemslot.Find("itemslotTemp");
+        itemslotTemp = GameObject.Find("itemslotTemp").transform;
         //pic = itemslot.Find("pic");
     }
+    
     public void SetInventory(Inventory inventory)
     {
         this.inventory = inventory;
@@ -45,7 +46,7 @@ public class UI_Inventory : MonoBehaviour
                 y++;
             }
         }
-
+        // GameObject.Find("itemslotTemp").SetActive(false);
 
     }
 
