@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Upagradenum : MonoBehaviour
 {
     // Start is called before the first frame update
     public int num = 10;
     public Text N;
-    void Start()
+
+    private void Awake()
     {
-        
+        N.text = num.ToString();
     }
 
-    // Update is called once per frame
-    public void changeNum()
+
+    public void DecreaseNum()
     {
-        if (num > 0)
-        {
         num--;
-        N.text = num+"";
-        }
-        
+        N.text = num + "";
     }
 }

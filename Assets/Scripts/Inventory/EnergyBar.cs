@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,19 +11,22 @@ public class EnergyBar : MonoBehaviour
   
     private int energy = 1;
     public int total = 7;
+    public int Num = 10;
+    private Upagradenum upagradenum;
 
+
+    private void Start()
+    {
+        upagradenum = GameObject.Find("remainNum").GetComponent<Upagradenum>(); ;
+    }
 
     // Update is called once per frame
     public void RefreshBar()
     {
-          
-         for(int i = 1; i <= energy; i++)
-         {
-              GameObject ob = this.gameObject.transform.GetChild(i).gameObject;
-            ob.SetActive(true);
-             
-         }
-        
+        if (upagradenum.num <= 0) return;
+
+        GameObject ob = this.gameObject.transform.GetChild(energy).gameObject;
+        ob.SetActive(true);
     }
     
     
@@ -44,4 +48,10 @@ public class EnergyBar : MonoBehaviour
         float result = (float)energy / total;
         return result;
     }
+    public void changeNum()
+    {
+        if (upagradenum.num > 0 && energy<total)
+            upagradenum.DecreaseNum();
+    }
+
 }
