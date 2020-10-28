@@ -20,7 +20,7 @@ public class enemyBasic : MonoBehaviour
     private bool movingRight = true;
     public Transform groundDetection;
     public Transform wallDetection;
-    private healthSystem healthSystem = new healthSystem(50);
+    private healthSystem healthSystem = new healthSystem(20);
     private Rigidbody2D rb;
     private bool canMove = true;
     private bool nearWall = false;
