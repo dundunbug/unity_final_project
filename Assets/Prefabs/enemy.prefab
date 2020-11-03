@@ -197,8 +197,10 @@ MonoBehaviour:
   yrange: 1.5
   canAttack: 1
   wallDis: 1
+  xDisPlayer: 1
   groundDetection: {fileID: 5439005729094976990}
   wallDetection: {fileID: 5439005729031173002}
+  canMove: 1
 --- !u!50 &5439005729122912320
 Rigidbody2D:
   serializedVersion: 4

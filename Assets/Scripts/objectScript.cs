@@ -10,10 +10,12 @@ public class objectScript
         this.gameObject = gameObject;
     }
 
+    // bomb
     public void Explode(float radius){
         // Show effect
         Animator animator = gameObject.GetComponent<Animator>();
-        animator.SetTrigger("isDestroy");
+        if (animator != null)
+            animator.SetTrigger("isDestroy");
         //stop object
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody2D>().gravityScale =0;
@@ -51,5 +53,10 @@ public class objectScript
         }
         // remove bomb after 0.6 sec
         Object.Destroy(gameObject,0.6f);
+    }
+
+    //teddy attack
+    public void TeddyAttack(){
+
     }
 }

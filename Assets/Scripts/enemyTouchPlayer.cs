@@ -16,7 +16,7 @@ public class enemyTouchPlayer : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D other) {
         // print(other.gameObject.tag);
-        if (other.gameObject.tag== "Player"){
+        if (other.gameObject.name== "player"){
             if (Time.time - lastTime >= 0.8f ){
                 int direction;
                 int damageAmount = 5;

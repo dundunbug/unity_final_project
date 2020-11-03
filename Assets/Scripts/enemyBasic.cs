@@ -17,12 +17,13 @@ public class enemyBasic : MonoBehaviour
     public float yrange = 1.5f;
     public bool canAttack = false;
     public float wallDis = 2f;
+    public float xDisPlayer = 1f;
     private bool movingRight = true;
     public Transform groundDetection;
     public Transform wallDetection;
     private healthSystem healthSystem = new healthSystem(20);
     private Rigidbody2D rb;
-    private bool canMove = true;
+    public bool canMove = true;
     private bool nearWall = false;
     private bool canJump = true;
     private int countSamePlace = 0;
@@ -48,8 +49,14 @@ public class enemyBasic : MonoBehaviour
         if (canMove){
             // check if player is near
             int playerLayer = 1 << LayerMask.NameToLayer("player");
-            Collider2D collider = Physics2D.OverlapCircle(transform.position, findPlayerRadius, playerLayer);
-
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, findPlayerRadius, playerLayer);
+            Collider2D collider;
+            // check if it is player or attract item
+            if (colliders.Length != 0)
+                collider = checkPlayerOrItem(colliders);
+            else{
+                collider = null;
+            }
             // check if ground edge 
             int groundLayer = 1 << LayerMask.NameToLayer("ground");
             RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance, groundLayer);
@@ -75,6 +82,8 @@ public class enemyBasic : MonoBehaviour
                     StartCoroutine(notNearWallAfterSec(0.5f));
                 }else if (!advanceTrack || collider == null){
                     flip();
+                    // if ground dis too low, must do something
+                    // climb up 
                 }
             }else{
                 nearWall = false;
@@ -90,7 +99,6 @@ public class enemyBasic : MonoBehaviour
                 // print(canJump);
                 if (range >= yrange && nearWall && canJump){
                     if(!isSamePlace){
-                        print("jump");
                         int dir;
                         // print(transform.position.x - player.transform.position.x );
                         if (transform.position.x - player.transform.position.x <= -0.5f){
@@ -104,7 +112,7 @@ public class enemyBasic : MonoBehaviour
                     }
                 }
 
-                if (Mathf.Abs(transform.position.x- player.transform.position.x) <= 2f){
+                if (Mathf.Abs(transform.position.x- player.transform.position.x) <= xDisPlayer){
                     // move or attack 
                     // print("move or attack");
                     if (!canAttack){
@@ -152,6 +160,23 @@ public class enemyBasic : MonoBehaviour
             //     transform.Translate(Vector2.right * speed * Time.deltaTime);
             // }
         }
+    }
+    Collider2D checkPlayerOrItem(Collider2D[] colliders){
+        float dis = 1000f;
+        Collider2D collider = colliders[0];
+        if (colliders.Length >= 1){
+            foreach(Collider2D col in colliders){
+                // chase item first
+                if (col.gameObject.name != "player"){
+                    Vector2 disBetweenEnemy = transform.position - col.transform.position;
+                    if (disBetweenEnemy.magnitude < dis){
+                        dis = disBetweenEnemy.magnitude;
+                        collider = col;
+                    }
+                }
+            }
+        }
+        return collider;
     }
     IEnumerator notNearWallAfterSec(float time){
         yield return new WaitForSeconds (time);
@@ -218,9 +243,10 @@ public class enemyBasic : MonoBehaviour
     }
     public void attacked(int direction, int damageAmount){
         canMove = false;
-        Vector2 layback = new Vector2(direction*moveForce,jumpForce);
-        rb.AddForce(layback, ForceMode2D.Impulse);
-
+        if (direction != 0){
+            Vector2 layback = new Vector2(direction*moveForce,jumpForce);
+            rb.AddForce(layback, ForceMode2D.Impulse);
+        }
         healthSystem.Damage(damageAmount);
         if (healthSystem.GetHealth() == 0){
             animator.SetTrigger("isDead");

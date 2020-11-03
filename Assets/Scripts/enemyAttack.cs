@@ -22,14 +22,18 @@ public class enemyAttack : MonoBehaviour
         if (other.gameObject.tag == "Player"){
             if (Time.time - lastTime >= time ){
                 int damageAmount = 10;
-                int direction;
-                if (gameObject.transform.position.x < other.gameObject.transform.position.x){
-                    direction = 1;//The object is on the right side of the enemy
+                if (other.gameObject.name == "player"){
+                    int direction;
+                    if (gameObject.transform.position.x < other.gameObject.transform.position.x){
+                        direction = 1;//The object is on the right side of the enemy
+                    }else{
+                        direction = -1;//Object on the left side of the enemy
+                    }
+                    player player_script = other.gameObject.GetComponent<player>();
+                    player_script.attacked(direction, damageAmount);
                 }else{
-                    direction = -1;//Object on the left side of the enemy
+                    other.gameObject.GetComponent<objectStatus>().attackObject(damageAmount);
                 }
-                player player_script = other.gameObject.GetComponent<player>();
-                player_script.attacked(direction, damageAmount);
                 lastTime = Time.time;
             }
         }else if (other.gameObject.tag != "Ground"){

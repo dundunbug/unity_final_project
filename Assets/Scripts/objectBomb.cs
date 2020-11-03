@@ -13,14 +13,12 @@ public class objectBomb : MonoBehaviour
         objectScript = new objectScript(gameObject);
     }
     private void OnCollisionEnter2D(Collision2D other) {
-        // print(other.gameObject.tag);
         if (other.gameObject.tag == "Ground"){
             objectScript.Explode(radius);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        // print(other.gameObject.tag);
         if (other.gameObject.tag == "Enemy"){
             objectScript.Explode(radius);
         }

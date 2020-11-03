@@ -50,8 +50,21 @@ public class objectStatus : MonoBehaviour
                     objectScript.Explode(radius);
                 }
                 else{
-                    animator_object.SetTrigger("isDestroy");
-                    Destroy(gameObject,1f);
+                    if (gameObject.name.Contains("pillow")){
+                        // feather effect
+                        // GameObject child = gameObject.transform.GetChild(0).gameObject;
+                        // child.SetActive(true);
+                        gameObject.GetComponent<objectPillow>().FlyFeathers();
+                        Destroy(gameObject,3f);
+                    }else if (gameObject.name.Contains("teddy")){
+                        // grab?
+                        GameObject child = gameObject.transform.GetChild(0).gameObject;
+                        child.SetActive(true);
+                    }else{
+                        if (animator_object != null)
+                            animator_object.SetTrigger("isDestroy");
+                        Destroy(gameObject,1f);
+                    }
                 }
             }
         }

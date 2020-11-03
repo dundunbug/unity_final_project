@@ -232,8 +232,10 @@ public class player : MonoBehaviour
     public void attacked(int direction, int damageAmount){
         // stop move while being attacked
         canMove = false;
-        Vector2 layback = new Vector2(direction*moveForce,jumpForce);
-        rb.AddForce(layback, ForceMode2D.Impulse);
+        if (direction != 0){
+            Vector2 layback = new Vector2(direction*moveForce,jumpForce);
+            rb.AddForce(layback, ForceMode2D.Impulse);
+        }
         canJump = false;
 
         // rb.velocity = new Vector2(direction * moveForce, jumpForce);
@@ -245,7 +247,7 @@ public class player : MonoBehaviour
             Restart();
         }
         // can move after n sec later
-        StartCoroutine(canMoveAfterSec(0.7f));
+        StartCoroutine(canMoveAfterSec(0.5f));
 
     }
 
