@@ -31,6 +31,7 @@ public class enemyBasic : MonoBehaviour
     private Vector2 playerLastPos;
     private float height;
     private SpriteRenderer SpriteRenderer;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,23 +40,24 @@ public class enemyBasic : MonoBehaviour
         height = GetComponent<SpriteRenderer>().bounds.size.y;
         SpriteRenderer = GetComponent<SpriteRenderer>();
         SpriteRenderer.flipX = true;
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     { 
         if (canMove){
-            
-            // check if ground edge 
-            int groundLayer = 1 << LayerMask.NameToLayer("ground");
-            RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance, groundLayer);
-            if (groundInfo.collider == false){
-                flip();
-            }
-
             // check if player is near
             int playerLayer = 1 << LayerMask.NameToLayer("player");
             Collider2D collider = Physics2D.OverlapCircle(transform.position, findPlayerRadius, playerLayer);
-            
+
+            // check if ground edge 
+            int groundLayer = 1 << LayerMask.NameToLayer("ground");
+            RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance, groundLayer);
+            // if player is not near, patrol
+            if (groundInfo.collider == false && collider==null){
+                flip();
+            }
+
             // check if bumping into wall 
             Vector2 direction;
             if (movingRight){
@@ -63,33 +65,37 @@ public class enemyBasic : MonoBehaviour
             }else{
                 direction = Vector2.left;
             }
+            
             RaycastHit2D wallInfo = Physics2D.Raycast(wallDetection.position, direction, wallDis, groundLayer);
             if (wallInfo.collider == true){
                 nearWall = true;
-                StartCoroutine(notNearWallAfterSec(0.5f));
+                // StartCoroutine(notNearWallAfterSec(0.5f));
                 if (isSamePlace){
                     flip();
+                    StartCoroutine(notNearWallAfterSec(0.5f));
                 }else if (!advanceTrack || collider == null){
                     flip();
                 }
+            }else{
+                nearWall = false;
             }
 
             // advance
             if (collider != null && advanceTrack){
                 // print(collider.gameObject.tag);
+                animator.SetBool("isAttacking",false);
                 GameObject player = collider.gameObject;
                 checkPlayerPos(player.transform.position);
                 float range = player.transform.position.y- (transform.position.y - height*1/2);
                 // print(canJump);
                 if (range >= yrange && nearWall && canJump){
                     if(!isSamePlace){
+                        print("jump");
                         int dir;
-                        print(transform.position.x - player.transform.position.x );
+                        // print(transform.position.x - player.transform.position.x );
                         if (transform.position.x - player.transform.position.x <= -0.5f){
-                            print("right");
                             dir = 1;
                         }else if (transform.position.x - player.transform.position.x >= 0.5f){
-                            print("left");
                             dir = -1;
                         }else{
                             dir = 0;
@@ -112,15 +118,20 @@ public class enemyBasic : MonoBehaviour
                         }
                         transform.Translate(Vector2.right * speed * Time.deltaTime); // move
                     }else{
+                        print("attack");
                         attack(); // attack
                     }
                 }else if (!isSamePlace){
                     // print("track");
+                    gameObject.transform.Find("attackDetector").gameObject.SetActive(false);
                     track(collider.gameObject);
                 }else{
+                    gameObject.transform.Find("attackDetector").gameObject.SetActive(false);
                     transform.Translate(Vector2.right * speed * Time.deltaTime);
                 }
             }else{
+                animator.SetBool("isAttacking",false);
+                gameObject.transform.Find("attackDetector").gameObject.SetActive(false);
                 transform.Translate(Vector2.right * speed * Time.deltaTime);
             }
             // basic
@@ -193,12 +204,12 @@ public class enemyBasic : MonoBehaviour
     }
     void attack(){
         canMove = false;
+        animator.SetBool("isAttacking",true);
         // print("attack");
         // transform.position += Vector3.left * 0.1f;
-        transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.left*10, 2 * speed * Time.deltaTime);
+        // transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.left*10, 2 * speed * Time.deltaTime);
         gameObject.transform.Find("attackDetector").gameObject.SetActive(true);
         StartCoroutine(canMoveAfterSec(0.5f));
-        StartCoroutine(deactiveAttackDetection(3f));
     }
     IEnumerator deactiveAttackDetection(float time){
         yield return new WaitForSeconds (time);
@@ -212,7 +223,8 @@ public class enemyBasic : MonoBehaviour
 
         healthSystem.Damage(damageAmount);
         if (healthSystem.GetHealth() == 0){
-            Destroy(gameObject);
+            animator.SetTrigger("isDead");
+            Destroy(gameObject,0.4f);
         }
         // can move after n sec later
         StartCoroutine(canMoveAfterSec(1f));

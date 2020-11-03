@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2286634086909154328}
   - component: {fileID: 2286634086909154324}
   - component: {fileID: 2286634086909154323}
+  - component: {fileID: 2138997490}
   m_Layer: 11
   m_Name: player
   m_TagString: Player
@@ -114,7 +115,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2286634086909154329}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -164,6 +165,8 @@ MonoBehaviour:
   point_number: 50
   ground_y: -3.37
   projectile_constant: 0
+  uiInventory: {fileID: 0}
+  inventoryCanvas: {fileID: 0}
 --- !u!95 &2286634086909154323
 Animator:
   serializedVersion: 3
@@ -183,3 +186,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &2138997490
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2286634086909154329}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.3, y: 0.6399999}
+  m_Direction: 0

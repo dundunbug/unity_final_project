@@ -33,22 +33,25 @@ public class objectStatus : MonoBehaviour
     public int healthMax = 40;
     private healthSystem healthSystem;
     private objectScript objectScript;
+    private Animator animator_object;
     // Start is called before the first frame update
     void Start()
     {
         objectScript = new objectScript(gameObject);
         healthSystem = new healthSystem(healthMax);
+        animator_object = GetComponent<Animator>();
     }
     public void attackObject(int damageAmount){
         if (healthSystem.GetHealth() != 0){
             healthSystem.Damage(damageAmount);
-            print(healthSystem.GetHealth());
+            // print(healthSystem.GetHealth());
             if (healthSystem.GetHealth() == 0){
                 if (isBomb){
                     objectScript.Explode(radius);
                 }
                 else{
-                    Destroy(gameObject);
+                    animator_object.SetTrigger("isDestroy");
+                    Destroy(gameObject,1f);
                 }
             }
         }

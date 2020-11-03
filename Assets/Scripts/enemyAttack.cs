@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class enemyAttack : MonoBehaviour
 {
+    //attack player / items
     private float lastTime = 0f;
     public float time = 0.5f;
     // Start is called before the first frame update
@@ -12,14 +13,12 @@ public class enemyAttack : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnTriggerStay2D(Collider2D other) {
+        attack(other);
     }
 
-    private void OnTriggerStay2D(Collider2D other) {
-        print(other.gameObject.name);
+
+    private void attack(Collider2D other){
         if (other.gameObject.tag == "Player"){
             if (Time.time - lastTime >= time ){
                 int damageAmount = 10;

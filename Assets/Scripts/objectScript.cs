@@ -12,7 +12,8 @@ public class objectScript
 
     public void Explode(float radius){
         // Show effect
-
+        Animator animator = gameObject.GetComponent<Animator>();
+        animator.SetTrigger("isDestroy");
         //stop object
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody2D>().gravityScale =0;
@@ -21,8 +22,8 @@ public class objectScript
         int enemyLayer = 1 << LayerMask.NameToLayer("enemyOnGround");
         int playerLayer = 1 << LayerMask.NameToLayer("player");
         int itemLayer = 1 << LayerMask.NameToLayer("item");
-        // int itemBrickLayer = 1 << LayerMask.NameToLayer("itemBrick");
-        int finalmask = enemyLayer | playerLayer | itemLayer;
+        int itemBrickLayer = 1 << LayerMask.NameToLayer("itemBrick");
+        int finalmask = enemyLayer | playerLayer | itemLayer | itemBrickLayer;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, radius, finalmask);
         foreach(Collider2D nearbyObject in colliders){
             // damage
@@ -48,13 +49,7 @@ public class objectScript
                 }
             }
         }
-        Object.Destroy(gameObject);
-        // remove bomb after 1 sec
-        // StartCoroutine( DestroyGameObject(1));
+        // remove bomb after 0.6 sec
+        Object.Destroy(gameObject,0.6f);
     }
-    IEnumerator DestroyGameObject(int time){
-        yield return new WaitForSeconds (time);
-        Object.Destroy(gameObject);
-    }
-
 }
