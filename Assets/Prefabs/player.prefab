@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2286634086909154325}
   - component: {fileID: 2286634086909154326}
   - component: {fileID: 2286634086909154327}
-  - component: {fileID: 2286634086909154328}
   - component: {fileID: 2286634086909154324}
   - component: {fileID: 2286634086909154323}
   - component: {fileID: 2138997490}
@@ -108,32 +107,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &2286634086909154328
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2286634086909154329}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.020935275, y: -0.0017974973}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.3303836, y: 0.6081772}
-  m_EdgeRadius: 0
 --- !u!114 &2286634086909154324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +126,7 @@ MonoBehaviour:
   moveForce: 4
   jumpForce: 6
   moveAfterSec: 0.5
-  dropped_item: {fileID: 302027978495613263, guid: a6867931d62bae746aad5fc7c446dabf,
+  dropped_item: {fileID: 3326466207031408817, guid: bf0bfdd578e2b524c82db3e7cdf1cc4b,
     type: 3}
   projectile: {fileID: 5166582595985205136, guid: e5df10b23b70c10469f9952f885c7ae4,
     type: 3}
@@ -167,6 +140,7 @@ MonoBehaviour:
   projectile_constant: 0
   uiInventory: {fileID: 0}
   inventoryCanvas: {fileID: 0}
+  dropItemCount: 0
 --- !u!95 &2286634086909154323
 Animator:
   serializedVersion: 3

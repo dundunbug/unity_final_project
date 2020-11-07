@@ -43,7 +43,8 @@ public class objectScript
                 }
             }else if (nearbyObject.gameObject.tag == "Player"){
                 player playerScript = nearbyObject.gameObject.GetComponent<player>();
-                playerScript.attacked(direction,damageAmount);
+                if (playerScript)
+                    playerScript.attacked(direction,damageAmount);
             }else{
                 objectStatus objectStatus = nearbyObject.gameObject.GetComponent<objectStatus>();
                 if (objectStatus != null){

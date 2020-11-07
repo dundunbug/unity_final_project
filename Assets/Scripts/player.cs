@@ -5,17 +5,18 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-
-    // public CharacterController2D controller;
+    [Header("movement")]
+    // controller;
     public float runSpeed = 10f;
     public float climbSpeed = 1f;
     public Vector2 jumpHeight = new Vector2(0f,12f);
     public float naturalGravity;
     // touched by monster 
+    [Header("hurt force")]
     public int moveForce = 5;
     public int jumpForce = 5;
     public float moveAfterSec = 0.5f;
-    //
+    [Header("throw item")]
     public GameObject dropped_item; // prefab of dropped item
     private GameObject cur_dropped_item; //  current dropped item
 
@@ -23,7 +24,6 @@ public class player : MonoBehaviour
     private GameObject cur_projectile; // current projectile
     [HideInInspector] public rope rope;
     private Vector3 startPos;
-
     // private bool crouch = false;
     private Rigidbody2D rb;
     private SpriteRenderer SpriteRenderer;
@@ -49,11 +49,12 @@ public class player : MonoBehaviour
     private Vector2 projectile_velocity;
     public float ground_y;
     public float projectile_constant;
-
+    [Header("Inventory")]
     /*Inventory 各種*/
-   private Inventory inventory;
+    private Inventory inventory;
     [SerializeField] public UI_Inventory uiInventory;
     public GameObject inventoryCanvas;
+    public int dropItemCount = 0;
 
     void Start()
     {

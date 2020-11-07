@@ -6,22 +6,30 @@ public class enemyBasic : MonoBehaviour
 {
     //Basic enemy status
     //damaged being attacked
-    //movement attack player
+    [Header("hurt force")]
     public int moveForce = 5;
     public int jumpForce = 5;
+    [Header("movement")]
+    // move speed 
     public float speed = 3.5f;
-    public Vector2 jumpHeight = new Vector2(0f,12f);
-    public float distance = 10f;
+    public Vector2 jumpHeight = new Vector2(4f,12f);
+    [Header("detector")]
+    public float distance = 10f; // ground detector 
+    public float wallDis = 2f; // wall detector
     public float findPlayerRadius = 5f;
-    public bool advanceTrack = false;
-    public float yrange = 1.5f;
-    public bool canAttack = false;
-    public float wallDis = 2f;
+    [Header("track player")]
+    public bool advanceTrack = false; // if false then simple patrol
+    public float yrange = 1.5f; // for jump
     public float xDisPlayer = 1f;
+    public bool canAttack = true;
+    [Header("status")]
+    public int healthMax = 20;
+    public GameObject dropObject;
+    public int dropObjectNum = 2;
     private bool movingRight = true;
     public Transform groundDetection;
     public Transform wallDetection;
-    private healthSystem healthSystem = new healthSystem(20);
+    private healthSystem healthSystem;
     private Rigidbody2D rb;
     public bool canMove = true;
     private bool nearWall = false;
@@ -31,32 +39,39 @@ public class enemyBasic : MonoBehaviour
     private bool isSamePlace = false;
     private Vector2 playerLastPos;
     private float height;
-    private SpriteRenderer SpriteRenderer;
     private Animator animator;
+    private Collider2D enemyCol;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 5;
-        height = GetComponent<SpriteRenderer>().bounds.size.y;
-        SpriteRenderer = GetComponent<SpriteRenderer>();
-        SpriteRenderer.flipX = true;
+        if (GetComponent<SpriteRenderer>()){
+            height = GetComponent<SpriteRenderer>().bounds.size.y;
+        }else{
+            height = 2f;
+        }
         animator = GetComponent<Animator>();
+        healthSystem = new healthSystem(healthMax);
+        enemyCol = GetComponent<Collider2D>();
     }
 
     private void Update()
     { 
         if (canMove){
-            // check if player is near
-            int playerLayer = 1 << LayerMask.NameToLayer("player");
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, findPlayerRadius, playerLayer);
-            Collider2D collider;
-            // check if it is player or attract item
-            if (colliders.Length != 0)
-                collider = checkPlayerOrItem(colliders);
-            else{
-                collider = null;
+            Collider2D collider = null;
+            if (advanceTrack){
+                // check if player is near
+                int playerLayer = 1 << LayerMask.NameToLayer("player");
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, findPlayerRadius, playerLayer);
+                // check if it is player or attract item
+                if (colliders.Length != 0)
+                    collider = checkPlayerOrItem(colliders);
+                else{
+                    collider = null;
+                }
             }
+
             // check if ground edge 
             int groundLayer = 1 << LayerMask.NameToLayer("ground");
             RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance, groundLayer);
@@ -92,7 +107,8 @@ public class enemyBasic : MonoBehaviour
             // advance
             if (collider != null && advanceTrack){
                 // print(collider.gameObject.tag);
-                animator.SetBool("isAttacking",false);
+                if (animator)
+                    animator.SetBool("isAttacking",false);
                 GameObject player = collider.gameObject;
                 checkPlayerPos(player.transform.position);
                 float range = player.transform.position.y- (transform.position.y - height*1/2);
@@ -126,20 +142,24 @@ public class enemyBasic : MonoBehaviour
                         }
                         transform.Translate(Vector2.right * speed * Time.deltaTime); // move
                     }else{
-                        print("attack");
+                        // print("attack");
                         attack(); // attack
                     }
                 }else if (!isSamePlace){
                     // print("track");
-                    gameObject.transform.Find("attackDetector").gameObject.SetActive(false);
+                    if (canAttack)
+                        gameObject.transform.Find("attackDetector").gameObject.SetActive(false);
                     track(collider.gameObject);
                 }else{
-                    gameObject.transform.Find("attackDetector").gameObject.SetActive(false);
+                    if (canAttack)
+                        gameObject.transform.Find("attackDetector").gameObject.SetActive(false);
                     transform.Translate(Vector2.right * speed * Time.deltaTime);
                 }
             }else{
-                animator.SetBool("isAttacking",false);
-                gameObject.transform.Find("attackDetector").gameObject.SetActive(false);
+                if (animator)
+                    animator.SetBool("isAttacking",false);
+                if (canAttack)
+                    gameObject.transform.Find("attackDetector").gameObject.SetActive(false);
                 transform.Translate(Vector2.right * speed * Time.deltaTime);
             }
             // basic
@@ -229,7 +249,8 @@ public class enemyBasic : MonoBehaviour
     }
     void attack(){
         canMove = false;
-        animator.SetBool("isAttacking",true);
+        if (animator)
+            animator.SetBool("isAttacking",true);
         // print("attack");
         // transform.position += Vector3.left * 0.1f;
         // transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.left*10, 2 * speed * Time.deltaTime);
@@ -249,11 +270,24 @@ public class enemyBasic : MonoBehaviour
         }
         healthSystem.Damage(damageAmount);
         if (healthSystem.GetHealth() == 0){
-            animator.SetTrigger("isDead");
+            if (animator)
+                animator.SetTrigger("isDead");
             Destroy(gameObject,0.4f);
+            // drop objects after destroy
+            for (int i =0; i < dropObjectNum; i++){
+                dropObjects();
+            }
         }
         // can move after n sec later
         StartCoroutine(canMoveAfterSec(1f));
+    }
+    void dropObjects(){
+        // initiate prehab
+        float ranX = Random.Range(enemyCol.bounds.center.x - 2f, enemyCol.bounds.center.x + 2f);
+        float ranY = enemyCol.bounds.min.y + 0.3f;
+        Vector2 newPos = new Vector2(ranX, ranY);
+        GameObject obj = GameObject.Instantiate(dropObject, newPos, 
+            Quaternion.identity) as GameObject;
     }
     IEnumerator canMoveAfterSec(float time){
         yield return new WaitForSeconds (time);

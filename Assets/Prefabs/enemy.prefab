@@ -140,7 +140,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: 827538889749247048, guid: fbd671298e8bff449ac7409461b31926, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.16, y: 0.16}
@@ -192,12 +192,16 @@ MonoBehaviour:
   speed: 1
   jumpHeight: {x: 4, y: 13}
   distance: 0.5
+  wallDis: 1
   findPlayerRadius: 8
   advanceTrack: 1
   yrange: 1.5
-  canAttack: 1
-  wallDis: 1
   xDisPlayer: 1
+  canAttack: 1
+  healthMax: 20
+  dropObject: {fileID: 1637041270720909378, guid: f382a13ef9bb73345b699b9f6268fa94,
+    type: 3}
+  dropObjectNum: 3
   groundDetection: {fileID: 5439005729094976990}
   wallDetection: {fileID: 5439005729031173002}
   canMove: 1
@@ -311,6 +315,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef22956a1ddba7e4a874de1a5725f4bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAmount: 5
+  canAttackItem: 0
+  AttackBetweenTime: 0.8
 --- !u!1 &5439005730075406002
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0.5
+  damageAmount: 10
 --- !u!50 &201828551
 Rigidbody2D:
   serializedVersion: 4

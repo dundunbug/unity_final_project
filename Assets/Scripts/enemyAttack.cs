@@ -7,6 +7,7 @@ public class enemyAttack : MonoBehaviour
     //attack player / items
     private float lastTime = 0f;
     public float time = 0.5f;
+    public int damageAmount = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +20,9 @@ public class enemyAttack : MonoBehaviour
 
 
     private void attack(Collider2D other){
+        print(other.gameObject.tag);
         if (other.gameObject.tag == "Player"){
             if (Time.time - lastTime >= time ){
-                int damageAmount = 10;
                 if (other.gameObject.name == "player"){
                     int direction;
                     if (gameObject.transform.position.x < other.gameObject.transform.position.x){
@@ -32,6 +33,7 @@ public class enemyAttack : MonoBehaviour
                     player player_script = other.gameObject.GetComponent<player>();
                     player_script.attacked(direction, damageAmount);
                 }else{
+                    print(other.gameObject.name);
                     other.gameObject.GetComponent<objectStatus>().attackObject(damageAmount);
                 }
                 lastTime = Time.time;
