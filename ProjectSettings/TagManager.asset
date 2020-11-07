@@ -8,6 +8,7 @@ TagManager:
   - Rope
   - Enemy
   - Detector
+  - Teleport
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - item
   - itemBrick
   - itemHand
-  - 
+  - itemPainting
   - 
   - 
   - 

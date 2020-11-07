@@ -2658,6 +2658,12 @@ PrefabInstance:
       propertyPath: inventoryCanvas
       value: 
       objectReference: {fileID: 1730499515}
+    - target: {fileID: 2286634086909154324, guid: cbadceba009633d4f90ddde9c14363d7,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 5429276610273892278, guid: 38a188546f72e5048a025d380653ac87,
+        type: 3}
     - target: {fileID: 2286634086909154325, guid: cbadceba009633d4f90ddde9c14363d7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3100,7 +3106,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 51, y: -303.00003}
+  m_AnchoredPosition: {x: 51, y: -303}
   m_SizeDelta: {x: 100, y: -668}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &909000899
@@ -13319,6 +13325,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 929471287}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1098793484 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2286634086909154329, guid: cbadceba009633d4f90ddde9c14363d7,
+    type: 3}
+  m_PrefabInstance: {fileID: 789455130}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &1098793485
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098793484}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.3, y: 0.6399999}
+  m_Direction: 0
 --- !u!1 &1151435022
 GameObject:
   m_ObjectHideFlags: 0
