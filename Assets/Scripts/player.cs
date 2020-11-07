@@ -42,7 +42,7 @@ public class player : MonoBehaviour
     [Header("Projectile")]
     public Vector2 projectile_force; // projectile (thrown item) force
     private float charged_time = 1.0f; // for accumulated projectile charged time. 0 will become "drop".
-    private float face_direction = 1.0f; // record where player faces. because transform.forward doesn't work in 2D
+    public float face_direction = 1.0f; // record where player faces. because transform.forward doesn't work in 2D
     public LineRenderer projectile_line; // trajectory
     public int point_number; // trajectory's point number
     private Vector2 projectile_acc = new Vector2 (1.0f, 1.0f); // for newton formula
@@ -229,7 +229,13 @@ public class player : MonoBehaviour
             canJump = true;
         }
     }
-
+    private void OnTriggerEnter2D(Collider2D other) {
+        // print(other.gameObject.tag);
+        if (other.gameObject.tag== "Teleport"){
+            // print(other.gameObject.tag);
+            transform.position = objectPainting.TeleportingGate;
+        }
+    }
     public void attacked(int direction, int damageAmount){
         // stop move while being attacked
         canMove = false;
