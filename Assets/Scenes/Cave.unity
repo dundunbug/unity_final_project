@@ -2318,7 +2318,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.47481918
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -2330,9 +2330,9 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.8490566, g: 0.3484336, b: 0.3484336, a: 0.6901961}
-      key1: {r: 0.23584908, g: 0.016687432, b: 0.016687432, a: 0.7058824}
-      key2: {r: 1, g: 1, b: 1, a: 0}
+      key0: {r: 0, g: 0, b: 0, a: 0.47058824}
+      key1: {r: 0, g: 0, b: 0, a: 0.47058824}
+      key2: {r: 0.23584908, g: 0.016687432, b: 0.016687432, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -2360,7 +2360,7 @@ LineRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     shadowBias: 0.5
     generateLightingData: 0
   m_UseWorldSpace: 0
@@ -2664,6 +2664,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5429276610273892278, guid: 38a188546f72e5048a025d380653ac87,
         type: 3}
+    - target: {fileID: 2286634086909154324, guid: cbadceba009633d4f90ddde9c14363d7,
+        type: 3}
+      propertyPath: point_number
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2286634086909154324, guid: cbadceba009633d4f90ddde9c14363d7,
+        type: 3}
+      propertyPath: projectile_acc.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2286634086909154324, guid: cbadceba009633d4f90ddde9c14363d7,
+        type: 3}
+      propertyPath: projectile_acc.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2286634086909154324, guid: cbadceba009633d4f90ddde9c14363d7,
+        type: 3}
+      propertyPath: ProjectileSampleRate
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2286634086909154325, guid: cbadceba009633d4f90ddde9c14363d7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16857,7 +16877,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085625317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.83, y: -3, z: -10}
+  m_LocalPosition: {x: 1, y: -3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -17345,6 +17365,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: mouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 3126744529449576870, guid: 81182df7ae8a7ef4382fe477b61e3382,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3126744529449576889, guid: 81182df7ae8a7ef4382fe477b61e3382,
         type: 3}

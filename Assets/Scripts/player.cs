@@ -40,15 +40,19 @@ public class player : MonoBehaviour
     public Animator animator_player;
 
     [Header("Projectile")]
-    public Vector2 projectile_force; // projectile (thrown item) force
     private float charged_time = 1.0f; // for accumulated projectile charged time. 0 will become "drop".
     public float face_direction = 1.0f; // record where player faces. because transform.forward doesn't work in 2D
     public LineRenderer projectile_line; // trajectory
     public int point_number; // trajectory's point number
-    private Vector2 projectile_acc = new Vector2 (1.0f, 1.0f); // for newton formula
     private Vector2 projectile_velocity;
-    public float ground_y;
-    public float projectile_constant;
+    public float ProjectileSampleRate;
+    Vector3 mousePositionInput;
+    Vector3 mousePositionWorld;
+    //public float ground_y;
+    //public float projectile_constant;
+    //public Vector2 projectile_acc; // for newton formula
+    //public Vector2 projectile_force; // projectile (thrown item) force
+
     [Header("Inventory")]
     /*Inventory 各種*/
     private Inventory inventory;
@@ -63,8 +67,6 @@ public class player : MonoBehaviour
         bar = GameObject.Find("bar").GetComponent<bar>();
         startPos = transform.position;
         projectile_line.useWorldSpace = true;
-        ground_y = -3.37f;
-        projectile_constant = (projectile_constant < 4f)? 4f : projectile_constant;
         SpriteRenderer = GetComponent<SpriteRenderer>();
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
@@ -72,6 +74,9 @@ public class player : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
+        mousePositionInput = Input.mousePosition;
+        mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePositionInput);
+
         // jump
         if (Input.GetButtonDown("Jump") && canJump){
             canJump = false;
@@ -93,10 +98,10 @@ public class player : MonoBehaviour
             charged_time += Time.deltaTime;
             charged_time = (charged_time > 3f ? 3f : charged_time);
             // Input.mousePosition
-            Vector2 temp_projectile_velocity = new Vector2(projectile_acc.x * face_direction, projectile_acc.y * (Input.mousePosition.y / Screen.height));
-            projectile_velocity = projectile_constant * charged_time * temp_projectile_velocity / (temp_projectile_velocity.magnitude);
+            // Vector2 temp_projectile_velocity = new Vector2(projectile_acc.x * face_direction, projectile_acc.y);
+            projectile_velocity = ProjectileSampleRate * charged_time * (mousePositionWorld - transform.position); 
             // CoRoutine should be here
-            StartCoroutine(DrawTrajectory(projectile_velocity));
+            StartCoroutine(DrawMousePoint(mousePositionWorld));
         }
 
         if (Input.GetMouseButtonUp(0) && !inventoryCanvas.active){
@@ -177,13 +182,13 @@ public class player : MonoBehaviour
         cur_projectile_rb.velocity += projectile_velocity;
     }
     
-    private IEnumerator DrawTrajectory(Vector2 prefab_velocity){
+    /*private IEnumerator DrawTrajectory(Vector2 prefab_velocity){
         projectile_line.positionCount = point_number;
         projectile_line.SetPositions(TrajectoryGenerator(prefab_velocity));
         yield return null;
-    }
+    }*/
 
-    private Vector3[] TrajectoryGenerator(Vector2 prefab_velocity){
+    /*private Vector3[] TrajectoryGenerator(Vector2 prefab_velocity){
         Vector3[] Generated_points = new Vector3[point_number];
         point_number = (point_number == 0)? 50 : point_number; // avoid divided by 0
         float point_density = Newton_Trajectory_HitGround_Time(ground_y, prefab_velocity).y / point_number;
@@ -194,8 +199,24 @@ public class player : MonoBehaviour
         }
         //print("last_point"+Generated_points[(int)((point_density * point_number)-2)]);
         return  Generated_points;
+    }*/
+    private IEnumerator DrawMousePoint(Vector3 mousePositionWorld){
+        projectile_line.positionCount = point_number;
+        projectile_line.SetPositions(MousePointGenerator(mousePositionWorld));
+        yield return null;
     }
-
+    private Vector3[] MousePointGenerator(Vector3 mousePositionWorld){
+        Vector3[] Generated_points = new Vector3[point_number];
+        point_number = (point_number == 0)? 50 : point_number; // avoid divided by 0
+        Vector3 point_density = (mousePositionWorld - transform.position) / point_number;
+        for (int i = 0; i < point_number; ++i){
+            //float time_in_Newton = (float)(i / point_number); // input t for Newton Vo*t + 0.5*a*t^2
+            Vector3 NextPoint = point_density * i;
+            Generated_points[i] = transform.position + NextPoint;
+        }
+        //print("last_point"+Generated_points[(int)((point_density * point_number)-2)]);
+        return  Generated_points;
+    }
     // classic Newton formula x = Vo*t + 0.5*a*t^2 
     private Vector2 Newton_Trajectory_Coordinate(float time_in_Newton, Vector2 prefab_velocity){
         float X = transform.position.x + prefab_velocity.x * time_in_Newton ;
