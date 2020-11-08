@@ -46,8 +46,9 @@ public class player : MonoBehaviour
     public int point_number; // trajectory's point number
     private Vector2 projectile_velocity;
     public float ProjectileSampleRate;
-    Vector3 mousePositionInput;
-    Vector3 mousePositionWorld;
+    public LayerMask canHit;
+    private Vector3 mousePositionInput;
+    private Vector3 mousePositionWorld;
     //public float ground_y;
     //public float projectile_constant;
     //public Vector2 projectile_acc; // for newton formula
@@ -99,9 +100,10 @@ public class player : MonoBehaviour
             charged_time = (charged_time > 3f ? 3f : charged_time);
             // Input.mousePosition
             // Vector2 temp_projectile_velocity = new Vector2(projectile_acc.x * face_direction, projectile_acc.y);
-            projectile_velocity = ProjectileSampleRate * charged_time * (mousePositionWorld - transform.position); 
+            projectile_velocity = ProjectileSampleRate * charged_time * (mousePositionWorld - transform.position).normalized; 
             // CoRoutine should be here
-            StartCoroutine(DrawMousePoint(mousePositionWorld));
+            // StartCoroutine(DrawMousePoint(mousePositionWorld));
+            StartCoroutine(DrawTrajectory(projectile_velocity));
         }
 
         if (Input.GetMouseButtonUp(0) && !inventoryCanvas.active){
@@ -182,16 +184,20 @@ public class player : MonoBehaviour
         cur_projectile_rb.velocity += projectile_velocity;
     }
     
-    /*private IEnumerator DrawTrajectory(Vector2 prefab_velocity){
+    private IEnumerator DrawTrajectory(Vector2 prefab_velocity){
         projectile_line.positionCount = point_number;
         projectile_line.SetPositions(TrajectoryGenerator(prefab_velocity));
         yield return null;
-    }*/
+    }
 
-    /*private Vector3[] TrajectoryGenerator(Vector2 prefab_velocity){
+    private Vector3[] TrajectoryGenerator(Vector2 prefab_velocity){
         Vector3[] Generated_points = new Vector3[point_number];
         point_number = (point_number == 0)? 50 : point_number; // avoid divided by 0
-        float point_density = Newton_Trajectory_HitGround_Time(ground_y, prefab_velocity).y / point_number;
+        // TrajectoryTouchGround(prefab_velocity).y 下列function第一個arg代此 為觸地
+        // Newton_Trajectory_HitGround_Time(transform.position.y, prefab_velocity).y 為print到最高處
+        // 目前預期會print到腳色y軸 但會print到地下
+        float point_density = Newton_Trajectory_HitGround_Time(transform.position.y, prefab_velocity).x / point_number;
+        // float point_density = Newton_Trajectory_HitGround_Time(prefab_velocity).x / point_number;
         for (int i = 0; i < point_number; ++i){
             //float time_in_Newton = (float)(i / point_number); // input t for Newton Vo*t + 0.5*a*t^2
             float time_in_Newton = point_density * i;
@@ -199,13 +205,13 @@ public class player : MonoBehaviour
         }
         //print("last_point"+Generated_points[(int)((point_density * point_number)-2)]);
         return  Generated_points;
-    }*/
-    private IEnumerator DrawMousePoint(Vector3 mousePositionWorld){
+    }
+    /*private IEnumerator DrawMousePoint(Vector3 mousePositionWorld){
         projectile_line.positionCount = point_number;
         projectile_line.SetPositions(MousePointGenerator(mousePositionWorld));
         yield return null;
-    }
-    private Vector3[] MousePointGenerator(Vector3 mousePositionWorld){
+    }*/
+    /*private Vector3[] MousePointGenerator(Vector3 mousePositionWorld){
         Vector3[] Generated_points = new Vector3[point_number];
         point_number = (point_number == 0)? 50 : point_number; // avoid divided by 0
         Vector3 point_density = (mousePositionWorld - transform.position) / point_number;
@@ -216,7 +222,7 @@ public class player : MonoBehaviour
         }
         //print("last_point"+Generated_points[(int)((point_density * point_number)-2)]);
         return  Generated_points;
-    }
+    }*/
     // classic Newton formula x = Vo*t + 0.5*a*t^2 
     private Vector2 Newton_Trajectory_Coordinate(float time_in_Newton, Vector2 prefab_velocity){
         float X = transform.position.x + prefab_velocity.x * time_in_Newton ;
@@ -225,15 +231,34 @@ public class player : MonoBehaviour
     }
 
     // calculate projectile destination (when hit ground).
-    private Vector2 Newton_Trajectory_HitGround_Time(float ground_y, Vector2 prefab_velocity){
+    private Vector2 Newton_Trajectory_HitGround_Time(float ground, Vector2 prefab_velocity){
         // Y = V0(y) * t + 0.5 * a * t^2 ; (V0, Y, a) are all constants
         // Y is ground_y - projectile_ini_y, so use  -(b / 2*a) +/- (b^2-4ac)^0.5 to solve
         // temp_1 is (-b / 2*a); temp_2 is (b^2-4ac)^0.5 >>> temp_1 is highest point time; ans is hit ground time.
-        float Y = ground_y - transform.position.y;
+        float Y = ground - transform.position.y;
         float temp_1 = -prefab_velocity.y / (Physics2D.gravity.y); // can add gravity scale
-        float temp_2 = Mathf.Pow(Mathf.Pow(prefab_velocity.y, 2) + 2 * Physics2D.gravity.y * Y ,0.5f);
+        float temp_2 = Mathf.Pow(Mathf.Pow(prefab_velocity.y, 2) + 2 * Physics2D.gravity.y * (ground - transform.position.y) ,0.5f);
         float ans = (temp_2 < 0)? (temp_1 - temp_2) : (temp_1 + temp_2);
+        print(new Vector2(ans, temp_1).x);
         return new Vector2(ans, temp_1);
+    }
+
+    private Vector2 TrajectoryTouchGround(Vector2 prefab_velocity)
+    {
+        // 如果沒觸地print到很下面
+        float MaxTime = Newton_Trajectory_HitGround_Time(-10, prefab_velocity).x;
+        for (int i = 0; i < point_number; ++i)
+        {
+            float temp_time = (MaxTime / point_number)*i;
+            float temp_time_plus = (MaxTime / point_number)*(i+1);
+            var hitGround = Physics2D.Linecast(Newton_Trajectory_Coordinate(temp_time, prefab_velocity), Newton_Trajectory_Coordinate(temp_time, prefab_velocity), canHit);
+            if (hitGround)
+            {
+                return hitGround.point;
+            }
+        }
+        return 
+        Newton_Trajectory_Coordinate(MaxTime, prefab_velocity);
     }
 
     // drop prefab from player's coordinate
