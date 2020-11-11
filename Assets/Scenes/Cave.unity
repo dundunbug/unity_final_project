@@ -885,7 +885,7 @@ Transform:
   - {fileID: 402018222}
   - {fileID: 1607905147}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &402018222 stripped
 Transform:
@@ -1083,13 +1083,14 @@ GameObject:
   - component: {fileID: 449130659}
   - component: {fileID: 449130658}
   - component: {fileID: 449130657}
+  - component: {fileID: 449130660}
   m_Layer: 5
   m_Name: itemslotTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &449130656
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1206,6 +1207,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449130655}
   m_CullTransparentMesh: 0
+--- !u!114 &449130660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449130655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f05659b1f7ed044793bdc0cc637da17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text1: {fileID: 0}
+  MouseOn: 0
+  Type: 0
 --- !u!1001 &461005413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1592,7 +1608,7 @@ PrefabInstance:
     - target: {fileID: 5439005729122912321, guid: cdf34cb3d4d80ae4bbfe6cb05eae17e1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5439005729122912321, guid: cdf34cb3d4d80ae4bbfe6cb05eae17e1,
         type: 3}
@@ -13878,7 +13894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1382945513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13965,7 +13981,7 @@ RectTransform:
   m_Children:
   - {fileID: 1730499519}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -15598,6 +15614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemslot: {fileID: 1317690230}
   itemslotTemp: {fileID: 449130656}
+  info: {fileID: 449130660}
 --- !u!114 &1730499517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16709,7 +16726,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2071268008
 PrefabInstance:
@@ -17335,7 +17352,7 @@ PrefabInstance:
     - target: {fileID: 2846310383103475838, guid: 9aaf95141b5d67e46835ed03f48ebd7b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2846310383103475838, guid: 9aaf95141b5d67e46835ed03f48ebd7b,
         type: 3}
@@ -17409,7 +17426,7 @@ PrefabInstance:
     - target: {fileID: 3126744529449576889, guid: 81182df7ae8a7ef4382fe477b61e3382,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3126744529449576889, guid: 81182df7ae8a7ef4382fe477b61e3382,
         type: 3}

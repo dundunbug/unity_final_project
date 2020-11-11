@@ -9,7 +9,8 @@ public class UI_Inventory : MonoBehaviour
     private Inventory inventory;
     public Transform itemslot;
     public Transform itemslotTemp;
-  //  private Transform pic;
+    public showInfo info;
+    //  private Transform pic;
 
     private void Awake()
     {
@@ -35,6 +36,8 @@ public class UI_Inventory : MonoBehaviour
 
             itemslotRTransform.anchoredPosition = new Vector2(-300 + x * itemslotCellSize, 130 + y * itemslotCellSize);
 
+            info.SetType(item.itemType);
+
             Image image = itemslotRTransform.Find("image").GetComponent<Image>();
          //   Image image2 = itemslotRTransform.Find("pic").GetComponent<Image>();
             image.sprite = item.GetSprite();
@@ -49,6 +52,29 @@ public class UI_Inventory : MonoBehaviour
         // GameObject.Find("itemslotTemp").SetActive(false);
 
     }
+
+      private void Update()
+       {
+      /*  foreach (Item item in inventory.GetList())
+        {
+            
+            
+            itemslotRTransform.anchoredPosition = new Vector2(-300 + x * itemslotCellSize, 130 + y * itemslotCellSize);
+
+            Image image = itemslotRTransform.Find("image").GetComponent<Image>();
+            //   Image image2 = itemslotRTransform.Find("pic").GetComponent<Image>();
+            image.sprite = item.GetSprite();
+            //  image2.sprite = item.GetSprite();
+            x++;
+            if (x > 4)
+            {
+                x = 0;
+                y++;
+            }
+        }*/
+    }
+
+    
 
 
 }
