@@ -14,12 +14,8 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public Image image;
     public GameObject panel_droppedItem;
     public EnergySystem energySystem;
-    //public Button Energy_butt;
-    //public Button Item_convert_butt
     public Text T;
     public Text T2;
-    public Text T3;
-
     public int itemNum;
 
     void Start()
@@ -45,7 +41,6 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         /*set type*/
         Type = item.itemType;
         itemNum = item.Num;
-        T3.text = itemNum.ToString();
 
         /*image*/
         image = itemImage.GetComponent<Image>();
@@ -57,7 +52,7 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         T2.transform.position = new Vector2(725f, 270f);
         T.gameObject.SetActive(false);
         T2.gameObject.SetActive(false);
-       
+
 
         switch (Type)
         {
@@ -65,21 +60,21 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             case Item.ItemType.Bomb_L:
                 {
                     image.sprite = ItemAssets.Instance.Bomb_LSprite;
-                    T.text = "Bomb_L";
+                    T.text = "Large Bomb";
                     T2.text = "將炸彈放置，你不喜歡的東西就會被炸掉喔~";
                 }
                 break;
             case Item.ItemType.Bomb_S:
                 {
                     image.sprite = ItemAssets.Instance.Bomb_SSprite;
-                    T.text = "Bomb_S";
+                    T.text = "Small Bomb";
                     T2.text = "將炸彈放置，你不喜歡的東西就會被炸掉喔~";
                 }
                 break;
             case Item.ItemType.Bomb_Timer:
                 {
                     image.sprite = ItemAssets.Instance.Bomb_TimerSprite;
-                    T.text = "Bomb_Timer";
+                    T.text = "Time Bomb";
                     T2.text = "此炸彈竟然還可以定時！";
                 }
                 break;
@@ -93,7 +88,7 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             case Item.ItemType.TransferGate:
                 {
                     image.sprite = ItemAssets.Instance.TransferGateSprite;
-                    T.text = "TransferGate";
+                    T.text = "Frame";
                     T2.text = "藝術這種東西，不是誰都可以欣賞的，至少你就不行。";
                 }
                 break;
@@ -146,16 +141,7 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void Selected()
     {
-        /*image*/
-        /*image = itemImage.GetComponent<Image>();
-        image.transform.position = new Vector2(740f, 440f);
-        itemImage.gameObject.SetActive(false);*/
-
-        /*text*/
-        /*T.transform.position = new Vector2(715f, 310f);
-        T2.transform.position = new Vector2(725f, 270f);
-        T.gameObject.SetActive(false);
-        T2.gameObject.SetActive(false);*/
+        
 
         switch (Type)
         {
