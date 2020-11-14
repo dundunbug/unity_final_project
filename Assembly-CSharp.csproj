@@ -69,13 +69,13 @@
     <Compile Include="Assets\Scripts\Inventory\InventoryStat.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemAssets.cs" />
     <Compile Include="Assets\Scripts\Inventory\Itemplaced.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ShowInfo.cs" />
     <Compile Include="Assets\Scripts\Inventory\Story1.cs" />
     <Compile Include="Assets\Scripts\Inventory\Story2.cs" />
     <Compile Include="Assets\Scripts\Inventory\Story3.cs" />
     <Compile Include="Assets\Scripts\Inventory\UI_Inventory.cs" />
     <Compile Include="Assets\Scripts\Inventory\Upagradenum.cs" />
     <Compile Include="Assets\Scripts\Inventory\items.cs" />
-    <Compile Include="Assets\Scripts\Inventory\showInfo.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\bar.cs" />
     <Compile Include="Assets\Scripts\dropItem.cs" />
