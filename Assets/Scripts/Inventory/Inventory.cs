@@ -9,17 +9,29 @@ public class Inventory
     {
         itemList = new List<Item>();
         Debug.Log("Inventory Built");
-        AddItem(new Item { itemType = Item.ItemType.Teddy, Num = 1 });
-        AddItem(new Item { itemType = Item.ItemType.CardBoard, Num = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Pillow, Num = 1 });
-        AddItem(new Item { itemType = Item.ItemType.DroppedItem, Num = 1 });
+        AddItem(new Item { itemType = Item.ItemType.Teddy});
+        AddItem(new Item { itemType = Item.ItemType.CardBoard});
+        AddItem(new Item { itemType = Item.ItemType.Pillow});
+        AddItem(new Item { itemType = Item.ItemType.DroppedItem});
+        AddItem(new Item { itemType = Item.ItemType.DroppedItem});
         Debug.Log(itemList.Count);
     }
 
     public void AddItem(Item item)
     {
-       // if(item.ItemType == )
-        itemList.Add(item);
+        bool inInventory = false;
+        foreach (Item itemInList in itemList)
+        {
+            if (item.itemType == itemInList.itemType)
+            {
+                itemInList.Num++;
+                inInventory = true;
+            }
+        }
+
+        if (!inInventory)
+            itemList.Add(item);
+        
     }
 
     public void DeleteItem(Item item)

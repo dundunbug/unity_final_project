@@ -8,7 +8,7 @@ public class Item
 {
 
     public ItemType itemType;
-    public int Num=0;
+    public int Num=1;
 
     public enum ItemType {
         Bomb_L,

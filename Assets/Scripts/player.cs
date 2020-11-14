@@ -57,6 +57,7 @@ public class player : MonoBehaviour
     [Header("Inventory")]
     /*Inventory 各種*/
     private Inventory inventory;
+    public EnergySystem energySystem;
     [SerializeField] public UI_Inventory uiInventory;
     public GameObject inventoryCanvas;
     public int dropItemCount = 0;
@@ -71,6 +72,7 @@ public class player : MonoBehaviour
         SpriteRenderer = GetComponent<SpriteRenderer>();
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
+        energySystem.SetInventory(inventory);
     }
 
     // Update is called once per frame
