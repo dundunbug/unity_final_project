@@ -269,6 +269,11 @@ public class player : MonoBehaviour
         Rigidbody2D cur_dropped_rb = cur_dropped_item.GetComponent<Rigidbody2D>();
         cur_dropped_rb.angularVelocity = 0f;
     }
+
+    public void PickItem(Item.ItemType type)
+    {
+        inventory.AddItem(new Item { itemType = type});
+    }
    
     private void OnCollisionEnter2D(Collision2D other) {
         // print(other.gameObject.tag);

@@ -23,4 +23,5 @@ public class objectBomb : MonoBehaviour
             objectScript.Explode(radius);
         }
     }
+
 }

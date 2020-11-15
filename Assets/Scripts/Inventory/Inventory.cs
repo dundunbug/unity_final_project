@@ -30,6 +30,7 @@ public class Inventory
             {
                 itemInList.Num++;
                 inInventory = true;
+                break;
             }
         }
 
