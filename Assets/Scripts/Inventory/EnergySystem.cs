@@ -52,6 +52,7 @@ public class EnergySystem : MonoBehaviour
             num--;
             text1.text = num + "";
             upagradeNum.IncreaseNum();
+            inventory.DeleteItem(new Item { itemType = Item.ItemType.DroppedItem });
         }
     }
 
@@ -86,16 +87,7 @@ public class EnergySystem : MonoBehaviour
 
             num--;
             text1.text = num + "";
-            foreach (Item itemInList in inventory.GetList())
-            {
-                if (itemInList.itemType == Item.ItemType.DroppedItem)
-                {
-                    inventory.DeleteItem(itemInList);
-                    
-                    return;
-                }
-                    
-            }
+            inventory.DeleteItem(new Item { itemType = Item.ItemType.DroppedItem }) ;
         }
         
     }

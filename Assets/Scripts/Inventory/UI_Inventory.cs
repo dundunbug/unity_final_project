@@ -7,9 +7,10 @@ using System;
 
 public class UI_Inventory : MonoBehaviour
 {
-    private Inventory inventory;
+    public Inventory inventory;
     public Transform itemslot;
     public Transform itemslotTemp;
+    public Transform back;
 
     public Text T;
 
@@ -34,15 +35,15 @@ public class UI_Inventory : MonoBehaviour
 
         foreach (Transform child in itemslot)
         {
-            if (child == itemslotTemp) continue;
+            if (child == itemslotTemp || child == back) continue;
             Destroy(child.gameObject);
+            Debug.Log("Delete object: " + child.name);
         }
 
 
 
         foreach (Item item in inventory.GetList())
         {
-            //Debug.Log("Item:"+item.itemType+" Num = "+item.Num);
             i++;
             RectTransform itemslotRTransform = Instantiate(itemslotTemp, itemslot).GetComponent<RectTransform>();
 
@@ -50,7 +51,7 @@ public class UI_Inventory : MonoBehaviour
 
             itemslotRTransform.anchoredPosition = new Vector2(-300 + x * itemslotCellSize, 130 + y * itemslotCellSize);
 
-            itemslotRTransform.GetComponent<ShowInfo>().SetType(item);
+            itemslotRTransform.GetComponent<ShowInfo>().SetType(item, inventory);
 
             Image image = itemslotRTransform.Find("image").GetComponent<Image>();
 

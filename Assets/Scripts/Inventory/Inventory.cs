@@ -43,17 +43,21 @@ public class Inventory
 
     public void DeleteItem(Item item)
     {
-        bool moreThanOne = false;
         foreach (Item itemInList in itemList)
         {
-            if (item.itemType == itemInList.itemType  && itemInList.Num>1)
+            if (item.itemType == itemInList.itemType)
             {
-                itemInList.Num--;
-                moreThanOne = true;
+                if (itemInList.Num > 1)
+                {
+                    itemInList.Num--;
+                }
+                else
+                    itemList.Remove(itemInList);
+
+                break;
+
             }
         }
-        if(!moreThanOne)
-            itemList.Remove(item);
 
         ListChanged?.Invoke(this, EventArgs.Empty);
     }
