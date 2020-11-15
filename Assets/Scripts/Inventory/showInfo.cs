@@ -51,7 +51,7 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         /*text*/
         T.transform.position = new Vector2(715f, 310f);
-        T2.transform.position = new Vector2(725f, 270f);
+        T2.transform.position = new Vector2(725f, 250f);
         T.gameObject.SetActive(false);
         T2.gameObject.SetActive(false);
 
