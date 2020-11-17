@@ -3,78 +3,79 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class UI_Inventory : MonoBehaviour
 {
-    private Inventory inventory;
+    public Inventory inventory;
     public Transform itemslot;
     public Transform itemslotTemp;
-    public showInfo info;
-    //  private Transform pic;
+    public Transform back;
 
-    private void Awake()
-    {
-        // itemslot = transform.Find("Panel2");
-        // itemslotTemp = GameObject.Find("itemslotTemp").transform;
-        //pic = itemslot.Find("pic");
-    }
-    
+    public Text T;
+
+
     public void SetInventory(Inventory inventory)
     {
         this.inventory = inventory;
+        inventory.ListChanged += Inventory_ListChanged;
+        InventoryItemsRefresh();
+    }
+
+    private void Inventory_ListChanged(object sender, EventArgs e)
+    {
         InventoryItemsRefresh();
     }
 
     public void InventoryItemsRefresh()//refreshing inventory items
     {
         int x = 0, y = 0;
+        int i = 0;
         float itemslotCellSize = 90f;
+
+        foreach (Transform child in itemslot)
+        {
+            if (child == itemslotTemp || child == back) continue;
+            Destroy(child.gameObject);
+            Debug.Log("Delete object: " + child.name);
+        }
+
+
+
         foreach (Item item in inventory.GetList())
         {
+            i++;
             RectTransform itemslotRTransform = Instantiate(itemslotTemp, itemslot).GetComponent<RectTransform>();
+
             itemslotRTransform.gameObject.SetActive(true);
 
             itemslotRTransform.anchoredPosition = new Vector2(-300 + x * itemslotCellSize, 130 + y * itemslotCellSize);
 
-            info.SetType(item.itemType);
+            itemslotRTransform.GetComponent<ShowInfo>().SetType(item, inventory);
 
             Image image = itemslotRTransform.Find("image").GetComponent<Image>();
-         //   Image image2 = itemslotRTransform.Find("pic").GetComponent<Image>();
+
             image.sprite = item.GetSprite();
-          //  image2.sprite = item.GetSprite();
             x++;
             if (x > 4)
             {
                 x = 0;
                 y++;
             }
+
+            /*SetnumText*/
+            T = itemslotRTransform.Find("Itemnum").GetComponent<Text>();
+            T.text = item.Num.ToString();
+
         }
-        // GameObject.Find("itemslotTemp").SetActive(false);
-
-    }
-
-      private void Update()
-       {
-      /*  foreach (Item item in inventory.GetList())
-        {
-            
-            
-            itemslotRTransform.anchoredPosition = new Vector2(-300 + x * itemslotCellSize, 130 + y * itemslotCellSize);
-
-            Image image = itemslotRTransform.Find("image").GetComponent<Image>();
-            //   Image image2 = itemslotRTransform.Find("pic").GetComponent<Image>();
-            image.sprite = item.GetSprite();
-            //  image2.sprite = item.GetSprite();
-            x++;
-            if (x > 4)
-            {
-                x = 0;
-                y++;
-            }
-        }*/
-    }
-
+        
     
 
+    }
 
+   
 }
+
+
+
+

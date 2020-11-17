@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Upagradenum : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int num = 10;
+    public int num;
     public Text N;
 
     private void Awake()
@@ -15,6 +15,11 @@ public class Upagradenum : MonoBehaviour
         N.text = num.ToString();
     }
 
+    public void IncreaseNum()
+    {
+        num++;
+        N.text = num + "";
+    }
 
     public void DecreaseNum()
     {

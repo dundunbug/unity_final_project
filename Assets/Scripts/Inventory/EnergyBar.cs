@@ -28,8 +28,6 @@ public class EnergyBar : MonoBehaviour
         GameObject ob = this.gameObject.transform.GetChild(energy).gameObject;
         ob.SetActive(true);
     }
-    
-    
 
     public void SetBar_ADD()
     {

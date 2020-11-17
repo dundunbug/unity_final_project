@@ -25,4 +25,5 @@ public class ItemAssets : MonoBehaviour
     public Sprite BottleSprite;
     public Sprite CartonSprite;
     public Sprite PillowSprite;
+    public Sprite DroppedItemSprite;
 }

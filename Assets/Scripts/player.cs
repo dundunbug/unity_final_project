@@ -57,6 +57,7 @@ public class player : MonoBehaviour
     [Header("Inventory")]
     /*Inventory 各種*/
     private Inventory inventory;
+    public EnergySystem energySystem;
     [SerializeField] public UI_Inventory uiInventory;
     public GameObject inventoryCanvas;
     public int dropItemCount = 0;
@@ -71,6 +72,7 @@ public class player : MonoBehaviour
         SpriteRenderer = GetComponent<SpriteRenderer>();
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
+        energySystem.SetInventory(inventory);
     }
 
     // Update is called once per frame
@@ -266,6 +268,11 @@ public class player : MonoBehaviour
         cur_dropped_item = Instantiate(dropped_item, transform.position, Quaternion.identity);
         Rigidbody2D cur_dropped_rb = cur_dropped_item.GetComponent<Rigidbody2D>();
         cur_dropped_rb.angularVelocity = 0f;
+    }
+
+    public void PickItem(Item.ItemType type)
+    {
+        inventory.AddItem(new Item { itemType = type});
     }
    
     private void OnCollisionEnter2D(Collision2D other) {

@@ -8,7 +8,7 @@ public class Item
 {
 
     public ItemType itemType;
-    public int Num=0;
+    public int Num=1;
 
     public enum ItemType {
         Bomb_L,
@@ -21,6 +21,7 @@ public class Item
         Bottle,
         Carton,
         Pillow,
+        DroppedItem,
     }
 
     public Sprite GetSprite() {
@@ -30,23 +31,14 @@ public class Item
             case ItemType.Bomb_L:return ItemAssets.Instance.Bomb_LSprite;
             case ItemType.Bomb_S: return ItemAssets.Instance.Bomb_SSprite;
             case ItemType.Bomb_Timer: return ItemAssets.Instance.Bomb_TimerSprite;
-            case ItemType.Teddy:
-                    {
-                        Debug.Log("found"); return ItemAssets.Instance.TeddySprite;
-                    }
+            case ItemType.Teddy:return ItemAssets.Instance.TeddySprite;
             case ItemType.TransferGate: return ItemAssets.Instance.TransferGateSprite;
             case ItemType.Lego: return ItemAssets.Instance.LegoSprite;
-            case ItemType.CardBoard:
-                    {
-                        Debug.Log("found"); return ItemAssets.Instance.CardBoardSprite;
-                    }
+            case ItemType.CardBoard:return ItemAssets.Instance.CardBoardSprite;
             case ItemType.Bottle: return ItemAssets.Instance.BottleSprite;
             case ItemType.Carton: return ItemAssets.Instance.CartonSprite;
-            case ItemType.Pillow:
-                    {
-                        Debug.Log("found"); return ItemAssets.Instance.PillowSprite;
-                    }
-
+            case ItemType.Pillow:return ItemAssets.Instance.PillowSprite; 
+            case ItemType.DroppedItem: return ItemAssets.Instance.DroppedItemSprite;
         }
     }
 

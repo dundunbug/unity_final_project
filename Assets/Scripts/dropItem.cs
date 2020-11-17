@@ -12,7 +12,8 @@ public class dropItem : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.name == "player"){
-            player_script.dropItemCount += 1;
+            player_script.PickItem(Item.ItemType.DroppedItem);
+            player_script.dropItemCount+= 1;
             Destroy(gameObject);
         }
     }
