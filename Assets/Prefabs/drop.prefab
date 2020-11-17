@@ -96,6 +96,7 @@ MonoBehaviour:
   isBomb: 0
   radius: 4
   healthMax: 40
+  dieAfterSec: 1
 --- !u!212 &578213525
 SpriteRenderer:
   m_ObjectHideFlags: 0

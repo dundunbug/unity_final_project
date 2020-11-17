@@ -11,7 +11,7 @@ public class objectScript
     }
 
     // bomb
-    public void Explode(float radius){
+    public void Explode(float radius, int explodeAmount){
         // Show effect
         Animator animator = gameObject.GetComponent<Animator>();
         if (animator != null)
@@ -30,7 +30,7 @@ public class objectScript
         foreach(Collider2D nearbyObject in colliders){
             // damage
             int direction;
-            int damageAmount = 10;
+            int damageAmount = explodeAmount;
             if (gameObject.transform.position.x < nearbyObject.gameObject.transform.position.x){
                 direction = 1;//The object is on the right side of the enemy
             }else{

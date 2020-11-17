@@ -7,6 +7,7 @@ public class objectBombTrigger : MonoBehaviour
     //trigger bomb after 3 secs
     public float timing = 3f;
     public float radius = 3f;
+    public int explodeAmount = 10;
     private float countdown;
     private bool hasExploded = false;
     private objectScript objectScript;
@@ -22,7 +23,7 @@ public class objectBombTrigger : MonoBehaviour
     {
         countdown -= Time.deltaTime;
         if (countdown <= 0f && !hasExploded){
-            objectScript.Explode(radius);
+            objectScript.Explode(radius, explodeAmount);
             hasExploded = true;
         }
     }
