@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7182579154445026888}
   - component: {fileID: 7182579154445026889}
   - component: {fileID: 1732138018}
+  - component: {fileID: 7696032525959748669}
   m_Layer: 12
   m_Name: pillow
   m_TagString: Untagged
@@ -101,7 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBomb: 0
   radius: 4
+  explodeAmount: 10
   healthMax: 10
+  dieAfterSec: 3
 --- !u!50 &7182579154445026888
 Rigidbody2D:
   serializedVersion: 4
@@ -166,6 +169,25 @@ MonoBehaviour:
   radius: 0.8
   xRange: 5
   yRange: 3
+--- !u!95 &7696032525959748669
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182579154445026892}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9333f6eb766c1d94a8f95676e1dcb8b2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7182579155309450491
 GameObject:
   m_ObjectHideFlags: 0

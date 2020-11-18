@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5988586725799224586}
   - component: {fileID: 8566168625889423693}
   - component: {fileID: 537112415}
+  - component: {fileID: 7520365801214204194}
   m_Layer: 12
   m_Name: feather
   m_TagString: Untagged
@@ -100,7 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBomb: 1
   radius: 3
+  explodeAmount: 10
   healthMax: 1
+  dieAfterSec: 3
 --- !u!50 &5988586725799224586
 Rigidbody2D:
   serializedVersion: 4
@@ -153,3 +156,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0.07, y: -0.00000046620391}
   m_Size: {x: 0.45679253, y: 1.4482008}
   m_Direction: 0
+--- !u!95 &7520365801214204194
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988586725799224599}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1ee5e179934192849acb4620cbf5cae8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

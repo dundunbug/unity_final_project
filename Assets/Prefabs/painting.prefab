@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5040994602869001936}
   - component: {fileID: -1841839433426465562}
   - component: {fileID: 1853050321494909959}
+  - component: {fileID: 7953714439662932806}
   m_Layer: 15
   m_Name: painting
   m_TagString: Untagged
@@ -147,3 +148,22 @@ MonoBehaviour:
   radius: 3
   teleporting_start: {fileID: 58503562940829067, guid: 9f96b62d4f1712f4fb2f1b7a97decb9e,
     type: 3}
+--- !u!95 &7953714439662932806
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5429276610273892278}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 698cd4d1026d2d6408281caa0b6b9279, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

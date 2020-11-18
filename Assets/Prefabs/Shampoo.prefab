@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1598555531742825060}
   - component: {fileID: 7690457667430123410}
   - component: {fileID: -8345490988194834412}
+  - component: {fileID: 1879921030390866307}
   m_Layer: 15
   m_Name: Shampoo
   m_TagString: Untagged
@@ -172,3 +173,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 6337084657113707346, guid: a55e2ed3ccdd6ac4fb20346c758892e0, type: 3}
+--- !u!95 &1879921030390866307
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598555531742825061}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a49cff10e63c17c499624de45eed505a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
