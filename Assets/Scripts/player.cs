@@ -241,7 +241,6 @@ public class player : MonoBehaviour
         float temp_1 = -prefab_velocity.y / (Physics2D.gravity.y); // can add gravity scale
         float temp_2 = Mathf.Pow(Mathf.Pow(prefab_velocity.y, 2) + 2 * Physics2D.gravity.y * (ground - transform.position.y) ,0.5f);
         float ans = (temp_2 < 0)? (temp_1 - temp_2) : (temp_1 + temp_2);
-        print(new Vector2(ans, temp_1).x);
         return new Vector2(ans, temp_1);
     }
 
