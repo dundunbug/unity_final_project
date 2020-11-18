@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3584906, g: 0.33650768, b: 0.33650768, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -375,8 +375,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -462, y: -334}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1024, y: 768}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1461618925
 GameObject:
@@ -538,12 +538,12 @@ MonoBehaviour:
   text1: {fileID: 1509053128}
   speed: 1
   sprite:
-  - {fileID: -8629412753075924905, guid: 3795a1350d609d3439b879181031086e, type: 3}
-  - {fileID: 1295955565587498720, guid: 11666a2e2afdb6e44b2b351479cc2b96, type: 3}
-  - {fileID: 2306597075769305942, guid: 5ec2a16047f180f4da57ce2cdc028a73, type: 3}
-  - {fileID: 3551233614117194328, guid: 1ded587a805c0804e98853042fbfdf6f, type: 3}
-  - {fileID: 3551233614117194328, guid: 1ded587a805c0804e98853042fbfdf6f, type: 3}
-  - {fileID: 3551233614117194328, guid: 1ded587a805c0804e98853042fbfdf6f, type: 3}
+  - {fileID: 21300000, guid: 8c17e6b9b785da949a24615e205fbdfa, type: 3}
+  - {fileID: 21300000, guid: 8c17e6b9b785da949a24615e205fbdfa, type: 3}
+  - {fileID: 21300000, guid: d7652edb9ceaef948ae11e5663c46434, type: 3}
+  - {fileID: 21300000, guid: 8c17e6b9b785da949a24615e205fbdfa, type: 3}
+  - {fileID: 21300000, guid: 83e571dbd7ff0aa4ab40123fefa8d868, type: 3}
+  - {fileID: 21300000, guid: 83e571dbd7ff0aa4ab40123fefa8d868, type: 3}
   image: {fileID: 1097346004}
 --- !u!1 &1571403483
 GameObject:
