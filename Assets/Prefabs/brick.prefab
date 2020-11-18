@@ -248,6 +248,7 @@ MonoBehaviour:
   isBomb: 0
   radius: 4
   healthMax: 40
+  dieAfterSec: 1
 --- !u!95 &5832631142072565410
 Animator:
   serializedVersion: 3

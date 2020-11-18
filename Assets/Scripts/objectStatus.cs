@@ -29,8 +29,12 @@ Edvance
 public class objectStatus : MonoBehaviour
 {
     public bool isBomb = false;
+    [Header("IF is Bomb")]
     public float radius = 4f;
+    public int explodeAmount = 10;
+    [Header("status")]
     public int healthMax = 40;
+    public float dieAfterSec = 3f;
     private healthSystem healthSystem;
     private objectScript objectScript;
     private Animator animator_object;
@@ -47,7 +51,7 @@ public class objectStatus : MonoBehaviour
             // print(healthSystem.GetHealth());
             if (healthSystem.GetHealth() == 0){
                 if (isBomb){
-                    objectScript.Explode(radius);
+                    objectScript.Explode(radius, explodeAmount);
                 }
                 else{
                     if (gameObject.name.Contains("pillow")){
@@ -55,15 +59,18 @@ public class objectStatus : MonoBehaviour
                         // GameObject child = gameObject.transform.GetChild(0).gameObject;
                         // child.SetActive(true);
                         gameObject.GetComponent<objectPillow>().FlyFeathers();
-                        Destroy(gameObject,3f);
+                        Destroy(gameObject,dieAfterSec);
                     }else if (gameObject.name.Contains("teddy")){
                         // grab?
                         GameObject child = gameObject.transform.GetChild(0).gameObject;
                         child.SetActive(true);
+                    }else if (gameObject.name.Contains("lavaFloor")){
+                        gameObject.GetComponent<objectLava>().dropLava(dieAfterSec);
+                        Destroy(gameObject,dieAfterSec);
                     }else{
                         if (animator_object != null)
                             animator_object.SetTrigger("isDestroy");
-                        Destroy(gameObject,1f);
+                        Destroy(gameObject,dieAfterSec);
                     }
                 }
             }
