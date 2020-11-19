@@ -70,4 +70,10 @@ public class Story2 : MonoBehaviour
         text1.text = lines[i];
 
     }
+
+    public void Skip()
+    {
+        SceneManager.LoadScene("Cave");        
+    }
+
 }
