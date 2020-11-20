@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class EnergyBar : MonoBehaviour
 {
 
     // Start is called before the first frame update
   
-    private int energy = 1;
+    public int energy = 0;
     public int total = 7;
     public int Num = 10;
     private Upagradenum upagradenum;
+    public GameData gameData;
 
 
     private void Start()
@@ -34,10 +36,32 @@ public class EnergyBar : MonoBehaviour
         if (energy < total)
         {
             energy++;
+
+            /*SaveData*/
+            gameData = GameObject.Find("GameData").GetComponent<GameData>();
+            switch (this.gameObject.name) {
+                case "energyBar":
+                    {
+                        gameData.strength = energy;
+                    }
+                    break;
+                case "energyBar(1)":
+                    {
+                        gameData.speed = energy;
+                    }
+                    break;
+                case "energyBar(2)":
+                    {
+                    gameData.vitality = energy;
+                    }
+                    break;
+            }
+
+            
             
         }
             
-        Debug.Log("energy="+energy);
+        //Debug.Log("energy="+energy);
         RefreshBar();
     }
 

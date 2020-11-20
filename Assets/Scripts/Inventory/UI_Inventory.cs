@@ -8,6 +8,7 @@ using System;
 public class UI_Inventory : MonoBehaviour
 {
     public Inventory inventory;
+    public GameData gameData;//SaveData
     public Transform itemslot;
     public Transform itemslotTemp;
     public Transform back;
@@ -18,6 +19,12 @@ public class UI_Inventory : MonoBehaviour
     public void SetInventory(Inventory inventory)
     {
         this.inventory = inventory;
+
+        /*Save Data*/
+        gameData = GameObject.Find("GameData").GetComponent<GameData>();
+        gameData.inventory = inventory;
+
+        /*subscribe event listChange*/
         inventory.ListChanged += Inventory_ListChanged;
         InventoryItemsRefresh();
     }
@@ -37,7 +44,6 @@ public class UI_Inventory : MonoBehaviour
         {
             if (child == itemslotTemp || child == back) continue;
             Destroy(child.gameObject);
-            Debug.Log("Delete object: " + child.name);
         }
 
 

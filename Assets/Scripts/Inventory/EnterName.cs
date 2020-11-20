@@ -10,6 +10,7 @@ public class EnterName : MonoBehaviour
     public GameObject panelStory;
     public GameObject buttonStart;
     public GameObject panelEnterName;
+    public string UserName;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +22,12 @@ public class EnterName : MonoBehaviour
     // Update is called once per frame
    public void DisplayName(Text name)
     {
+        /*Display*/
         buttonStart.SetActive(true);
         NameDisplay.text = "Welcome, " + name.text + ", We shall start our journey";
+
+        /*SaveName*/
+        GameObject.Find("GameData").GetComponent<GameData>().Name = name.text;
     }
 
    public void StartStory()
