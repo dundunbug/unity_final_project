@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &6222050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,7 +316,7 @@ RectTransform:
   m_Children:
   - {fileID: 99976919}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -453,6 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &67366053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,6 +523,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0059c5b36fb7634ab79e24f1255d78e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemslot: {fileID: 0}
+  itemslotTemp: {fileID: 0}
+  back: {fileID: 0}
+  T: {fileID: 0}
 --- !u!114 &99976917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -775,6 +781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &113637773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -870,6 +877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 7
+  Num: 10
 --- !u!222 &180676407
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1387,6 +1395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &368693386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1718,6 +1727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &443645306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1880,6 +1890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &486479026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2442,6 +2453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &744983268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2530,6 +2542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &831743670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2618,6 +2631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &875754368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2858,6 +2872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &977115002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2972,7 +2987,7 @@ SpriteRenderer:
   m_Size: {x: 0.88, y: 1.19}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &986230503
@@ -2987,7 +3002,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &988879529
 GameObject:
@@ -3160,7 +3175,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1018647520
 GameObject:
@@ -3365,6 +3380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &1031379406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3494,7 +3510,7 @@ RectTransform:
   m_Children:
   - {fileID: 381532203}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3698,6 +3714,7 @@ MonoBehaviour:
   BottleSprite: {fileID: 21300000, guid: 8d09c39fd3e32e04b8906ec73ebd280f, type: 3}
   CartonSprite: {fileID: 21300000, guid: 5b285f17bb7176644a1b2e4ad94d8c74, type: 3}
   PillowSprite: {fileID: 21300000, guid: 2404ee2a9a106b04aa886671b0b570ee, type: 3}
+  DroppedItemSprite: {fileID: 0}
 --- !u!4 &1125966455
 Transform:
   m_ObjectHideFlags: 0
@@ -3710,7 +3727,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1204181939
 GameObject:
@@ -3904,6 +3921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &1223823459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4066,6 +4084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &1266161121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4391,6 +4410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &1440652090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4487,6 +4507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 7
+  Num: 10
 --- !u!114 &1582829531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4594,6 +4615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &1600155182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4756,6 +4778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &1690210210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5544,6 +5567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &1879657183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5632,6 +5656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &1903366358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5980,6 +6005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 5
+  Num: 10
 --- !u!114 &1965057211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6098,7 +6124,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2101416168
 GameObject:
@@ -6232,6 +6258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   total: 7
+  Num: 10
 --- !u!222 &2117622300
 CanvasRenderer:
   m_ObjectHideFlags: 0
