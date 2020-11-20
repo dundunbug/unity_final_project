@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GameData.cs" />
     <Compile Include="Assets\Scripts\Flying.cs" />
     <Compile Include="Assets\Scripts\Inventory\EnergyBar.cs" />
     <Compile Include="Assets\Scripts\Inventory\EnergySystem.cs" />
@@ -71,7 +72,6 @@
     <Compile Include="Assets\Scripts\Inventory\InventoryStat.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemAssets.cs" />
     <Compile Include="Assets\Scripts\Inventory\Itemplaced.cs" />
-    <Compile Include="Assets\Scripts\Inventory\SetGameLevel.cs" />
     <Compile Include="Assets\Scripts\Inventory\ShowInfo.cs" />
     <Compile Include="Assets\Scripts\Inventory\Story1.cs" />
     <Compile Include="Assets\Scripts\Inventory\Story2.cs" />
@@ -103,6 +103,7 @@
     <Compile Include="Assets\Scripts\player.cs" />
     <Compile Include="Assets\Scripts\rope.cs" />
     <Compile Include="Assets\Scripts\smoothCameraFollow.cs" />
+    <Compile Include="Assets\SetLevel.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

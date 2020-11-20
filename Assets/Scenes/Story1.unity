@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 184664121}
   - component: {fileID: 184664123}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Panel_SetLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,12 +286,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 184664119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a3e47bda0858340bdb18f2355445f2, type: 3}
+  m_Script: {fileID: 11500000, guid: ed2923d07520a8340b79eb762f5b7a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Level: 0
+  GameData: {fileID: 0}
   panelEnterName: {fileID: 1016519382}
-  panelNow: {fileID: 184664119}
+  panelSetLevel: {fileID: 184664119}
 --- !u!1 &350144965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,7 +1061,7 @@ GameObject:
   - component: {fileID: 1016519385}
   - component: {fileID: 1016519384}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Panel_EnterName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2515,7 +2516,7 @@ GameObject:
   - component: {fileID: 1851199169}
   - component: {fileID: 1851199168}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Panel_Story
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
