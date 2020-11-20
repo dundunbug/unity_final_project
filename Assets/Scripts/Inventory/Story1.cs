@@ -12,7 +12,36 @@ public class Story1 : MonoBehaviour
     public Image image;
     private int i;
 
-    /*timer版本*/
+    void Start()
+    {
+        i = 0;
+        image.sprite = sprite[i];
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            i++;
+        }
+
+        if (i >= 5)
+            SceneManager.LoadScene("Cave");
+
+        image.sprite = sprite[i];
+        text1.text = lines[i];
+
+    }
+
+    public void Skip()
+    {
+        SceneManager.LoadScene("Cave");
+    } 
+}
+
+
+
+ /*timer版本*/
     /* void Start()
      {
          i = 0;
@@ -42,30 +71,3 @@ public class Story1 : MonoBehaviour
          }
 
      }*/
-
-    void Start()
-    {
-        i = 0;
-        image.sprite = sprite[i];
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            i++;
-        }
-
-        if (i >= 5)
-            SceneManager.LoadScene("Cave");
-
-        image.sprite = sprite[i];
-        text1.text = lines[i];
-
-    }
-
-    public void Skip()
-    {
-        SceneManager.LoadScene("Cave");
-    } 
-}
