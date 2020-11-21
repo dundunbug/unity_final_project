@@ -10,9 +10,14 @@ public class GameData : MonoBehaviour
     public player player;
     public string Name;
     public GameSave gameSave;
+    public UsedSave usedSave;
     public int strength;
     public int speed;
     public int vitality;
+    public string[] SaveFileName;
+    //[SerializeField] public bool[] usedSave;
+    public int FileLimit = 3;
+    public int FileNum;
     //public
     public enum GameLevel
     {
@@ -23,14 +28,32 @@ public class GameData : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        LoadGame();
-        DontDestroyOnLoad(this);
+        SaveFileName = new string[5] { "Save1", "Save2", "Save3", "Save4", "Save5" };
+        /*處理現在是save幾，從來沒存過就新增一個usedSave*/
+        string str = PlayerPrefs.GetString("usedSave");
+        if (str != null && str.Length > 0)
+        {
+            usedSave = JsonUtility.FromJson<UsedSave>(str);
+            Debug.Log("Not A New Game");
+        }
+        else
+        {
+            usedSave = new UsedSave();
+            usedSave.usedSave = new bool[5];
+            FileNum = 0;
+            Debug.Log("Create NewGame");
+
+            string jsonUsedSave = JsonUtility.ToJson(usedSave);
+            PlayerPrefs.SetString("usedSave", jsonUsedSave);
+        }
+        
+            DontDestroyOnLoad(this);
     }
     
-    public void LoadGame()
+    public void LoadGame(int n)
     {
-        string str = PlayerPrefs.GetString("PlayerData");
-        if(str!=null && str.Length > 0)
+        string str = PlayerPrefs.GetString(SaveFileName[n]);
+        if (str != null && str.Length > 0)
         {
             GameSave g = JsonUtility.FromJson<GameSave>(str);
             if (g != null)
@@ -42,6 +65,11 @@ public class GameData : MonoBehaviour
                 Debug.Log("Speed:" + g.speed);
                 Debug.Log("vitality:" + g.vitality);
             }
+            SceneManager.LoadScene("Cave");
+        }
+        else
+        {
+            Debug.Log("Nothing to Load");
         }
     }
 
@@ -65,11 +93,52 @@ public class GameData : MonoBehaviour
         gameSave.PlayerName = Name;
         //gameSave.rank = 
 
+
+        /*Save UsedSaveFile*/
+        for(int i = 0; i < FileLimit; i++) 
+        {
+            if (!usedSave.usedSave[i])
+            {
+                usedSave.usedSave[i] = true;
+                FileNum = i;
+                Debug.Log("SaveFile[" + i + "]");
+                break;
+            }
+        }
+        
         /*Json*/
         string json = JsonUtility.ToJson(gameSave);
-        PlayerPrefs.SetString("PlayerData", json);
-        Debug.Log(json);
+        
+        PlayerPrefs.SetString(SaveFileName[FileNum], json);
+        
+
+        string jsonUsedSave = JsonUtility.ToJson(usedSave);
+        PlayerPrefs.SetString("usedSave", jsonUsedSave);
     }
-   
+    
+    public void DeleteGameSave(int n)
+    {
+        Debug.Log("DeleteFile:" + SaveFileName[n]);
+        usedSave.usedSave[n] = false;
+        PlayerPrefs.DeleteKey(SaveFileName[n]);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            DeleteGameSave(0);
+
+            Debug.Log("DeleteGameSave");
+        }
+
+        /*還原成沒開過的遊戲*/
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Debug.Log("DeleteUsedSave");
+            PlayerPrefs.DeleteKey("usedSave");
+        }
+
+    }
 }
 

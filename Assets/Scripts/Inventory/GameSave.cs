@@ -15,4 +15,11 @@ public class GameSave
     public float playTime;
     public string PlayerName;
     public int rank;
+    
+}
+
+[System.Serializable]
+public class UsedSave
+{
+    public bool[] usedSave;
 }

@@ -28,7 +28,6 @@ public class SetLevel : MonoBehaviour
         panelSetLevel.SetActive(false);
 
         GameData.Level = Level;
-        Debug.Log("LevelSet:" + GameData.Level);
     }
 
     public void SetLevelNormal()
@@ -38,7 +37,6 @@ public class SetLevel : MonoBehaviour
         panelSetLevel.SetActive(false);
 
         GameData.Level = Level;
-        Debug.Log("LevelSet:" + GameData.Level);
     }
 
     public void SetLevelHard()
@@ -48,7 +46,6 @@ public class SetLevel : MonoBehaviour
         panelSetLevel.SetActive(false);
 
         GameData.Level = Level;
-        Debug.Log("LevelSet:" + GameData.Level);
     }
    
 }

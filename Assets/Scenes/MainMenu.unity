@@ -242,9 +242,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 816284721}
-  - {fileID: 1551751546}
   - {fileID: 823097202}
   - {fileID: 1854450596}
+  - {fileID: 1551751546}
   - {fileID: 1042268705}
   m_Father: {fileID: 477604121}
   m_RootOrder: 1
@@ -2559,7 +2559,7 @@ RectTransform:
   m_Children:
   - {fileID: 360264141}
   m_Father: {fileID: 117931566}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2608,7 +2608,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 823097204}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1707836145}
+        m_MethodName: LoadGame
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &823097204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4096,7 +4107,7 @@ RectTransform:
   m_Children:
   - {fileID: 447578301}
   m_Father: {fileID: 117931566}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4145,7 +4156,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1551751548}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1707836145}
+        m_MethodName: LoadGame
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1551751548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4399,8 +4421,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Level: 0
-  panelEnterName: {fileID: 0}
-  panelNow: {fileID: 0}
+  player: {fileID: 0}
+  Name: 
+  gameSave:
+    checkpoint: 0
+    Level: 0
+    strength: 0
+    speed: 0
+    vitality: 0
+    playTime: 0
+    PlayerName: 
+    rank: 0
+  usedSave:
+    usedSave: 
+  strength: 0
+  speed: 0
+  vitality: 0
+  SaveFileName:
+  - Save1
+  - Save2
+  FileLimit: 5
+  FileNum: 0
 --- !u!1 &1854450595
 GameObject:
   m_ObjectHideFlags: 0
@@ -4433,7 +4474,7 @@ RectTransform:
   m_Children:
   - {fileID: 2107543067}
   m_Father: {fileID: 117931566}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4482,7 +4523,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1854450598}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1707836145}
+        m_MethodName: LoadGame
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1854450598
 MonoBehaviour:
   m_ObjectHideFlags: 0
