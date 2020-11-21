@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GameData : MonoBehaviour
 {
+    public GameObject PanelDel;
+
     public GameLevel Level;
     public Inventory inventory;
     public player player;
     public string Name;
     public GameSave gameSave;
+    public GameSave LoadedData;
     public UsedSave usedSave;
     public int strength;
     public int speed;
@@ -18,6 +21,7 @@ public class GameData : MonoBehaviour
     //[SerializeField] public bool[] usedSave;
     public int FileLimit = 3;
     public int FileNum;
+    public int targetNum;
     //public
     public enum GameLevel
     {
@@ -46,24 +50,21 @@ public class GameData : MonoBehaviour
             string jsonUsedSave = JsonUtility.ToJson(usedSave);
             PlayerPrefs.SetString("usedSave", jsonUsedSave);
         }
-        
-            DontDestroyOnLoad(this);
+
+        LoadedData = null;
+
+        DontDestroyOnLoad(this);
     }
     
-    public void LoadGame(int n)
+    public void LoadGame()
     {
-        string str = PlayerPrefs.GetString(SaveFileName[n]);
+        string str = PlayerPrefs.GetString(SaveFileName[targetNum]);
         if (str != null && str.Length > 0)
         {
-            GameSave g = JsonUtility.FromJson<GameSave>(str);
-            if (g != null)
+            LoadedData = JsonUtility.FromJson<GameSave>(str);
+            if (LoadedData != null)
             {
                 Debug.Log("DataLoaded");
-                Debug.Log("GameLevel:" + g.Level);
-                Debug.Log("UserName:" + g.PlayerName);
-                Debug.Log("Strength:" + g.strength);
-                Debug.Log("Speed:" + g.speed);
-                Debug.Log("vitality:" + g.vitality);
             }
             SceneManager.LoadScene("Cave");
         }
@@ -116,18 +117,34 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetString("usedSave", jsonUsedSave);
     }
     
-    public void DeleteGameSave(int n)
+    public void DeleteGameSave()
     {
-        Debug.Log("DeleteFile:" + SaveFileName[n]);
-        usedSave.usedSave[n] = false;
-        PlayerPrefs.DeleteKey(SaveFileName[n]);
+        if (!usedSave.usedSave[targetNum])
+        {
+            Debug.Log("Nothing To Delete");
+            return;
+        }
+        Debug.Log("DeleteFile:" + SaveFileName[targetNum]);
+        usedSave.usedSave[targetNum] = false;
+        PlayerPrefs.DeleteKey(SaveFileName[targetNum]);
+    }
+
+    public void OpenDeletePanel(int n)
+    {
+        targetNum = n;
+        PanelDel.SetActive(true);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            DeleteGameSave(0);
+            for(int i = 0; i < FileLimit; i++)
+            {
+                targetNum = i;
+                DeleteGameSave();
+            }
+            
 
             Debug.Log("DeleteGameSave");
         }
