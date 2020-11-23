@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8a16f197311aa66499aed3c1dbe3f6ed
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - dog: {fileID: 5439005729122912317, guid: cdf34cb3d4d80ae4bbfe6cb05eae17e1, type: 3}
+  - mouse: {fileID: 3126744529449576870, guid: 81182df7ae8a7ef4382fe477b61e3382, type: 3}
+  - feed: {fileID: 6871581768719983129, guid: fba483b72712b4c468fb85db0ce186be, type: 3}
+  - tub: {fileID: 2846310383103475837, guid: 9aaf95141b5d67e46835ed03f48ebd7b, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

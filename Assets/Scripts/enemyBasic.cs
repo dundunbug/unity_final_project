@@ -29,6 +29,7 @@ public class enemyBasic : MonoBehaviour
     private bool movingRight = true;
     public Transform groundDetection;
     public Transform wallDetection;
+    public int damageAmount = 10;
     private healthSystem healthSystem;
     private Rigidbody2D rb;
     public bool canMove = true;
@@ -41,11 +42,13 @@ public class enemyBasic : MonoBehaviour
     private float height;
     private Animator animator;
     private Collider2D enemyCol;
+    public bool canFly = false;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 5;
+        if (canMove)
+            rb.gravityScale = 5;
         if (GetComponent<SpriteRenderer>()){
             height = GetComponent<SpriteRenderer>().bounds.size.y;
         }else{
@@ -54,6 +57,10 @@ public class enemyBasic : MonoBehaviour
         animator = GetComponent<Animator>();
         healthSystem = new healthSystem(healthMax);
         enemyCol = GetComponent<Collider2D>();
+        if (transform.Find("attackDetector")){
+            GameObject attackDec = transform.Find("attackDetector").gameObject;
+            attackDec.GetComponent<enemyAttack>().damageAmount = damageAmount;
+        }
     }
 
     private void Update()
@@ -128,7 +135,7 @@ public class enemyBasic : MonoBehaviour
                     }
                 }
 
-                if (Mathf.Abs(transform.position.x- player.transform.position.x) <= xDisPlayer){
+                if (Mathf.Abs(transform.position.x- player.transform.position.x) <= xDisPlayer && range >= -2f){
                     // move or attack 
                     // print("move or attack");
                     if (!canAttack){
@@ -202,7 +209,7 @@ public class enemyBasic : MonoBehaviour
         yield return new WaitForSeconds (time);
         nearWall = false;
     }
-    void flip(){
+    public void flip(){
         if(movingRight == true){
             transform.eulerAngles = new Vector3(0, -180, 0);
             movingRight = false;
@@ -217,9 +224,8 @@ public class enemyBasic : MonoBehaviour
         rb.AddForce(new Vector2(jumpHeight.x*dir,jumpHeight.y), ForceMode2D.Impulse);
         StartCoroutine(canMoveAfterSec(0.5f));
         if (Vector2.Distance(lastPos, transform.position) <= 1f){
-            print("same place");
             countSamePlace += 1;
-            if ( countSamePlace >= 7 && nearWall){
+            if ( countSamePlace >= 3 && nearWall){
                 flip();
                 playerLastPos = player.transform.position;
                 countSamePlace = 0;
@@ -255,7 +261,8 @@ public class enemyBasic : MonoBehaviour
         // transform.position += Vector3.left * 0.1f;
         // transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.left*10, 2 * speed * Time.deltaTime);
         gameObject.transform.Find("attackDetector").gameObject.SetActive(true);
-        StartCoroutine(canMoveAfterSec(0.5f));
+        if (!canFly)
+            StartCoroutine(canMoveAfterSec(0.5f));
     }
     IEnumerator deactiveAttackDetection(float time){
         yield return new WaitForSeconds (time);
@@ -279,7 +286,8 @@ public class enemyBasic : MonoBehaviour
             }
         }
         // can move after n sec later
-        StartCoroutine(canMoveAfterSec(1f));
+        if (!canFly)
+            StartCoroutine(canMoveAfterSec(1f));
     }
     void dropObjects(){
         // initiate prehab

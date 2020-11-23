@@ -8,6 +8,7 @@ public class objectBomb : MonoBehaviour
     public float radius = 3f;
     public int explodeAmount = 10;
     private objectScript objectScript;
+    private bool hasExploded = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,13 +16,17 @@ public class objectBomb : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Ground"){
-            objectScript.Explode(radius, explodeAmount);
+            if (!hasExploded)
+                objectScript.Explode(radius, explodeAmount);
+                hasExploded = true;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Enemy"){
-            objectScript.Explode(radius, explodeAmount);
+            if(!hasExploded)
+                objectScript.Explode(radius, explodeAmount);
+                hasExploded = true;
         }
     }
 

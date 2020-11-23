@@ -16,6 +16,8 @@ public class smoothCameraFollow : MonoBehaviour
 		if (m_Target==null){
 			m_Target = GameObject.FindGameObjectWithTag("Player").transform;
 		}
+		m_XOffset = transform.position.x - m_Target.position.x;
+		m_YOffset = transform.position.y - m_Target.position.y;
 	}
 
     void Update() {

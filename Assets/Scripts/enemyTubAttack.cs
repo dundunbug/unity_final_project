@@ -7,6 +7,7 @@ public class enemyTubAttack : MonoBehaviour
     public float findPlayerRadius = 5f;
     public float AttackBetweenTime = 0.8f;
     public GameObject bubble;
+    public int damageAmount = 2;
     private float lastTime = 0f;
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,7 @@ public class enemyTubAttack : MonoBehaviour
             // initiate prehab
             GameObject obj = GameObject.Instantiate(bubble, newPos, 
                 Quaternion.identity) as GameObject;
+            obj.GetComponent<enemyTouchPlayer>().damageAmount = damageAmount;
         }
 
 

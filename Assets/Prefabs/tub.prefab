@@ -88,7 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 5
   jumpForce: 5
-  speed: 3.5
+  speed: 1.5
   jumpHeight: {x: 0, y: 12}
   distance: 0.5
   wallDis: 0.5
@@ -103,7 +103,9 @@ MonoBehaviour:
   dropObjectNum: 5
   groundDetection: {fileID: 2846310384063547307}
   wallDetection: {fileID: 2846310383142249497}
+  damageAmount: 10
   canMove: 1
+  canFly: 0
 --- !u!114 &2846310383103475832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +121,7 @@ MonoBehaviour:
   findPlayerRadius: 5
   AttackBetweenTime: 2
   bubble: {fileID: 2794062662219096419, guid: b64be266d73395f46852306ec0009244, type: 3}
+  damageAmount: 2
 --- !u!1 &2846310383142249502
 GameObject:
   m_ObjectHideFlags: 0

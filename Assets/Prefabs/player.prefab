@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2286634086909154324}
   - component: {fileID: 2286634086909154323}
   - component: {fileID: 2138997490}
+  - component: {fileID: 1098793485}
   m_Layer: 11
   m_Name: player
   m_TagString: Player
@@ -133,11 +134,14 @@ MonoBehaviour:
   rope: {fileID: 0}
   climb: 0
   animator_player: {fileID: 2286634086909154323}
-  projectile_force: {x: 100, y: 100}
+  face_direction: 1
   projectile_line: {fileID: 0}
-  point_number: 50
-  ground_y: -3.37
-  projectile_constant: 0
+  point_number: 20
+  ProjectileSampleRate: 5
+  canHit:
+    serializedVersion: 2
+    m_Bits: 0
+  energySystem: {fileID: 0}
   uiInventory: {fileID: 0}
   inventoryCanvas: {fileID: 0}
   dropItemCount: 0
@@ -171,6 +175,22 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.3, y: 0.6399999}
+  m_Direction: 0
+--- !u!70 &1098793485
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2286634086909154329}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

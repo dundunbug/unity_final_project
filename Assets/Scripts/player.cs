@@ -298,7 +298,6 @@ public class player : MonoBehaviour
         canJump = false;
 
         // rb.velocity = new Vector2(direction * moveForce, jumpForce);
-
         healthSystem.Damage(damageAmount);
         bar.ChangeHealthStatus(healthSystem.GetHealth());
         
