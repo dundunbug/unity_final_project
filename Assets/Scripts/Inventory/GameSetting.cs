@@ -29,11 +29,13 @@ public class GameSetting : MonoBehaviour
         panel_Setting.SetActive(true);
     }
 
-    public void Game_Save()
+    public void Game_Save(int currentFile)
     {
         /*public GameData gameData = */
-        GameObject.Find("GameData").GetComponent<GameData>().SaveGame();
+        GameObject.Find("GameData").GetComponent<GameData>().SaveGame(currentFile);
         // gameData.SaveGame();
     }
+
+    
 }
 

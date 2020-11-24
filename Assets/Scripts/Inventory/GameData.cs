@@ -74,7 +74,7 @@ public class GameData : MonoBehaviour
         }
     }
 
-    public void SaveGame()
+    public void SaveGame(int currentFile)
     {
         /*GetData*/
         /*strength = GameObject.Find("enrergyBar").GetComponent<EnergyBar>().energy;
@@ -96,6 +96,7 @@ public class GameData : MonoBehaviour
 
 
         /*Save UsedSaveFile*/
+        if(currentFile==0  || LoadedData==null)
         for(int i = 0; i < FileLimit; i++) 
         {
             if (!usedSave.usedSave[i])
@@ -106,7 +107,8 @@ public class GameData : MonoBehaviour
                 break;
             }
         }
-        
+        else
+            Debug.Log("SaveFile[CurrentBranch]");
         /*Json*/
         string json = JsonUtility.ToJson(gameSave);
         
