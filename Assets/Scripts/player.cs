@@ -303,6 +303,7 @@ public class player : MonoBehaviour
         
         if (healthSystem.GetHealth() == 0){
             Restart();
+            rb.velocity = Vector3.zero;
         }
         // can move after n sec later
         StartCoroutine(canMoveAfterSec(0.5f));

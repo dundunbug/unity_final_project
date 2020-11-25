@@ -20,7 +20,7 @@ public class enemyAttack : MonoBehaviour
 
 
     private void attack(Collider2D other){
-        print(other.gameObject.tag);
+        // print(other.gameObject.tag);
         if (other.gameObject.tag == "Player"){
             if (Time.time - lastTime >= time ){
                 if (other.gameObject.name == "player"){

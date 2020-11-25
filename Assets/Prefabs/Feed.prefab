@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1664728542}
   - component: {fileID: 1664728543}
   - component: {fileID: 1664728544}
-  m_Layer: 8
+  m_Layer: 16
   m_Name: touchCollider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -88,9 +88,9 @@ GameObject:
   - component: {fileID: 6871581768719983127}
   - component: {fileID: 6871581768719983126}
   - component: {fileID: 2989979920150016553}
-  m_Layer: 10
+  m_Layer: 16
   m_Name: Feed
-  m_TagString: Enemy
+  m_TagString: Fly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6871581768719983129}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c62ff1e02b2e000459fc067675450b90, type: 3}
   m_Name: 
@@ -234,7 +234,7 @@ Rigidbody2D:
   m_Mass: 0.25
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.1
+  m_GravityScale: 0.05
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -253,6 +253,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windForce: 1.5
+  slow: 0
+  fast: 0
+  Bomb: {fileID: 5166582595985205136, guid: e5df10b23b70c10469f9952f885c7ae4, type: 3}
+  Drop: {fileID: 1637041270720909378, guid: f382a13ef9bb73345b699b9f6268fa94, type: 3}
 --- !u!95 &2989979920150016553
 Animator:
   serializedVersion: 3
