@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\DoorTrigger.cs" />
      <Compile Include="Assets\Scripts\Flying.cs" />
      <Compile Include="Assets\Scripts\Inventory\EnergyBar.cs" />
      <Compile Include="Assets\Scripts\Inventory\EnergySystem.cs" />
