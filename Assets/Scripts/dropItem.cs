@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class dropItem : MonoBehaviour
 {
+    int count = 1; // for pick item number workaround
     private player player_script;
     // Start is called before the first frame update
     void Start()
@@ -12,8 +13,12 @@ public class dropItem : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.name == "player"){
-            player_script.PickItem(Item.ItemType.DroppedItem);
-            player_script.dropItemCount+= 1;
+            if (count == 1)
+            {
+                player_script.PickItem(Item.ItemType.DroppedItem);
+            }
+            count = count -1;
+            // player_script.dropItemCount+= 1;
             Destroy(gameObject);
         }
     }
