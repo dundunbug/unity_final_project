@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Flying : MonoBehaviour
 {
-	public float windForce = 1.0f;
+	private float windForce = 1.0f;
     private float Distance_from_player;
     private player player_script;
     private GameObject player;
@@ -56,12 +56,21 @@ public class Flying : MonoBehaviour
         }
         else // Player is in range
         {
-            if(timer >= 3.0f)
+            // Drop bomb when fly's x ~= player's x
+            if(timer >= 3.0f && Mathf.Abs(transform.position.x - player.transform.position.x) < 0.1f)
             {
                 GenerateBomb();
                 timer = 0f;
             }
 
+            // When fly's y ~= player's y, fly higher
+            if (transform.position.y - player.transform.position.y < 2.0f)
+            {
+                print("FH");
+                rb.AddForce(new Vector2 (0, (transform.position.y - player.transform.position.y)) * 0.5f);
+            }
+
+            // 80% chance fly to player, 20% fly away
             if (temp > 0.8f)
             {
                 rb.velocity += new Vector2 (transform.position.x - player.transform.position.x, 0).normalized * fast;    
@@ -75,8 +84,8 @@ public class Flying : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         // print(other.gameObject.tag);
-        if (other.gameObject.tag == "Player" && other.gameObject.tag == "Ground"){
- 
+        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "Enemy"){
+            
         }
         else
         {
@@ -92,9 +101,15 @@ public class Flying : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate() 
 	{
-        if(getHit >= 2)
+        if (rb.velocity.magnitude > 4.0f)
+        {
+            rb.velocity = rb.velocity - rb.velocity.normalized; 
+        }
+
+        if(getHit == 2)
         {
             FlyingDies();
+            getHit = getHit + 1;
         }
 
         timer += Time.deltaTime;
