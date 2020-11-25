@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class showinfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     // Start is called before the first frame update
     public Item.ItemType Type;
