@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class showinfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     // Start is called before the first frame update
     public Item.ItemType Type;
@@ -19,9 +19,17 @@ public class showinfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public Text T2;
     public int itemNum;
 
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
-       
+        /*itemImage = GameObject.Find("ItemImage").GetComponent<Image>();//itemImage = GameObject.Find("ItemImage").GetComponent<Image>();
+        panel_droppedItem = GameObject.Find("Panel_droppedItem");
+        energySystem = GameObject.Find("Panel_droppedItem").GetComponent<EnergySystem>();
+        T = GameObject.Find("itemName").GetComponent<Text>();
+        T2 = GameObject.Find("itemContext").GetComponent<Text>();*/
     }
 
     public void OnPointerEnter(PointerEventData eventData)    //滑鼠移入
@@ -38,7 +46,7 @@ public class showinfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         T2.gameObject.SetActive(false);
     }
     public void SetType(Item item, Inventory inven)
-    { 
+    {
         inventory = inven;
         /*set type*/
         Type = item.itemType;
@@ -202,6 +210,7 @@ public class showinfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 {
                     panel_droppedItem.SetActive(true);
                     energySystem.SetNum(itemNum);
+                    Debug.Log("WTF");
                 }
                 break;
 

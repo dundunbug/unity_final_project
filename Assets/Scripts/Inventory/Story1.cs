@@ -26,7 +26,7 @@ public class Story1 : MonoBehaviour
         }
 
         if (i >= 5)
-            SceneManager.LoadScene("Cave");
+            SceneManager.LoadScene("Full_Cave");
 
         image.sprite = sprite[i];
         text1.text = lines[i];
@@ -35,7 +35,7 @@ public class Story1 : MonoBehaviour
 
     public void Skip()
     {
-        SceneManager.LoadScene("Cave");
+        SceneManager.LoadScene("Full_Cave");
     } 
 }
 

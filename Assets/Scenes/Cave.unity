@@ -2121,8 +2121,8 @@ GameObject:
   - component: {fileID: 449130659}
   - component: {fileID: 449130658}
   - component: {fileID: 449130657}
-  - component: {fileID: 449130660}
   - component: {fileID: 449130661}
+  - component: {fileID: 449130660}
   m_Layer: 5
   m_Name: itemslotTemp
   m_TagString: Untagged
@@ -2201,7 +2201,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 449130660}
+      - m_Target: {fileID: 0}
         m_MethodName: Selected
         m_Mode: 1
         m_Arguments:
@@ -5602,7 +5602,7 @@ GameObject:
   - component: {fileID: 978307801}
   - component: {fileID: 978307803}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Panel_droppedItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1044,6 +1044,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryCanvas: {fileID: 60208529}
+  Panel_droppedItem: {fileID: 391186246}
+  Panel_Setting: {fileID: 1052580352}
 --- !u!114 &141935370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2745,7 +2747,7 @@ GameObject:
   - component: {fileID: 391186249}
   - component: {fileID: 391186248}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Panel_droppedItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9324,7 +9326,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1058291310}
         m_MethodName: Selected
         m_Mode: 1
         m_Arguments:
@@ -13652,6 +13654,7 @@ MonoBehaviour:
   FileLimit: 5
   FileNum: 0
   targetNum: 0
+  PlayTime: 0
 --- !u!4 &1610334204
 Transform:
   m_ObjectHideFlags: 0

@@ -22,6 +22,9 @@ public class GameData : MonoBehaviour
     public int FileLimit = 3;
     public int FileNum;
     public int targetNum;
+
+    /*Game timer*/
+    public int PlayTime = 0;
     //public
     public enum GameLevel
     {
@@ -54,6 +57,8 @@ public class GameData : MonoBehaviour
         LoadedData = null;
 
         DontDestroyOnLoad(this);
+
+        InvokeRepeating("Timer", 1, 1);
     }
     
     public void LoadGame()
@@ -158,6 +163,11 @@ public class GameData : MonoBehaviour
             PlayerPrefs.DeleteKey("usedSave");
         }
 
+    }
+
+    public void Timer()
+    {
+        PlayTime++;
     }
 }
 
