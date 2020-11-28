@@ -17,11 +17,15 @@ public class GameData : MonoBehaviour
     public int strength;
     public int speed;
     public int vitality;
+    public Owned_Item items;
+
     public string[] SaveFileName;
     //[SerializeField] public bool[] usedSave;
     public int FileLimit = 3;
     public int FileNum;
+    public int origin_FileNum;
     public int targetNum;
+    public bool InSave = false;
 
     /*Game timer*/
     public int PlayTime = 0;
@@ -66,10 +70,12 @@ public class GameData : MonoBehaviour
         string str = PlayerPrefs.GetString(SaveFileName[targetNum]);
         if (str != null && str.Length > 0)
         {
+            InSave = true;
             LoadedData = JsonUtility.FromJson<GameSave>(str);
             if (LoadedData != null)
             {
                 Debug.Log("DataLoaded");
+                origin_FileNum = targetNum;
             }
             SceneManager.LoadScene("Cave");
         }
@@ -91,29 +97,53 @@ public class GameData : MonoBehaviour
         gameSave = new GameSave();
         // gameSave.checkpoint = 
         gameSave.Level = Level;
-        //gameSave.inventory = inventory;
+        gameSave.inventory = inventory;
         gameSave.strength = strength;
         gameSave.speed = speed;
         gameSave.vitality = vitality;
         //gameSave.playTime = 
         gameSave.PlayerName = Name;
         //gameSave.rank = 
+        /*items*/
+        /*gameSave.items.Bomb_L = items.Bomb_L;
+        gameSave.items.Bomb_S = items.Bomb_S;
+        gameSave.items.Bomb_Timer = items.Bomb_Timer;
+        gameSave.items.Teddy = items.Teddy;
+        gameSave.items.TransferGate = items.TransferGate;
+        gameSave.items.Lego = items.Lego;
+        gameSave.items.CardBoard = items.CardBoard;
+        gameSave.items.Bottle = items.Bottle;
+        gameSave.items.Carton = items.Carton;
+        gameSave.items.Pillow = items.Pillow;
+        gameSave.items.DroppedItem = items.DroppedItem;*/
 
 
         /*Save UsedSaveFile*/
-        if(currentFile==0  || LoadedData==null)
-        for(int i = 0; i < FileLimit; i++) 
-        {
-            if (!usedSave.usedSave[i])
+
+        if (currentFile == 0 || !InSave) //"currentFile" for save opcode, 0 for new save, 1 for save; "InSave" for if ever loaded or already in a save, either should create a new Savefile 
+        { 
+            for(int i = 0; i < FileLimit; i++) 
             {
-                usedSave.usedSave[i] = true;
-                FileNum = i;
-                Debug.Log("SaveFile[" + i + "]");
-                break;
+                if (!usedSave.usedSave[i])
+                {
+                    usedSave.usedSave[i] = true;
+                    FileNum = i;
+                    Debug.Log("SaveFile[" + i + "]");
+                    if (!InSave)origin_FileNum = FileNum;//if never load and not in an existed save, make it the origin_FileNum
+                    break;
+                }
             }
+
         }
+
         else
+        {
+            FileNum = origin_FileNum;
             Debug.Log("SaveFile[CurrentBranch]");
+        }
+        
+        InSave = true;//set bool to note already in a save, so the following option "Save" would use the origin FileNum
+
         /*Json*/
         string json = JsonUtility.ToJson(gameSave);
         

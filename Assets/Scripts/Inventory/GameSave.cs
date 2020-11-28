@@ -15,11 +15,28 @@ public class GameSave
     public float playTime;
     public string PlayerName;
     public int rank;
-    
+    public Owned_Item items;
+    public Inventory inventory;
 }
 
 [System.Serializable]
 public class UsedSave
 {
     public bool[] usedSave;
+}
+
+[System.Serializable]
+public class Owned_Item
+{
+    public int Bomb_L;
+    public int Bomb_S;
+    public int Bomb_Timer;
+    public int Teddy;
+    public int TransferGate;
+    public int Lego;
+    public int CardBoard;
+    public int Bottle;
+    public int Carton;
+    public int Pillow;
+    public int DroppedItem;
 }

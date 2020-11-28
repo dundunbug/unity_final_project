@@ -31,7 +31,9 @@ public class GameSetting : MonoBehaviour
 
     public void Game_Save(int currentFile)
     {
-        /*public GameData gameData = */
+        GameData gameData = GameObject.Find("GameData").GetComponent<GameData>();
+        player Player = GameObject.Find("player").GetComponent<player>();
+        gameData.inventory = Player.inventory;
         GameObject.Find("GameData").GetComponent<GameData>().SaveGame(currentFile);
         // gameData.SaveGame();
     }

@@ -9173,7 +9173,7 @@ Transform:
   - {fileID: 1134830952}
   - {fileID: 42662055}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1053211819
 MonoBehaviour:
@@ -11316,7 +11316,7 @@ PrefabInstance:
     - target: {fileID: 7773838927534062037, guid: 2ad9ee0f1d2aca248a55a7c53ee6baf4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7773838927534062037, guid: 2ad9ee0f1d2aca248a55a7c53ee6baf4,
         type: 3}
@@ -13634,6 +13634,18 @@ MonoBehaviour:
     playTime: 0
     PlayerName: 
     rank: 0
+    items:
+      Bomb_L: 0
+      Bomb_S: 0
+      Bomb_Timer: 0
+      Teddy: 0
+      TransferGate: 0
+      Lego: 0
+      CardBoard: 0
+      Bottle: 0
+      Carton: 0
+      Pillow: 0
+      DroppedItem: 0
   LoadedData:
     checkpoint: 0
     Level: 0
@@ -13643,17 +13655,43 @@ MonoBehaviour:
     playTime: 0
     PlayerName: 
     rank: 0
+    items:
+      Bomb_L: 0
+      Bomb_S: 0
+      Bomb_Timer: 0
+      Teddy: 0
+      TransferGate: 0
+      Lego: 0
+      CardBoard: 0
+      Bottle: 0
+      Carton: 0
+      Pillow: 0
+      DroppedItem: 0
   usedSave:
     usedSave: 
   strength: 0
   speed: 0
   vitality: 0
+  items:
+    Bomb_L: 0
+    Bomb_S: 0
+    Bomb_Timer: 0
+    Teddy: 0
+    TransferGate: 0
+    Lego: 0
+    CardBoard: 0
+    Bottle: 0
+    Carton: 0
+    Pillow: 0
+    DroppedItem: 0
   SaveFileName:
   - Save1
   - Save2
   FileLimit: 5
   FileNum: 0
+  origin_FileNum: 0
   targetNum: 0
+  InSave: 0
   PlayTime: 0
 --- !u!4 &1610334204
 Transform:

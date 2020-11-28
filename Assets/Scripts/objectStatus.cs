@@ -77,4 +77,13 @@ public class objectStatus : MonoBehaviour
         }
 
     }
+
+   /* private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(gameObject.name)
+        if(other.gameObject.name == "player")
+        {
+            other.gameObject.GetComponent<player>().inventory.AddItem(new Item { itemType = Item.ItemType.Lego });
+        }
+    }*/
 }

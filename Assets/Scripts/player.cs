@@ -56,11 +56,25 @@ public class player : MonoBehaviour
 
     [Header("Inventory")]
     /*Inventory 各種*/
-    private Inventory inventory;
+    public Inventory inventory;
     public EnergySystem energySystem;
     [SerializeField] public UI_Inventory uiInventory;
     public GameObject inventoryCanvas;
     public int dropItemCount = 0;
+
+    [Header("GameSave")]
+    GameData gameData;
+
+        
+
+   /* private void Awake()
+    {
+        gameData = GameObject.Find("GameData").GetComponent<GameData>();
+        if (gameData.LoadedData != null)
+        {
+            inventory. = gameData.LoadedData.inventory;
+        }
+    }*/
 
     void Start()
     {
@@ -70,7 +84,7 @@ public class player : MonoBehaviour
         startPos = transform.position;
         projectile_line.useWorldSpace = true;
         SpriteRenderer = GetComponent<SpriteRenderer>();
-        inventory = new Inventory();
+        /*if(gameData.LoadedData == null) */inventory = new Inventory();
         uiInventory.SetInventory(inventory);
         energySystem.SetInventory(inventory);
     }

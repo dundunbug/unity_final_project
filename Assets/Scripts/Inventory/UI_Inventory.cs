@@ -73,13 +73,68 @@ public class UI_Inventory : MonoBehaviour
             T = itemslotRTransform.Find("Itemnum").GetComponent<Text>();
             T.text = item.Num.ToString();
 
+            /*save current owned items*/
+            switch (item.itemType)
+            {
+                default: 
+                case Item.ItemType.Bomb_L:
+                    {
+                        gameData.items.Bomb_L = item.Num;
+                    }
+                    break;
+                case Item.ItemType.Bomb_S:
+                    {
+                        gameData.items.Bomb_S = item.Num;
+                    }
+                    break;
+                case Item.ItemType.Bomb_Timer:
+                    {
+                        gameData.items.Bomb_Timer = item.Num;
+                    }
+                    break;
+                case Item.ItemType.Teddy:
+                    {
+                        gameData.items.Teddy = item.Num;
+                    }
+                    break;
+                case Item.ItemType.TransferGate:
+                    {
+                        gameData.items.TransferGate = item.Num;
+                    }
+                    break;
+                case Item.ItemType.Lego:
+                    {
+                        gameData.items.Lego = item.Num;
+                    }
+                    break;
+                case Item.ItemType.CardBoard:
+                    {
+                        gameData.items.CardBoard = item.Num;
+                    }
+                    break;
+                case Item.ItemType.Bottle:
+                    {
+                        gameData.items.Bottle = item.Num;
+                    }
+                    break;
+                case Item.ItemType.Carton:
+                    {
+                        gameData.items.Carton = item.Num;
+                    }
+                    break;
+                case Item.ItemType.Pillow:
+                    {
+                        gameData.items.Pillow = item.Num;
+                    }
+                    break;
+                case Item.ItemType.DroppedItem:
+                    {
+                        gameData.items.DroppedItem = item.Num;
+                    }
+                    break;
+            }
         }
-        
-    
-
     }
-
-   
 }
 
 
