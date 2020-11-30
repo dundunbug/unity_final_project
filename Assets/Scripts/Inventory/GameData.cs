@@ -7,7 +7,7 @@ public class GameData : MonoBehaviour
 {
     public GameObject PanelDel;
 
-    public GameLevel Level;
+    public GameLevel Level = GameLevel.Easy;
     public Inventory inventory;
     public player player;
     public string Name;

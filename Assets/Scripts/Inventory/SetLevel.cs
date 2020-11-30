@@ -9,6 +9,9 @@ public class SetLevel : MonoBehaviour
     public GameData GameData;
     public GameObject panelEnterName;
     public GameObject panelSetLevel;
+    public GameObject button_EASY;
+    public GameObject button_NORMAL;
+    public GameObject button_HARD;
     public enum GameLevel
     {
         Easy,
@@ -19,6 +22,12 @@ public class SetLevel : MonoBehaviour
     private void Start()
     {
         GameData = GameObject.Find("GameData").GetComponent<GameData>();
+        if (GameData.Level == GameData.GameLevel.Easy) {
+            button_NORMAL.SetActive(false);
+            button_HARD.SetActive(false);
+        }
+        else if (GameData.Level == GameData.GameLevel.Normal)
+            button_HARD.SetActive(false);
     }
 
     public void SetLevelEasy()

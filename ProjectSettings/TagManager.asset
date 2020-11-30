@@ -10,6 +10,16 @@ TagManager:
   - Detector
   - Teleport
   - Fly
+  - bomb1_0
+  - bomb2_0
+  - bomb3_0
+  - box_0
+  - gimu_0
+  - paper_0
+  - painting_0
+  - pillow_0
+  - shampoo_0
+  - teddy_0
   layers:
   - Default
   - TransparentFX

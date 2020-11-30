@@ -293,6 +293,9 @@ MonoBehaviour:
   GameData: {fileID: 0}
   panelEnterName: {fileID: 1016519382}
   panelSetLevel: {fileID: 184664119}
+  button_EASY: {fileID: 395021681}
+  button_NORMAL: {fileID: 1797037334}
+  button_HARD: {fileID: 920770598}
 --- !u!1 &350144965
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,6 +826,7 @@ MonoBehaviour:
   panelStory: {fileID: 0}
   buttonStart: {fileID: 0}
   panelEnterName: {fileID: 0}
+  UserName: 
 --- !u!114 &883249778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1626,6 +1630,7 @@ MonoBehaviour:
   panelStory: {fileID: 1851199166}
   buttonStart: {fileID: 1525829476}
   panelEnterName: {fileID: 1016519382}
+  UserName: 
 --- !u!4 &1392572540
 Transform:
   m_ObjectHideFlags: 0

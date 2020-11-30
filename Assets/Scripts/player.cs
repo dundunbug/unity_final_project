@@ -294,6 +294,8 @@ public class player : MonoBehaviour
             // print(other.gameObject.tag);
             canJump = true;
         }
+
+      
     }
     private void OnTriggerEnter2D(Collider2D other) {
         // print(other.gameObject.tag);

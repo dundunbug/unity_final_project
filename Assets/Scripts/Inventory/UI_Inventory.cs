@@ -55,7 +55,7 @@ public class UI_Inventory : MonoBehaviour
 
             itemslotRTransform.gameObject.SetActive(true);
 
-            itemslotRTransform.anchoredPosition = new Vector2(-300 + x * itemslotCellSize, 130 + y * itemslotCellSize);
+            itemslotRTransform.anchoredPosition = new Vector2(-300 + x * itemslotCellSize, 130 - y * itemslotCellSize);
 
             itemslotRTransform.GetComponent<ShowInfo>().SetType(item, inventory);
 
