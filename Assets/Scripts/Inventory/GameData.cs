@@ -26,10 +26,15 @@ public class GameData : MonoBehaviour
     public int origin_FileNum;
     public int targetNum;
     public bool InSave = false;
-
+   
     /*Game timer*/
     public int PlayTime = 0;
-    //public
+    public int min = 0;
+
+    public Scene scene;
+    public bool startCount = false;
+
+    public GameObject panel_Score;
     public enum GameLevel
     {
         Easy,
@@ -62,7 +67,7 @@ public class GameData : MonoBehaviour
 
         DontDestroyOnLoad(this);
 
-        InvokeRepeating("Timer", 1, 1);
+        
     }
     
     public void LoadGame()
@@ -192,12 +197,32 @@ public class GameData : MonoBehaviour
             Debug.Log("DeleteUsedSave");
             PlayerPrefs.DeleteKey("usedSave");
         }
+        if(SceneManager.GetActiveScene().name == "Full_Cave")
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            panel_Score = GameObject.Find("Canvas (2)").transform.GetChild(1).gameObject;
+            if(panel_Score.activeSelf==false)
+                panel_Score.SetActive(true);
+            else
+                panel_Score.SetActive(false);
+        }
+
+        if (SceneManager.GetActiveScene().name == "Full_Cave" && !startCount)
+        {
+            InvokeRepeating("Timer", 1, 1);
+            startCount = true;
+        }
 
     }
 
     public void Timer()
     {
         PlayTime++;
+        if (PlayTime == 60)
+        {
+            min++;
+            PlayTime = 0;
+        }
     }
 }
 

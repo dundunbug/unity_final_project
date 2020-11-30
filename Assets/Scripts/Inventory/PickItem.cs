@@ -24,43 +24,33 @@ public class PickItem : MonoBehaviour
             switch (this.gameObject.tag){
             case "bomb1_0":
                 Player.PickItem(Item.ItemType.Bomb_L);
-                Debug.Log("add bomb1_0");
                 break;
             case "bomb2_0":
                 Player.PickItem(Item.ItemType.Bomb_Timer);
-                Debug.Log("add bomb2_0");
                 break;
             case "bomb3_0":
                 Player.PickItem(Item.ItemType.Bomb_S);
-                Debug.Log("add bomb3_0");
                 break;
             case "box_0":
                 Player.PickItem(Item.ItemType.Carton);
-                Debug.Log("add box");
                 break;
             case "gimu_0":
                 Player.PickItem(Item.ItemType.Lego);
-                Debug.Log("addgimu");
                 break;
             case "painting_0":
                 Player.PickItem(Item.ItemType.TransferGate);
-                Debug.Log("addpainting");
                 break;
             case "paper_0":
                 Player.PickItem(Item.ItemType.CardBoard);
-                Debug.Log("addpaper");
                 break;
             case "pillow_0":
                 Player.PickItem(Item.ItemType.Pillow);
-                Debug.Log("addpillow");
                 break;
             case "shampoo_0":
                 Player.PickItem(Item.ItemType.Bottle);
-                Debug.Log("addshampoo");
                 break;
             case "teddy_0":
                 Player.PickItem(Item.ItemType.Teddy);
-                Debug.Log("addteddy");
                 break;
             }
             Destroy(this.gameObject);
