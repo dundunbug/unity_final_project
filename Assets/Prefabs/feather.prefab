@@ -103,7 +103,7 @@ MonoBehaviour:
   radius: 3
   explodeAmount: 10
   healthMax: 1
-  dieAfterSec: 3
+  dieAfterSec: 10
 --- !u!50 &5988586725799224586
 Rigidbody2D:
   serializedVersion: 4

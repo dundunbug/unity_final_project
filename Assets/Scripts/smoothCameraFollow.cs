@@ -28,10 +28,10 @@ public class smoothCameraFollow : MonoBehaviour
 			if (Mathf.Abs(transform.position.x - targetX) > margin)
 				targetX = Mathf.Lerp(transform.position.x, targetX, 1/m_DampTime * Time.deltaTime);
 
-			// if (Mathf.Abs(transform.position.y - targetY) > margin)
-			// 	targetY = Mathf.Lerp(transform.position.y, targetY, m_DampTime * Time.deltaTime);
+			if (Mathf.Abs(transform.position.y - targetY) > margin)
+				targetY = Mathf.Lerp(transform.position.y, targetY, m_DampTime * Time.deltaTime);
             
-			transform.position = new Vector3(targetX, transform.position.y, transform.position.z);
+			transform.position = new Vector3(targetX, targetY, transform.position.z);
         }
     }
 }

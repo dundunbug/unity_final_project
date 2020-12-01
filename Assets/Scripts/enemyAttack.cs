@@ -39,7 +39,6 @@ public class enemyAttack : MonoBehaviour
                 lastTime = Time.time;
             }
         }else if (other.gameObject.tag != "Ground"){
-            int damageAmount = 10;
             objectStatus objectStatus = other.gameObject.GetComponent<objectStatus>();
             if (objectStatus != null){
                 if (Time.time - lastTime >= time ){

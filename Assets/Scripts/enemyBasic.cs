@@ -14,7 +14,7 @@ public class enemyBasic : MonoBehaviour
     public float speed = 3.5f;
     public Vector2 jumpHeight = new Vector2(4f,12f);
     [Header("detector")]
-    public float distance = 10f; // ground detector 
+    public float distance = 2f; // ground detector 
     public float wallDis = 2f; // wall detector
     public float findPlayerRadius = 5f;
     [Header("track player")]
@@ -42,6 +42,7 @@ public class enemyBasic : MonoBehaviour
     private float height;
     private Animator animator;
     private Collider2D enemyCol;
+    private bool isDead = false;
     public bool canFly = false;
     // Start is called before the first frame update
     void Start()
@@ -277,13 +278,16 @@ public class enemyBasic : MonoBehaviour
         }
         healthSystem.Damage(damageAmount);
         if (healthSystem.GetHealth() == 0){
-            if (animator)
-                animator.SetTrigger("isDead");
-            Destroy(gameObject,0.4f);
-            // drop objects after destroy
-            for (int i =0; i < dropObjectNum; i++){
-                dropObjects();
+            if (!isDead){
+                if (animator)
+                    animator.SetTrigger("isDead");
+                Destroy(gameObject,0.4f);
+                // drop objects after destroy
+                for (int i =0; i < dropObjectNum; i++){
+                    dropObjects();
+                }
             }
+            isDead = true;
         }
         // can move after n sec later
         if (!canFly)

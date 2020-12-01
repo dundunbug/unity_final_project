@@ -247,6 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBomb: 0
   radius: 4
+  explodeAmount: 10
   healthMax: 40
   dieAfterSec: 1
 --- !u!95 &5832631142072565410

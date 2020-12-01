@@ -94,18 +94,10 @@ public class player : MonoBehaviour
         mousePositionInput = Input.mousePosition;
         mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePositionInput);
 
-        // jump
-        if (Input.GetButtonDown("Jump") && canJump){
-            canJump = false;
-            // print("jump");
-            rb.AddForce(jumpHeight, ForceMode2D.Impulse);
-            rb.gravityScale = naturalGravity;
-        }
-
         // if player jump too down or too high
-        if (transform.position.y <= -10f || transform.position.y >= 100f){
-            transform.position = startPos;
-        }
+        // if (transform.position.y <= -10f || transform.position.y >= 100f){
+        //     transform.position = startPos;
+        // }
 
         // MuseButton 0: left ; 1 : right.        
         // count accumlated charged time for projectile
@@ -148,6 +140,18 @@ public class player : MonoBehaviour
         // for animator
         animator_player.SetFloat("Player_RunSpeed", Mathf.Abs(inputX));
 
+        // jump
+        if (Input.GetButtonDown("Jump") && canJump){
+            canJump = false;
+            // print("jump");
+            if (inputX >= 0.2f || inputX <= -0.2f){
+                print(jumpHeight+ new Vector2(0f,8f));
+                rb.AddForce(jumpHeight+ new Vector2(0f,8f), ForceMode2D.Impulse);
+            }else{
+                rb.AddForce(jumpHeight, ForceMode2D.Impulse);
+            }
+            rb.gravityScale = naturalGravity;
+        }
         // detect where player faces
         if (inputX_Raw != 0f){
             face_direction = inputX_Raw;
@@ -291,7 +295,7 @@ public class player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         // print(other.gameObject.tag);
         if (other.gameObject.tag== "Ground"){
-            // print(other.gameObject.tag);
+            print(other.gameObject.tag);
             canJump = true;
         }
 
