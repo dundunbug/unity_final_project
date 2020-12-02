@@ -49,7 +49,7 @@ public class EnergyBar : MonoBehaviour
 
     // Update is called once per frame
     public void RefreshBar()
-    {Debug.Log(this.gameObject.name+ energy);
+    {//Debug.Log(this.gameObject.name+ energy);
         for(int i = 1; i <= energy; i++)
         {
             GameObject ob = this.gameObject.transform.GetChild(i).gameObject;

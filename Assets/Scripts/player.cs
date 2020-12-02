@@ -67,16 +67,18 @@ public class player : MonoBehaviour
     [Header("GameSave")]
     GameData gameData;
 
-        
+    [Header("ScorePage")]
+    public GameObject Panel_End;
 
-   /* private void Awake()
-    {
-        gameData = GameObject.Find("GameData").GetComponent<GameData>();
-        if (gameData.LoadedData != null)
-        {
-            inventory. = gameData.LoadedData.inventory;
-        }
-    }*/
+
+    /* private void Awake()
+     {
+         gameData = GameObject.Find("GameData").GetComponent<GameData>();
+         if (gameData.LoadedData != null)
+         {
+             inventory. = gameData.LoadedData.inventory;
+         }
+     }*/
 
     void Start()
     {
@@ -355,8 +357,8 @@ public class player : MonoBehaviour
     public void Restart(){
         if (DeathCount <= 0)
         {
-            SceneManager.LoadScene("MainMenu");
-        }    
+            Panel_End.SetActive(true);
+        }
         transform.position = startPos;
         healthSystem.Reset();
         bar.ChangeHealthStatus(healthSystem.GetHealth());

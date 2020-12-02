@@ -22,10 +22,15 @@ public class ScorePage : MonoBehaviour
         T1.text = gameData.Name;
         //T2.text = gameData.Name;
         T3.text = gameData.min+" min "+gameData.PlayTime+" sec";
+        if (gameObject.activeSelf)
+        {
+            Time.timeScale = 0f;
+        }
     }
 
     public void Continue()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 }

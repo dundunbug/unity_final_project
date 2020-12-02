@@ -63,7 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ScorePage.cs" />
     <Compile Include="Assets\Scripts\DoorTrigger.cs" />
     <Compile Include="Assets\Scripts\Flying.cs" />
     <Compile Include="Assets\Scripts\Inventory\EnergyBar.cs" />
@@ -77,7 +76,7 @@
     <Compile Include="Assets\Scripts\Inventory\ItemAssets.cs" />
     <Compile Include="Assets\Scripts\Inventory\Itemplaced.cs" />
     <Compile Include="Assets\Scripts\Inventory\PickItem.cs" />
-    <Compile Include="Assets\Scripts\Inventory\Score.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ScorePage.cs" />
     <Compile Include="Assets\Scripts\Inventory\SetLevel.cs" />
     <Compile Include="Assets\Scripts\Inventory\ShowInfo.cs" />
     <Compile Include="Assets\Scripts\Inventory\Story1.cs" />
