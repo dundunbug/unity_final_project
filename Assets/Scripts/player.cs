@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class player : MonoBehaviour
 {
+    public int DeathCount;
     [Header("movement")]
     // controller;
     public float runSpeed = 10f;
@@ -87,6 +89,7 @@ public class player : MonoBehaviour
         /*if(gameData.LoadedData == null) */inventory = new Inventory();
         uiInventory.SetInventory(inventory);
         energySystem.SetInventory(inventory);
+        DeathCount = (DeathCount < 1) ? 1: DeathCount;
     }
 
     // Update is called once per frame
@@ -350,8 +353,13 @@ public class player : MonoBehaviour
 
     //Restart when health equal 0
     public void Restart(){
+        if (DeathCount <= 0)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }    
         transform.position = startPos;
         healthSystem.Reset();
         bar.ChangeHealthStatus(healthSystem.GetHealth());
+        DeathCount -= 1;
     }
 }
