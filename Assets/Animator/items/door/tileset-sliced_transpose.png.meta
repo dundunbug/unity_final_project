@@ -1,0 +1,752 @@
+fileFormatVersion: 2
+guid: 1792d024b21a16a468324c33a973af28
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8187398163165247446
+    second: tileset-sliced_transpose_0
+  - first:
+      213: -2736340653456805524
+    second: tileset-sliced_transpose_1
+  - first:
+      213: 4440703197348704990
+    second: tileset-sliced_transpose_2
+  - first:
+      213: -3398918130420287129
+    second: tileset-sliced_transpose_3
+  - first:
+      213: -2271596019797087620
+    second: tileset-sliced_transpose_4
+  - first:
+      213: -3626187707139359796
+    second: tileset-sliced_transpose_5
+  - first:
+      213: 4047524901623960269
+    second: tileset-sliced_transpose_6
+  - first:
+      213: 3964360318639370879
+    second: tileset-sliced_transpose_7
+  - first:
+      213: -8904921135076514153
+    second: tileset-sliced_transpose_8
+  - first:
+      213: -5319141709760328124
+    second: tileset-sliced_transpose_9
+  - first:
+      213: 5444522163393375207
+    second: tileset-sliced_transpose_10
+  - first:
+      213: 4360309694264256951
+    second: tileset-sliced_transpose_11
+  - first:
+      213: -4323855680233316564
+    second: tileset-sliced_transpose_12
+  - first:
+      213: -7162601149353317936
+    second: tileset-sliced_transpose_13
+  - first:
+      213: -4785965989489097399
+    second: tileset-sliced_transpose_14
+  - first:
+      213: -3100665474004471604
+    second: tileset-sliced_transpose_15
+  - first:
+      213: 1337665323440360236
+    second: tileset-sliced_transpose_16
+  - first:
+      213: 3011027232249893861
+    second: tileset-sliced_transpose_17
+  - first:
+      213: -7170932647361487951
+    second: tileset-sliced_transpose_18
+  - first:
+      213: 3970437681779749358
+    second: tileset-sliced_transpose_19
+  - first:
+      213: 252612600972539383
+    second: tileset-sliced_transpose_20
+  - first:
+      213: 2977845275660570298
+    second: tileset-sliced_transpose_21
+  - first:
+      213: -1678478320795620070
+    second: tileset-sliced_transpose_22
+  - first:
+      213: 6932627461046274858
+    second: tileset-sliced_transpose_23
+  - first:
+      213: -9169528156954464844
+    second: tileset-sliced_transpose_24
+  - first:
+      213: 1192853001597762488
+    second: tileset-sliced_transpose_25
+  - first:
+      213: -3926387948059883232
+    second: tileset-sliced_transpose_26
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 40
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_0
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 327
+        width: 44
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d7762e204b7f9170800000000000000
+      internalID: 8187398163165247446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_1
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 295
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c613f366ca0960ad0800000000000000
+      internalID: -2736340653456805524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_2
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 279
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed239e6b70c80ad30800000000000000
+      internalID: 4440703197348704990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_3
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 295
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 769f9a7f7fd94d0d0800000000000000
+      internalID: -3398918130420287129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_4
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 247
+        width: 16
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7aadc6947ba970e0800000000000000
+      internalID: -2271596019797087620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_5
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 263
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccbf1132e713dadc0800000000000000
+      internalID: -3626187707139359796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_6
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 252
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc218dc0472bb2830800000000000000
+      internalID: 4047524901623960269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_7
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 247
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f72772aa4bc340730800000000000000
+      internalID: 3964360318639370879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_8
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 215
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79665ee686d5b6480800000000000000
+      internalID: -8904921135076514153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_9
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 215
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44e85c70ccc9e26b0800000000000000
+      internalID: -5319141709760328124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_10
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 215
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ebadc0bf04de8b40800000000000000
+      internalID: 5444522163393375207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_11
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 215
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b92055a09ee28c30800000000000000
+      internalID: 4360309694264256951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_12
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 167
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2f53a7ea249ef3c0800000000000000
+      internalID: -4323855680233316564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_13
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 167
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d9adf82434599c90800000000000000
+      internalID: -7162601149353317936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_14
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 183
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 945c6692a45d49db0800000000000000
+      internalID: -4785965989489097399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_15
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 167
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc035aeed2938f4d0800000000000000
+      internalID: -3100665474004471604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_16
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 83
+        width: 77
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2b45004687509210800000000000000
+      internalID: 1337665323440360236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_17
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 151
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e3584b805159c920800000000000000
+      internalID: 3011027232249893861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_18
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 136
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bb54cd10cabb7c90800000000000000
+      internalID: -7170932647361487951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_19
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 119
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee1be490904d91730800000000000000
+      internalID: 3970437681779749358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_20
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 71
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f571ca72d5718300800000000000000
+      internalID: 252612600972539383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_21
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 65
+        width: 16
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abec2db308e635920800000000000000
+      internalID: 2977845275660570298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_22
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 39
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1d68c53cd8d4b8e0800000000000000
+      internalID: -1678478320795620070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_23
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 23
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2b08c7f1f3a53060800000000000000
+      internalID: 6932627461046274858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_24
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 0
+        width: 32
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bd69c639ba4fb080800000000000000
+      internalID: -9169528156954464844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_25
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 7
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bb3e752c7ddd8010800000000000000
+      internalID: 1192853001597762488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset-sliced_transpose_26
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 0
+        width: 32
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0290481d6faa289c0800000000000000
+      internalID: -3926387948059883232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
