@@ -26,6 +26,7 @@ public class GameData : MonoBehaviour
     public int origin_FileNum;
     public int targetNum;
     public bool InSave = false;
+    public bool Restart = false;
    
     /*Game timer*/
     public int PlayTime = 0;
@@ -35,14 +36,49 @@ public class GameData : MonoBehaviour
     public bool startCount = false;
 
     public GameObject panel_Score;
+  //  public static bool ins = false;
+    public static GameData ins;
     public enum GameLevel
     {
         Easy,
         Normal,
         Hard,
     }
+    void Awake()
+    {
+
+        if (ins == null)
+        {
+
+            ins = this;
+            GameObject.DontDestroyOnLoad(gameObject);
+
+        }
+        else if (ins != this)
+        {
+
+            Destroy(gameObject);
+        }
+    }
+
+    /*private void Awake()
+    {
+        if (!ins)
+        {
+            GameObject ob = (GameObject)Instantiate(Resources.Load("GameData"));
+            DontDestroyOnLoad(ob);
+            ins = true;
+            Debug.Log("ins");
+        }
+    }*/
     // Start is called before the first frame update
     private void Start()
+    {
+        LoadGameSaveRecord();
+        //DontDestroyOnLoad(this);
+    }
+    
+    public void LoadGameSaveRecord()
     {
         SaveFileName = new string[5] { "Save1", "Save2", "Save3", "Save4", "Save5" };
         /*處理現在是save幾，從來沒存過就新增一個usedSave*/
@@ -65,11 +101,9 @@ public class GameData : MonoBehaviour
 
         LoadedData = null;
 
-        DontDestroyOnLoad(this);
 
-        
     }
-    
+
     public void LoadGame()
     {
         string str = PlayerPrefs.GetString(SaveFileName[targetNum]);
@@ -82,7 +116,7 @@ public class GameData : MonoBehaviour
                 Debug.Log("DataLoaded");
                 origin_FileNum = targetNum;
             }
-            SceneManager.LoadScene("Cave");
+            SceneManager.LoadScene("Full_Cave");
         }
         else
         {
@@ -211,6 +245,13 @@ public class GameData : MonoBehaviour
         {
             InvokeRepeating("Timer", 1, 1);
             startCount = true;
+        }
+
+        /*每次重新回到MainMenu都要重新load一次目前有的save array*/
+        if (SceneManager.GetActiveScene().name == "MainMenu" && !Restart)
+        {
+            LoadGameSaveRecord();
+            Restart = true;
         }
 
     }

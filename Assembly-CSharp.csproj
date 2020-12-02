@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Inventory\EnergyBar.cs" />
     <Compile Include="Assets\Scripts\Inventory\EnergySystem.cs" />
     <Compile Include="Assets\Scripts\Inventory\EnterName.cs" />
+    <Compile Include="Assets\Scripts\Inventory\FxxkNothing.cs" />
     <Compile Include="Assets\Scripts\Inventory\GameData.cs" />
     <Compile Include="Assets\Scripts\Inventory\GameSave.cs" />
     <Compile Include="Assets\Scripts\Inventory\GameSetting.cs" />
