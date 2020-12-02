@@ -100,7 +100,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.335
+  m_Radius: 0.18
 --- !u!114 &173926812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +116,8 @@ MonoBehaviour:
   speed: 8
   damageAmount: 20
   canMove: 0
-  target: {x: 0, y: 0}
+  target: {x: 0, y: 0, z: 0}
+  dieAfterSec: 0.5
 --- !u!50 &173926813
 Rigidbody2D:
   serializedVersion: 4

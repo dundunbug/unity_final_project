@@ -20,6 +20,7 @@ TagManager:
   - pillow_0
   - shampoo_0
   - teddy_0
+  - lava
   layers:
   - Default
   - TransparentFX

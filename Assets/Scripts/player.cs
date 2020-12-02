@@ -161,22 +161,22 @@ public class player : MonoBehaviour
         }
 
         //climb  
-        if (climb && inputY != 0){
-            animator_player.SetBool("IsClimb", true);
-            float ropeX = rope.transform.position.x;
-            if (Mathf.Abs(posX - ropeX) <= 0.3f){
-                // gravity set to zero when climb
-                rb.gravityScale =0;
-                rb.constraints = RigidbodyConstraints2D.FreezePositionX | 
-                    RigidbodyConstraints2D.FreezeRotation;
-                transform.position = new Vector3(ropeX, rb.position.y);
-                rb.velocity = new Vector2(0f, inputY*climbSpeed);
-            }
-        }
-        if(!climb){
-            animator_player.SetBool("IsClimb", false);
-            rb.gravityScale = naturalGravity;
-        }
+        // if (climb && inputY != 0){
+        //     animator_player.SetBool("IsClimb", true);
+        //     float ropeX = rope.transform.position.x;
+        //     if (Mathf.Abs(posX - ropeX) <= 0.3f){
+        //         // gravity set to zero when climb
+        //         rb.gravityScale =0;
+        //         rb.constraints = RigidbodyConstraints2D.FreezePositionX | 
+        //             RigidbodyConstraints2D.FreezeRotation;
+        //         transform.position = new Vector3(ropeX, rb.position.y);
+        //         rb.velocity = new Vector2(0f, inputY*climbSpeed);
+        //     }
+        // }
+        // if(!climb){
+        //     animator_player.SetBool("IsClimb", false);
+        //     rb.gravityScale = naturalGravity;
+        // }
         //move
         if(inputX != 0 && canMove){
             if (inputX > 0 && !movingRight)
@@ -298,7 +298,7 @@ public class player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         // print(other.gameObject.tag);
         if (other.gameObject.tag== "Ground"){
-            print(other.gameObject.tag);
+            // print(other.gameObject.tag);
             canJump = true;
         }
 

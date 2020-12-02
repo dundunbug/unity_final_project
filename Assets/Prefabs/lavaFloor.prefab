@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 9007075663513226024}
   m_Layer: 12
   m_Name: lavaFloor
-  m_TagString: Untagged
+  m_TagString: lava
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   radius: 4
   explodeAmount: 10
   healthMax: 10
-  dieAfterSec: 3
+  dieAfterSec: 0.1
 --- !u!114 &9007075663513226027
 MonoBehaviour:
   m_ObjectHideFlags: 0

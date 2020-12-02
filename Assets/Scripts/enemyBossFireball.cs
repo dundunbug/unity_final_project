@@ -35,7 +35,6 @@ public class enemyBossFireball : MonoBehaviour
     // }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        print(other.gameObject.tag);
         if (other.gameObject.tag != "Ground"){
             attack(other);
         }else{
@@ -45,7 +44,6 @@ public class enemyBossFireball : MonoBehaviour
         }
     }
     private void attack(Collider2D other){
-        // print(other.gameObject.tag);
         if (other.gameObject.tag == "Player" && !hasAttacked){
             if (other.gameObject.name == "player"){
                 int direction;
@@ -58,11 +56,10 @@ public class enemyBossFireball : MonoBehaviour
                 player_script.attacked(direction, damageAmount);
                 gameObjectStatus();
             }else{
-                print(other.gameObject.name);
                 other.gameObject.GetComponent<objectStatus>().attackObject(damageAmount);
                 gameObjectStatus();
             }
-        }else if (other.gameObject.tag != "Ground"){
+        }else{
             objectStatus objectStatus = other.gameObject.GetComponent<objectStatus>();
             if (objectStatus != null){
                     objectStatus.attackObject(damageAmount);
