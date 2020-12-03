@@ -95,8 +95,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBomb: 1
-  radius: 4
+  radius: 3
+  explodeAmount: 10
   healthMax: 10
+  dieAfterSec: 3
 --- !u!212 &2232488698396766097
 SpriteRenderer:
   m_ObjectHideFlags: 0

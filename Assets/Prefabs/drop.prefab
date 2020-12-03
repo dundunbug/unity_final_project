@@ -99,6 +99,7 @@ MonoBehaviour:
   explodeAmount: 10
   healthMax: 40
   dieAfterSec: 1
+  explodeAfterSec: 0
 --- !u!212 &578213525
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7499154508442906066, guid: 52c5538db5a689d4e97bc56c917f18ea,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

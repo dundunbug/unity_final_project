@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 920871865402356431}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.08736, y: -0.74, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e619550ea824c424c8bb3cafc70479f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dieAfterSec: 1
+  dieAfterSec: 3
   explodeItem: {fileID: 9175673844066268164, guid: db62a1ef2c0fab54da3107e8240f6093,
     type: 3}
 --- !u!61 &1725962767232479096
@@ -151,7 +151,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 9017333034309329133, guid: 1917f10e81d72f84b87db66de88df2ec,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

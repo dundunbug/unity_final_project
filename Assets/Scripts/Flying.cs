@@ -16,7 +16,6 @@ public class Flying : MonoBehaviour
     public GameObject Drop;
     private GameObject curDrop;
     private Vector2 Origin_Position;
-    private int getHit = 0;
 	// Use this for initialization
 	void Start () 
 	{
@@ -66,7 +65,6 @@ public class Flying : MonoBehaviour
             // When fly's y ~= player's y, fly higher
             if (transform.position.y - player.transform.position.y < 2.0f)
             {
-                print("FH");
                 rb.AddForce(new Vector2 (0, (transform.position.y - player.transform.position.y)) * 0.5f);
             }
 
@@ -83,14 +81,7 @@ public class Flying : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        // print(other.gameObject.tag);
-        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "Enemy"){
-            
-        }
-        else
-        {
-            getHit += 1;
-        }
+
     }
 	void GenerateBomb()
     {
@@ -106,19 +97,13 @@ public class Flying : MonoBehaviour
             rb.velocity = rb.velocity - rb.velocity.normalized; 
         }
 
-        if(getHit == 2)
-        {
-            FlyingDies();
-            getHit = getHit + 1;
-        }
-
         timer += Time.deltaTime;
         Distance_from_player = (transform.position - player.transform.position).magnitude;
         MovedByWind(Distance_from_player);
 	}
 
-    void FlyingDies(){
+    /*void FlyingDies(){
         curDrop = Instantiate(Drop, transform.position, Quaternion.identity);
         Destroy(gameObject, 0.4f);
-    }
+    }*/
 }

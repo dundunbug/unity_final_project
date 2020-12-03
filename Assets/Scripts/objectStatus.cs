@@ -35,6 +35,7 @@ public class objectStatus : MonoBehaviour
     [Header("status")]
     public int healthMax = 40;
     public float dieAfterSec = 3f;
+    public float explodeAfterSec = 0f;
     private healthSystem healthSystem;
     private objectScript objectScript;
     private Animator animator_object;
@@ -51,7 +52,7 @@ public class objectStatus : MonoBehaviour
             // print(healthSystem.GetHealth());
             if (healthSystem.GetHealth() == 0){
                 if (isBomb){
-                    objectScript.Explode(radius, explodeAmount);
+                    StartCoroutine(explodeAfter(explodeAfterSec));
                 }
                 else{
                     if (gameObject.name.Contains("pillow")){
@@ -75,9 +76,11 @@ public class objectStatus : MonoBehaviour
                 }
             }
         }
-
     }
-
+    IEnumerator explodeAfter(float time){
+        yield return new WaitForSeconds (time);
+        objectScript.Explode(radius, explodeAmount);
+    }
    /* private void OnTriggerEnter2D(Collider2D other)
     {
         if(gameObject.name)

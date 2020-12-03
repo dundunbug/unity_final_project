@@ -132,8 +132,9 @@ MonoBehaviour:
   isBomb: 0
   radius: 4
   explodeAmount: 10
-  healthMax: 10
+  healthMax: 1
   dieAfterSec: 0.1
+  explodeAfterSec: 0
 --- !u!114 &9007075663513226027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lava: {fileID: 920871865402356431, guid: 7a413f280150e184b828f72e83fa963c, type: 3}
-  dieAfterSec: 1
+  dieAfterSec: 4
 --- !u!61 &9007075663513226024
 BoxCollider2D:
   m_ObjectHideFlags: 0

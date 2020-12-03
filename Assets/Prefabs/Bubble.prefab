@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5274579449595329730}
   - component: {fileID: 7922569594501956100}
   - component: {fileID: 3384010057616259014}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6337084657113707346}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1.8182375, y: -0.07, z: -1.6}
   m_LocalScale: {x: 3.6162899, y: 1, z: 3.19628}
   m_Children: []
@@ -977,7 +977,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 15
+        scalar: 3
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -3793,7 +3793,7 @@ ParticleSystem:
     radiusScale: 0.66
     collidesWith:
       serializedVersion: 2
-      m_Bits: 11008
+      m_Bits: 15104
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -4791,7 +4791,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4827,7 +4827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abcbe42a87de09d419a044370f6b381f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 2
+  damageAmount: 1
 --- !u!212 &3384010057616259014
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4866,13 +4866,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

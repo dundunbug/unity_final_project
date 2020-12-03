@@ -96,7 +96,10 @@ public class enemyBasic : MonoBehaviour
                 direction = Vector2.left;
             }
             
-            RaycastHit2D wallInfo = Physics2D.Raycast(wallDetection.position, direction, wallDis, groundLayer);
+            int wallLayer = 1 << LayerMask.NameToLayer("ground");
+            int doorLayer = 1 << LayerMask.NameToLayer("door");
+            int finalmask = wallLayer | doorLayer;
+            RaycastHit2D wallInfo = Physics2D.Raycast(wallDetection.position, direction, wallDis, finalmask);
             if (wallInfo.collider == true){
                 nearWall = true;
                 // StartCoroutine(notNearWallAfterSec(0.5f));

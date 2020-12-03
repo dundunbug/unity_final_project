@@ -73,7 +73,7 @@ public class player : MonoBehaviour
 
      private void Awake()
      {
-         gameData = GameObject.Find("GameData").GetComponent<GameData>();
+        //  gameData = GameObject.Find("GameData").GetComponent<GameData>();
         /* if (gameData.LoadedData != null)
          {
              inventory. = gameData.LoadedData.inventory;
@@ -185,7 +185,7 @@ public class player : MonoBehaviour
                 flip();
             else if (inputX < 0 && movingRight)
                 flip();
-            Vector3 move = new Vector3(runSpeed * inputX , posY, 0);
+            Vector3 move = new Vector3(runSpeed * inputX, 0, 0);
             move *= Time.deltaTime;
             transform.Translate(move);
         }
