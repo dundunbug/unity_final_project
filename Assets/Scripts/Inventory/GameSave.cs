@@ -15,8 +15,9 @@ public class GameSave
     public float playTime;
     public string PlayerName;
     public int rank;
-    public Owned_Item items;
+    //public Owned_Item items;
     public Inventory inventory;
+    public int[] items = new int[11];
 }
 
 [System.Serializable]

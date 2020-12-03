@@ -275,5 +275,85 @@ public class GameData : MonoBehaviour
             PlayTime = 0;
         }
     }
+
+    public void SaveInventory()
+    {
+        foreach (Item item in inventory.GetList())
+        {
+            // Debug.Log(item.Num);
+            switch (item.itemType)
+            {
+                default:
+                case Item.ItemType.Bomb_L:
+                    {
+                        // items.Bomb_L = item.Num;
+                        gameSave.items[0] = item.Num;
+                    }
+                    break;
+                case Item.ItemType.Bomb_S:
+                    {
+                        //items.Bomb_S = item.Num;
+                        gameSave.items[1] = item.Num;
+                    }
+                    break;
+                case Item.ItemType.Bomb_Timer:
+                    {
+                        // items.Bomb_Timer = item.Num;
+                        gameSave.items[2] = item.Num;
+                    }
+                    break;
+                case Item.ItemType.Teddy:
+                    {
+                        //items.Teddy = item.Num;
+                        gameSave.items[3] = item.Num;
+                    }
+                    break;
+                case Item.ItemType.TransferGate:
+                    {
+                        //items.TransferGate = item.Num;
+                        gameSave.items[4] = item.Num;
+                    }
+                    break;
+                case Item.ItemType.Lego:
+                    {
+                        //items.Lego = item.Num;
+                        gameSave.items[5] = item.Num;
+                    }
+                    break;
+                case Item.ItemType.CardBoard:
+                    {
+                        //items.CardBoard = item.Num;
+                        gameSave.items[6] = item.Num;
+                    }
+                    break;
+                case Item.ItemType.Bottle:
+                    {
+                        //items.Bottle = item.Num;
+                        gameSave.items[7] = item.Num;
+                    }
+                    break;
+                case Item.ItemType.Carton:
+                    {
+                        //items.Carton = item.Num;
+                        gameSave.items[8] = item.Num;
+                    }
+                    break;
+                case Item.ItemType.Pillow:
+                    {
+                        //items.Pillow = item.Num;
+                        gameSave.items[9] = item.Num;
+                    }
+                    break;
+                case Item.ItemType.DroppedItem:
+                    {
+                        //items.DroppedItem = item.Num;
+                        gameSave.items[10] = item.Num;
+                    }
+                    break;
+            }
+
+        }
+
+    }
 }
 

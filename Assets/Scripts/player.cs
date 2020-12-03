@@ -71,14 +71,6 @@ public class player : MonoBehaviour
     public GameObject Panel_End;
 
 
-     private void Awake()
-     {
-        //  gameData = GameObject.Find("GameData").GetComponent<GameData>();
-        /* if (gameData.LoadedData != null)
-         {
-             inventory. = gameData.LoadedData.inventory;
-         }*/
-     }
 
     void Start()
     {
@@ -88,7 +80,9 @@ public class player : MonoBehaviour
         startPos = transform.position;
         projectile_line.useWorldSpace = true;
         SpriteRenderer = GetComponent<SpriteRenderer>();
-        /*if(gameData.LoadedData == null) */inventory = new Inventory();
+        gameData = GameObject.Find("GameData").GetComponent<GameData>();
+        inventory = new Inventory();
+        if (gameData.LoadedData != null) { Debug.Log("inventoryloaded"); LoadInventory(); }
         uiInventory.SetInventory(inventory);
         energySystem.SetInventory(inventory);
         DeathCount = (DeathCount < 1) ? 1: DeathCount;
@@ -365,4 +359,25 @@ public class player : MonoBehaviour
         bar.ChangeHealthStatus(healthSystem.GetHealth());
         DeathCount -= 1;
     }
+
+    public void LoadInventory()
+    {
+        for (int i = 0; i < 11; i++)
+        {
+            if (gameData.LoadedData.items[i] <= 0) continue;
+            if (i == 0) inventory.AddItem(new Item { itemType = Item.ItemType.Bomb_L, Num = gameData.LoadedData.items[i] });
+            if (i == 1) inventory.AddItem(new Item { itemType = Item.ItemType.Bomb_S, Num = gameData.LoadedData.items[i] });
+            if (i == 2) inventory.AddItem(new Item { itemType = Item.ItemType.Bomb_Timer, Num = gameData.LoadedData.items[i] });
+            if (i == 3) inventory.AddItem(new Item { itemType = Item.ItemType.Teddy, Num = gameData.LoadedData.items[i] });
+            if (i == 4) inventory.AddItem(new Item { itemType = Item.ItemType.TransferGate, Num = gameData.LoadedData.items[i] });
+            if (i == 5) inventory.AddItem(new Item { itemType = Item.ItemType.Lego, Num = gameData.LoadedData.items[i] });
+            if (i == 6) inventory.AddItem(new Item { itemType = Item.ItemType.CardBoard, Num = gameData.LoadedData.items[i] });
+            if (i == 7) inventory.AddItem(new Item { itemType = Item.ItemType.Bottle, Num = gameData.LoadedData.items[i] });
+            if (i == 8) inventory.AddItem(new Item { itemType = Item.ItemType.Carton, Num = gameData.LoadedData.items[i] });
+            if (i == 9) inventory.AddItem(new Item { itemType = Item.ItemType.Pillow, Num = gameData.LoadedData.items[i] });
+            if (i == 10) inventory.AddItem(new Item { itemType = Item.ItemType.DroppedItem, Num = gameData.LoadedData.items[i] });
+        }
+
+    }
+
 }

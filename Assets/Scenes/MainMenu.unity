@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d293e6ac79a33f40ae03d50cebd3e0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameData: {fileID: 0}
 --- !u!114 &64725439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,6 +493,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208204059}
   m_CullTransparentMesh: 0
+--- !u!1 &238063182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 238063184}
+  - component: {fileID: 238063183}
+  m_Layer: 0
+  m_Name: LoadButtons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &238063183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238063182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee6d9f8faf5c504094e5438c30b0723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PanelDel: {fileID: 951847851}
+--- !u!4 &238063184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238063182}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 46.67, y: -0.57, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &250908036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2873,8 +2918,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1707836145}
-        m_MethodName: OpenDeletePanel
+      - m_Target: {fileID: 238063183}
+        m_MethodName: SetOpNum
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4299,8 +4344,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1707836145}
-        m_MethodName: DeleteGameSave
+      - m_Target: {fileID: 238063183}
+        m_MethodName: DeleteGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4773,7 +4818,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1707836145}
+      - m_Target: {fileID: 238063183}
         m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
@@ -5047,8 +5092,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1707836145}
-        m_MethodName: OpenDeletePanel
+      - m_Target: {fileID: 238063183}
+        m_MethodName: SetOpNum
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5312,6 +5357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PanelDel: {fileID: 951847851}
   Level: 0
+  LevelPassed: 3
   player: {fileID: 0}
   Name: 
   gameSave:
@@ -5470,8 +5516,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1707836145}
-        m_MethodName: OpenDeletePanel
+      - m_Target: {fileID: 238063183}
+        m_MethodName: SetOpNum
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
