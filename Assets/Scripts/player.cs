@@ -71,14 +71,14 @@ public class player : MonoBehaviour
     public GameObject Panel_End;
 
 
-    /* private void Awake()
+     private void Awake()
      {
          gameData = GameObject.Find("GameData").GetComponent<GameData>();
-         if (gameData.LoadedData != null)
+        /* if (gameData.LoadedData != null)
          {
              inventory. = gameData.LoadedData.inventory;
-         }
-     }*/
+         }*/
+     }
 
     void Start()
     {
@@ -358,6 +358,7 @@ public class player : MonoBehaviour
         if (DeathCount <= 0)
         {
             Panel_End.SetActive(true);
+            gameData.LevelPassed = gameData.Level;
         }
         transform.position = startPos;
         healthSystem.Reset();

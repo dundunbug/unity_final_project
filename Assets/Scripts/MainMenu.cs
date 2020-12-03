@@ -6,10 +6,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
+    public GameData gameData;
+
+    private void Start()
+    {
+        gameData = GameObject.Find("GameData").GetComponent<GameData>();
+    }
     public void PlayGame()
     {
         // When Unity Build, Scenes are queued with Index (like 0.GameMenu, 1.GameScene ...)
-        SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
+        gameData.Restart = false;
+        SceneManager.LoadScene("Story1");
     }
 
     // Update is called once per frame

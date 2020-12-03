@@ -8,6 +8,7 @@ public class GameData : MonoBehaviour
     public GameObject PanelDel;
 
     public GameLevel Level = GameLevel.Easy;
+    public GameLevel LevelPassed = GameLevel.NothingYet;
     public Inventory inventory;
     public player player;
     public string Name;
@@ -26,7 +27,7 @@ public class GameData : MonoBehaviour
     public int origin_FileNum;
     public int targetNum;
     public bool InSave = false;
-    public bool Restart = false;
+    public bool Restart = true;
    
     /*Game timer*/
     public int PlayTime = 0;
@@ -43,6 +44,7 @@ public class GameData : MonoBehaviour
         Easy,
         Normal,
         Hard,
+        NothingYet,
     }
     void Awake()
     {
@@ -74,6 +76,8 @@ public class GameData : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        Debug.Log("hereweareagain");
+        Restart = true;
         LoadGameSaveRecord();
         //DontDestroyOnLoad(this);
     }
@@ -100,12 +104,11 @@ public class GameData : MonoBehaviour
         }
 
         LoadedData = null;
-
-
     }
 
     public void LoadGame()
     {
+        Debug.Log(targetNum);
         string str = PlayerPrefs.GetString(SaveFileName[targetNum]);
         if (str != null && str.Length > 0)
         {
@@ -116,12 +119,15 @@ public class GameData : MonoBehaviour
                 Debug.Log("DataLoaded");
                 origin_FileNum = targetNum;
             }
+            Restart = false;
             SceneManager.LoadScene("Full_Cave");
         }
         else
         {
             Debug.Log("Nothing to Load");
         }
+
+        
     }
 
     public void SaveGame(int currentFile)
@@ -207,6 +213,7 @@ public class GameData : MonoBehaviour
 
     public void OpenDeletePanel(int n)
     {
+        Debug.Log("i did click");
         targetNum = n;
         PanelDel.SetActive(true);
     }
@@ -241,6 +248,7 @@ public class GameData : MonoBehaviour
                 panel_Score.SetActive(false);
         }
 
+        /*計時遊戲時間*/
         if (SceneManager.GetActiveScene().name == "Full_Cave" && !startCount)
         {
             InvokeRepeating("Timer", 1, 1);
@@ -250,6 +258,8 @@ public class GameData : MonoBehaviour
         /*每次重新回到MainMenu都要重新load一次目前有的save array*/
         if (SceneManager.GetActiveScene().name == "MainMenu" && !Restart)
         {
+            Debug.Log("targetNum="+ targetNum);
+            usedSave=null; 
             LoadGameSaveRecord();
             Restart = true;
         }
