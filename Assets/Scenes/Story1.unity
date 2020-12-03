@@ -958,12 +958,12 @@ MonoBehaviour:
   text1: {fileID: 502842090}
   speed: 1
   sprite:
-  - {fileID: 3551233614117194328, guid: 1ded587a805c0804e98853042fbfdf6f, type: 3}
-  - {fileID: 4806979598904865115, guid: 25d33530732f44e45aca966baebba6a5, type: 3}
-  - {fileID: -7489009585814028084, guid: fded9b653ecfeb3459caa0d33825b9e6, type: 3}
-  - {fileID: 1295955565587498720, guid: 11666a2e2afdb6e44b2b351479cc2b96, type: 3}
-  - {fileID: 1295955565587498720, guid: 11666a2e2afdb6e44b2b351479cc2b96, type: 3}
-  - {fileID: 1295955565587498720, guid: 11666a2e2afdb6e44b2b351479cc2b96, type: 3}
+  - {fileID: 21300000, guid: 4a51cca7d19756747948b2c7886329e9, type: 3}
+  - {fileID: 21300000, guid: 4a51cca7d19756747948b2c7886329e9, type: 3}
+  - {fileID: 21300000, guid: 4a51cca7d19756747948b2c7886329e9, type: 3}
+  - {fileID: 21300000, guid: 9f6dc8bc1e9782049bb53607185952ae, type: 3}
+  - {fileID: 21300000, guid: 9f6dc8bc1e9782049bb53607185952ae, type: 3}
+  - {fileID: 21300000, guid: c70140be50a2dea4a85466f634390e11, type: 3}
   image: {fileID: 358523721}
 --- !u!114 &502842090
 MonoBehaviour:
@@ -3200,12 +3200,12 @@ MonoBehaviour:
   text1: {fileID: 0}
   speed: 1
   sprite:
-  - {fileID: -1469909079130451432, guid: 8cb01612e88d1c34496c34cc5a609188, type: 3}
-  - {fileID: 7499154508442906066, guid: 52c5538db5a689d4e97bc56c917f18ea, type: 3}
-  - {fileID: 3551233614117194328, guid: 1ded587a805c0804e98853042fbfdf6f, type: 3}
-  - {fileID: 1295955565587498720, guid: 11666a2e2afdb6e44b2b351479cc2b96, type: 3}
-  - {fileID: -8376229347262176984, guid: 3018d876e7742e84da4aaa17c8aced8f, type: 3}
-  - {fileID: -8376229347262176984, guid: 3018d876e7742e84da4aaa17c8aced8f, type: 3}
+  - {fileID: 21300000, guid: 5d15e537b16f4514b970edfcfdf2493f, type: 3}
+  - {fileID: 21300000, guid: 5d15e537b16f4514b970edfcfdf2493f, type: 3}
+  - {fileID: 21300000, guid: 5d15e537b16f4514b970edfcfdf2493f, type: 3}
+  - {fileID: 21300000, guid: b38a058e7475c2346ac724a2aca98339, type: 3}
+  - {fileID: 21300000, guid: b38a058e7475c2346ac724a2aca98339, type: 3}
+  - {fileID: 21300000, guid: b38a058e7475c2346ac724a2aca98339, type: 3}
   image: {fileID: 358718575}
 --- !u!114 &1732839661
 MonoBehaviour:
