@@ -25,7 +25,7 @@ public class UsedSave
 {
     public bool[] usedSave;
 }
-
+/*
 [System.Serializable]
 public class Owned_Item
 {
@@ -40,4 +40,4 @@ public class Owned_Item
     public int Carton;
     public int Pillow;
     public int DroppedItem;
-}
+}*/

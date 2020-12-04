@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameData : MonoBehaviour
 {
-    public GameObject PanelDel;
-
     public GameLevel Level = GameLevel.Easy;
     public GameLevel LevelPassed = GameLevel.NothingYet;
     public Inventory inventory;
@@ -18,7 +16,7 @@ public class GameData : MonoBehaviour
     public int strength;
     public int speed;
     public int vitality;
-    public Owned_Item items;
+   // public Owned_Item items;
 
     public string[] SaveFileName;
     //[SerializeField] public bool[] usedSave;
@@ -59,27 +57,17 @@ public class GameData : MonoBehaviour
         else if (ins != this)
         {
 
-            Destroy(gameObject);
+            DestroyImmediate(gameObject);
         }
     }
 
-    /*private void Awake()
-    {
-        if (!ins)
-        {
-            GameObject ob = (GameObject)Instantiate(Resources.Load("GameData"));
-            DontDestroyOnLoad(ob);
-            ins = true;
-            Debug.Log("ins");
-        }
-    }*/
+  
     // Start is called before the first frame update
     private void Start()
     {
         Debug.Log("hereweareagain");
         Restart = true;
         LoadGameSaveRecord();
-        //DontDestroyOnLoad(this);
     }
     
     public void LoadGameSaveRecord()
@@ -211,15 +199,10 @@ public class GameData : MonoBehaviour
         PlayerPrefs.DeleteKey(SaveFileName[targetNum]);
     }
 
-    public void OpenDeletePanel(int n)
-    {
-        Debug.Log("i did click");
-        targetNum = n;
-        PanelDel.SetActive(true);
-    }
-
     private void Update()
     {
+        if(LoadedData!=null)
+        Debug.Log("LoadedData.strength=" + LoadedData.strength+"scene="+SceneManager.GetActiveScene().name);
         if (Input.GetKeyDown(KeyCode.R))
         {
             for(int i = 0; i < FileLimit; i++)
@@ -238,7 +221,7 @@ public class GameData : MonoBehaviour
             Debug.Log("DeleteUsedSave");
             PlayerPrefs.DeleteKey("usedSave");
         }
-        if(SceneManager.GetActiveScene().name == "Full_Cave")
+        if(SceneManager.GetActiveScene().name == "Full_Cave") Debug.Log(LoadedData!=null);
         if (Input.GetKeyDown(KeyCode.C))
         {
             panel_Score = GameObject.Find("Canvas (2)").transform.GetChild(1).gameObject;
@@ -258,7 +241,6 @@ public class GameData : MonoBehaviour
         /*每次重新回到MainMenu都要重新load一次目前有的save array*/
         if (SceneManager.GetActiveScene().name == "MainMenu" && !Restart)
         {
-            Debug.Log("targetNum="+ targetNum);
             usedSave=null; 
             LoadGameSaveRecord();
             Restart = true;

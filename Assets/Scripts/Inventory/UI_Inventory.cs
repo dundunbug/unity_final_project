@@ -74,7 +74,7 @@ public class UI_Inventory : MonoBehaviour
             T.text = item.Num.ToString();
 
             /*save current owned items*/
-            switch (item.itemType)
+           /* switch (item.itemType)
             {
                 default: 
                 case Item.ItemType.Bomb_L:
@@ -132,7 +132,7 @@ public class UI_Inventory : MonoBehaviour
                         gameData.items.DroppedItem = item.Num;
                     }
                     break;
-            }
+            }*/
         }
     }
 }

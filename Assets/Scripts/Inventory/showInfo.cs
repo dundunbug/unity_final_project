@@ -210,7 +210,6 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 {
                     panel_droppedItem.SetActive(true);
                     energySystem.SetNum(itemNum);
-                    Debug.Log("WTF");
                 }
                 break;
 

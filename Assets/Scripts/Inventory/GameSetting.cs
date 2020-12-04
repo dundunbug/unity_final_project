@@ -8,17 +8,7 @@ public class GameSetting : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject panel_Setting; 
-    void Start()
-    {
-       
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+   
     public void Quit_Game()
     {
         Application.Quit();
@@ -35,7 +25,6 @@ public class GameSetting : MonoBehaviour
         player Player = GameObject.Find("player").GetComponent<player>();
         gameData.inventory = Player.inventory;
         GameObject.Find("GameData").GetComponent<GameData>().SaveGame(currentFile);
-        // gameData.SaveGame();
     }
 
     
