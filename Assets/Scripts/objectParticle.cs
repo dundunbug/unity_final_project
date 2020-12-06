@@ -18,7 +18,7 @@ public class objectParticle : MonoBehaviour
         player = GameObject.Find("player");
         player_script = player.GetComponent<player>();
     }
-    void OnParticleCollision(GameObject other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.name == "player"){
             if (checkTime())
@@ -44,6 +44,33 @@ public class objectParticle : MonoBehaviour
             }
         }
     }
+    /*
+    void OnParticleCollision(GameObject other)
+    {
+        if (other.gameObject.name == "player"){
+            if (checkTime())
+                player_script.attacked(0,damageAmount);
+        }
+        else if ( other.gameObject.tag=="Enemy"){
+            enemyBasic enemyBasic = other.gameObject.GetComponent<enemyBasic>();
+            if (enemyBasic != null){
+                if (checkTime())
+                    enemyBasic.attacked(0,damageAmount);
+            }
+        }
+        else{
+            enemyBasic enemyBasic = other.gameObject.GetComponent<enemyBasic>();
+            if (enemyBasic != null){
+                if (checkTime())
+                    enemyBasic.attacked(0,damageAmount);
+            }
+            objectStatus objectStatus = other.gameObject.GetComponent<objectStatus>();
+            if (objectStatus != null){
+                if (checkTime())
+                    objectStatus.attackObject(damageAmount);
+            }
+        }
+    }*/
     bool checkTime(){
         if (Time.time - lastTime >= timeBetweenAttack){
             lastTime = Time.time;
