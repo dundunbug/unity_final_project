@@ -148,6 +148,7 @@ MonoBehaviour:
   radius: 3
   teleporting_start: {fileID: 58503562940829067, guid: 9f96b62d4f1712f4fb2f1b7a97decb9e,
     type: 3}
+  animator_painting: {fileID: 7953714439662932806}
 --- !u!95 &7953714439662932806
 Animator:
   serializedVersion: 3

@@ -12,6 +12,7 @@ public class objectPainting : MonoBehaviour
     private player player_script;
     private GameObject player;
     public static Vector3 TeleportingGate;
+    public Animator animator_painting;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +24,14 @@ public class objectPainting : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag== "Ground"){
             cur_teleporting_start = Instantiate(teleporting_start, player.transform.position + new Vector3 (player_script.face_direction, 0.0f, 0.0f), Quaternion.identity);
+        Destroy(gameObject, 5.0f);
+        animator_painting.SetBool("IsGround", true);
+        Destroy(cur_teleporting_start,5.0f);
         }
     }
 
     void Update(){
         TeleportingGate = transform.position;
     }
+    
 }
