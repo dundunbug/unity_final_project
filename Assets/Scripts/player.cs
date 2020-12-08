@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.EventSystems;
 public class player : MonoBehaviour
 {
     public int DeathCount;
@@ -69,6 +69,8 @@ public class player : MonoBehaviour
 
     [Header("ScorePage")]
     public GameObject Panel_End;
+    public UIchangeItem changeThrowItem;
+    public UIchangeItem changeDropItem;
 
 
 
@@ -100,7 +102,7 @@ public class player : MonoBehaviour
 
         // MuseButton 0: left ; 1 : right.        
         // count accumlated charged time for projectile
-        if (Input.GetMouseButton(0) && !inventoryCanvas.active){
+        if (Input.GetMouseButton(0) && !inventoryCanvas.active && !EventSystem.current.IsPointerOverGameObject()){
             animator_player.SetBool("IsThrow", true);
             projectile_line.enabled = true;
             charged_time += Time.deltaTime;
@@ -113,17 +115,19 @@ public class player : MonoBehaviour
             StartCoroutine(DrawTrajectory(projectile_velocity));
         }
 
-        if (Input.GetMouseButtonUp(0) && !inventoryCanvas.active){
+        if (Input.GetMouseButtonUp(0) && !inventoryCanvas.active && !EventSystem.current.IsPointerOverGameObject()){
             animator_player.SetBool("IsThrow", false);
             projectile_line.enabled = false;
             ProjectItem();
             charged_time = 1f;
+            changeThrowItem.refreshList();
         }
         
         if (Input.GetMouseButtonUp(1) && !inventoryCanvas.active){
             canMove = false;
             DropItem();
-            StartCoroutine(Settle_Delay(1.0f));          
+            StartCoroutine(Settle_Delay(1.0f));
+            changeDropItem.refreshList();  
         }
 
 
@@ -289,6 +293,8 @@ public class player : MonoBehaviour
     public void PickItem(Item.ItemType type)
     {
         inventory.AddItem(new Item { itemType = type});
+        changeThrowItem.refreshList();
+        changeDropItem.refreshList();
     }
    
     private void OnCollisionEnter2D(Collision2D other) {

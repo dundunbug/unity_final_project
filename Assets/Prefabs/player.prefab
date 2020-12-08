@@ -120,23 +120,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9465d38442b3dc84482f7fa6fc06eec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 10
+  DeathCount: 1
+  runSpeed: 7
   climbSpeed: 6
-  jumpHeight: {x: 0, y: 20}
+  jumpHeight: {x: 0, y: 18}
   naturalGravity: 4
   moveForce: 4
   jumpForce: 6
   moveAfterSec: 0.5
   dropped_item: {fileID: 3326466207031408817, guid: bf0bfdd578e2b524c82db3e7cdf1cc4b,
     type: 3}
-  projectile: {fileID: 5166582595985205136, guid: e5df10b23b70c10469f9952f885c7ae4,
+  projectile: {fileID: 1598555531742825061, guid: c86c71270680ce543b0c0c672b76d366,
     type: 3}
   rope: {fileID: 0}
   climb: 0
   animator_player: {fileID: 2286634086909154323}
   face_direction: 1
   projectile_line: {fileID: 0}
-  point_number: 20
+  point_number: 100
   ProjectileSampleRate: 5
   canHit:
     serializedVersion: 2
@@ -145,6 +146,9 @@ MonoBehaviour:
   uiInventory: {fileID: 0}
   inventoryCanvas: {fileID: 0}
   dropItemCount: 0
+  Panel_End: {fileID: 0}
+  changeThrowItem: {fileID: 0}
+  changeDropItem: {fileID: 0}
 --- !u!95 &2286634086909154323
 Animator:
   serializedVersion: 3
