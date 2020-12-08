@@ -21,7 +21,6 @@ public class PickItem : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && picked == false)
         {
-            Debug.Log(this.gameObject.tag);
             switch (this.gameObject.tag){
             case "bomb1_0":
                 Player.PickItem(Item.ItemType.Bomb_L);

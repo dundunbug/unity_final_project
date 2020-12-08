@@ -152,6 +152,7 @@ public class UIchangeItem : MonoBehaviour
             }
         }
         if (!gotItem){
+            itemImage.gameObject.SetActive(false);
             if (isThrow && throwList.Count >= 1){
                 print(1);
                 switchItem(false);
@@ -166,6 +167,8 @@ public class UIchangeItem : MonoBehaviour
             }
 
         }
+        else
+            itemImage.gameObject.SetActive(true);
     }
 
     void switchPlayerItem(string _itemType){
@@ -196,5 +199,4 @@ public class UIchangeItem : MonoBehaviour
         Item item = new Item { itemType = Types[index]};
         player_script.inventory.DeleteItem(item);
     }
-
 }
