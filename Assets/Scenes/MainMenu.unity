@@ -5355,7 +5355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7191a9f44764ab9458642bea960737cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelDel: {fileID: 951847851}
   Level: 0
   LevelPassed: 3
   player: {fileID: 0}
@@ -5369,18 +5368,7 @@ MonoBehaviour:
     playTime: 0
     PlayerName: 
     rank: 0
-    items:
-      Bomb_L: 0
-      Bomb_S: 0
-      Bomb_Timer: 0
-      Teddy: 0
-      TransferGate: 0
-      Lego: 0
-      CardBoard: 0
-      Bottle: 0
-      Carton: 0
-      Pillow: 0
-      DroppedItem: 0
+    items: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   LoadedData:
     checkpoint: 0
     Level: 0
@@ -5390,35 +5378,12 @@ MonoBehaviour:
     playTime: 0
     PlayerName: 
     rank: 0
-    items:
-      Bomb_L: 0
-      Bomb_S: 0
-      Bomb_Timer: 0
-      Teddy: 0
-      TransferGate: 0
-      Lego: 0
-      CardBoard: 0
-      Bottle: 0
-      Carton: 0
-      Pillow: 0
-      DroppedItem: 0
+    items: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   usedSave:
     usedSave: 
   strength: 0
   speed: 0
   vitality: 0
-  items:
-    Bomb_L: 0
-    Bomb_S: 0
-    Bomb_Timer: 0
-    Teddy: 0
-    TransferGate: 0
-    Lego: 0
-    CardBoard: 0
-    Bottle: 0
-    Carton: 0
-    Pillow: 0
-    DroppedItem: 0
   SaveFileName:
   - Save1
   - Save2

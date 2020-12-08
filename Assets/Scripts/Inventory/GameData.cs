@@ -60,12 +60,11 @@ public class GameData : MonoBehaviour
             DestroyImmediate(gameObject);
         }
     }
-
+    
   
     // Start is called before the first frame update
     private void Start()
     {
-        Debug.Log("hereweareagain");
         Restart = true;
         LoadGameSaveRecord();
     }
@@ -90,8 +89,6 @@ public class GameData : MonoBehaviour
             string jsonUsedSave = JsonUtility.ToJson(usedSave);
             PlayerPrefs.SetString("usedSave", jsonUsedSave);
         }
-
-        LoadedData = null;
     }
 
     public void LoadGame()
@@ -121,10 +118,6 @@ public class GameData : MonoBehaviour
     public void SaveGame(int currentFile)
     {
         /*GetData*/
-        /*strength = GameObject.Find("enrergyBar").GetComponent<EnergyBar>().energy;
-        speed = GameObject.Find("enrergyBar(1)").GetComponent<EnergyBar>().energy;
-        vitality = GameObject.Find("enrergyBar(2)").GetComponent<EnergyBar>().energy;
-        inventory = GameObject.Find("Panel_UIinventory").GetComponent<UI_Inventory>().inventory;*/
 
         /*assign*/
         gameSave = new GameSave();
@@ -138,17 +131,7 @@ public class GameData : MonoBehaviour
         gameSave.PlayerName = Name;
         //gameSave.rank = 
         /*items*/
-        /*gameSave.items.Bomb_L = items.Bomb_L;
-        gameSave.items.Bomb_S = items.Bomb_S;
-        gameSave.items.Bomb_Timer = items.Bomb_Timer;
-        gameSave.items.Teddy = items.Teddy;
-        gameSave.items.TransferGate = items.TransferGate;
-        gameSave.items.Lego = items.Lego;
-        gameSave.items.CardBoard = items.CardBoard;
-        gameSave.items.Bottle = items.Bottle;
-        gameSave.items.Carton = items.Carton;
-        gameSave.items.Pillow = items.Pillow;
-        gameSave.items.DroppedItem = items.DroppedItem;*/
+        SaveInventory();
 
 
         /*Save UsedSaveFile*/
@@ -201,8 +184,6 @@ public class GameData : MonoBehaviour
 
     private void Update()
     {
-        if(LoadedData!=null)
-        Debug.Log("LoadedData.strength=" + LoadedData.strength+"scene="+SceneManager.GetActiveScene().name);
         if (Input.GetKeyDown(KeyCode.R))
         {
             for(int i = 0; i < FileLimit; i++)
@@ -221,7 +202,6 @@ public class GameData : MonoBehaviour
             Debug.Log("DeleteUsedSave");
             PlayerPrefs.DeleteKey("usedSave");
         }
-        if(SceneManager.GetActiveScene().name == "Full_Cave") Debug.Log(LoadedData!=null);
         if (Input.GetKeyDown(KeyCode.C))
         {
             panel_Score = GameObject.Find("Canvas (2)").transform.GetChild(1).gameObject;

@@ -13,12 +13,12 @@ public class Inventory
         itemList = new List<Item>();
         Debug.Log("Inventory Built");
         //AddItem(new Item { itemType = Item.ItemType.Teddy});
-        AddItem(new Item { itemType = Item.ItemType.CardBoard});
+        /*AddItem(new Item { itemType = Item.ItemType.CardBoard});
         AddItem(new Item { itemType = Item.ItemType.Pillow});
         AddItem(new Item { itemType = Item.ItemType.DroppedItem});
         AddItem(new Item { itemType = Item.ItemType.DroppedItem});
         AddItem(new Item { itemType = Item.ItemType.DroppedItem });
-        AddItem(new Item { itemType = Item.ItemType.DroppedItem });
+        AddItem(new Item { itemType = Item.ItemType.DroppedItem });*/
     }
 
     public void AddItem(Item item)

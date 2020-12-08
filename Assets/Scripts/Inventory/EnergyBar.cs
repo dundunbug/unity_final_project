@@ -17,11 +17,11 @@ public class EnergyBar : MonoBehaviour
     private Upagradenum upagradenum;
     public GameData gameData;
 
-    public event EventHandler BarChanged;
+   // public event EventHandler BarChanged;
 
     private void Awake()
     {
-        /*gameData = GameObject.Find("GameData").GetComponent<GameData>();
+        gameData = GameObject.Find("GameData").GetComponent<GameData>();
        
         if (gameData.LoadedData != null)
         {
@@ -39,30 +39,30 @@ public class EnergyBar : MonoBehaviour
             }
         }
         else
-        energy = 1;*/
+        energy = 1;
     }
     private void Start()
     {
-        gameData = GameObject.Find("GameData").GetComponent<GameData>();
-        if (gameData != null) Debug.Log("targetNum="+gameData.targetNum);
-            if (gameData.LoadedData != null)
-        {
-            Debug.Log("sthindata!!");
-            switch (this.gameObject.name)
-            {
-                case "energyBar":
-                    energy = gameData.LoadedData.strength;
-                    break;
-                case "energyBar(1)":
-                    energy = gameData.LoadedData.speed;
-                    break;
-                case "energyBar(2)":
-                    energy = gameData.LoadedData.vitality;
-                    break;
-            }
-        }
-        else
-            energy = 1;
+       /*   gameData = GameObject.Find("GameData").GetComponent<GameData>();
+              if (gameData.LoadedData != null)
+          {
+              Debug.Log("sthindata!!");
+              switch (this.gameObject.name)
+              {
+                  case "energyBar":
+                      energy = gameData.LoadedData.strength;
+                      break;
+                  case "energyBar(1)":
+                      energy = gameData.LoadedData.speed;
+                      break;
+                  case "energyBar(2)":
+                      energy = gameData.LoadedData.vitality;
+                      break;
+              }
+          }
+          else
+              energy = 1;
+      */
 
         upagradenum = GameObject.Find("remainNum").GetComponent<Upagradenum>(); ;
     }
@@ -70,8 +70,8 @@ public class EnergyBar : MonoBehaviour
 
     // Update is called once per frame
     public void RefreshBar()
-    {//Debug.Log(this.gameObject.name+ energy);
-        for(int i = 1; i <= energy; i++)
+    {
+        for (int i = 1; i <= energy; i++)
         {
             GameObject ob = this.gameObject.transform.GetChild(i).gameObject;
             ob.SetActive(true);
@@ -118,5 +118,6 @@ public class EnergyBar : MonoBehaviour
         }
             
     }
+    
 
 }
