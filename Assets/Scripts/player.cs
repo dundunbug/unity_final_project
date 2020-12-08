@@ -120,14 +120,18 @@ public class player : MonoBehaviour
             projectile_line.enabled = false;
             ProjectItem();
             charged_time = 1f;
+            changeThrowItem.itemUsed();
             changeThrowItem.refreshList();
+            changeDropItem.refreshList(); 
         }
         
         if (Input.GetMouseButtonUp(1) && !inventoryCanvas.active){
             canMove = false;
             DropItem();
             StartCoroutine(Settle_Delay(1.0f));
-            changeDropItem.refreshList();  
+            changeDropItem.itemUsed();
+            changeDropItem.refreshList();
+            changeThrowItem.refreshList();
         }
 
 

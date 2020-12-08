@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 public class UIchangeItem : MonoBehaviour
 {
     player player_script;
@@ -15,24 +16,26 @@ public class UIchangeItem : MonoBehaviour
     public bool isThrow = true;
     public Text itemNumText;
 
-    string[] item_types = new string[] {"Bomb_L","Bomb_Timer","Bomb_S","Carton",
+    public string[] item_types = new string[] {"Bomb_L","Bomb_Timer","Bomb_S","Carton",
     "Lego","TransferGate","CardBoard","Pillow","Bottle","Teddy"};
+    public List<GameObject> item_prehabs = new List<GameObject>();
     public string[] throw_types = new string[] {"Bomb_L","Bomb_Timer","Bomb_S","Carton"
     ,"TransferGate","Pillow","Bottle","Teddy"};
     public string[] drop_types = new string[] {"Bomb_L","Bomb_Timer","Carton",
     "Lego","TransferGate","CardBoard","Pillow"};
+    List<Item.ItemType> Types = new List<Item.ItemType> {
+        Item.ItemType.Bomb_L,Item.ItemType.Bomb_Timer,Item.ItemType.Bomb_S,
+        Item.ItemType.Carton,Item.ItemType.Lego,Item.ItemType.TransferGate,
+        Item.ItemType.CardBoard,Item.ItemType.Pillow,
+        Item.ItemType.Bottle,Item.ItemType.Teddy,
+        Item.ItemType.DroppedItem
+    };
     // Start is called before the first frame update
     void Start()
     {
         player_script = GameObject.Find("player").GetComponent<player>();
         inventory = player_script.inventory;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void checkItemNum(){
         inventory = player_script.inventory;
         foreach (Item item in inventory.GetList()){
@@ -54,35 +57,47 @@ public class UIchangeItem : MonoBehaviour
             itemType = dropType;
         }
         int index = itemList.Count;
-        for (int i = 0; i < itemList.Count; i++){
-            Item item = itemList[i];
-            if (item.itemType.ToString().Equals(itemType)){
-                index = i;
-                break;
+        if (itemList.Count >= 1){
+            for (int i = 0; i < itemList.Count; i++){
+                Item item = itemList[i];
+                if (item.itemType.ToString().Equals(itemType)){
+                    index = i;
+                    break;
+                }
             }
-        }
-        int nextIndex = -1;
-        if (right && itemList.Count >1){
-            if (index+1 < itemList.Count){
-                nextIndex = index+1;
-            }else if (index+1 == itemList.Count ){
-                nextIndex = 0;
+            int nextIndex = -1;
+            if (right && itemList.Count >1){
+                if (index+1 < itemList.Count){
+                    nextIndex = index+1;
+                }else if (index+1 == itemList.Count ){
+                    nextIndex = 0;
+                }
+            }else if (!right && itemList.Count >1){
+                if (index == 0){
+                    nextIndex = itemList.Count -1;
+                }else if (index > 0){
+                    nextIndex = index-1;
+                }
             }
-        }else if (!right && itemList.Count >1){
-            if (index == 0){
-                nextIndex = itemList.Count -1;
-            }else if (index > 0){
-                nextIndex = index-1;
+            if (nextIndex != -1){
+                itemImage.sprite = itemList[nextIndex].GetSprite();
+                itemNumText.text = itemList[nextIndex].Num.ToString();
+                if (isThrow){
+                    throwType = itemList[nextIndex].itemType.ToString();
+                    switchPlayerItem(throwType);
+                }else{
+                    dropType = itemList[nextIndex].itemType.ToString();
+                    switchPlayerItem(dropType);
+                }
             }
+        }else{
+            throwType = "";
+            dropType = "";
+            itemImage.sprite = null;
+            itemNumText.text = "";
+            switchPlayerItem("");
         }
-        if (nextIndex != -1){
-            itemImage.sprite = itemList[nextIndex].GetSprite();
-            itemNumText.text = itemList[nextIndex].Num.ToString();
-            if (isThrow)
-                throwType = itemList[nextIndex].itemType.ToString();
-            else
-                dropType = itemList[nextIndex].itemType.ToString();
-        }
+
         
     }
 
@@ -92,8 +107,14 @@ public class UIchangeItem : MonoBehaviour
         dropList.Clear();
         string itemType;
         if (isThrow){
+            if (throwList.Count == 0){
+                throwType = "";
+            }
             itemType = throwType;
         }else{ 
+            if (dropList.Count == 0){
+                dropType = "";
+            }
             itemType = dropType;
         }
         bool gotItem = false;
@@ -111,6 +132,7 @@ public class UIchangeItem : MonoBehaviour
                             itemImage.sprite = item.GetSprite();
                             itemNumText.text = item.Num.ToString();
                             gotItem = true;
+                            switchPlayerItem(throwType);
                         }
                     }
                 }
@@ -123,53 +145,56 @@ public class UIchangeItem : MonoBehaviour
                             itemImage.sprite = item.GetSprite();
                             itemNumText.text = item.Num.ToString();
                             gotItem = true;
+                            switchPlayerItem(dropType);
                         }
                     }
                 }
             }
         }
         if (!gotItem){
-            itemImage.sprite = null;
+            if (isThrow && throwList.Count >= 1){
+                print(1);
+                switchItem(false);
+            }else if (!isThrow && dropList.Count >= 1){
+                print(2);
+                switchItem(false);
+            }else{
+                print(3);
+                itemImage.sprite = null;
+                itemNumText.text = "";
+                switchPlayerItem("");
+            }
+
         }
     }
 
-
-
-    // void switchItem(){
+    void switchPlayerItem(string _itemType){
+        int index = Array.IndexOf(item_types, _itemType);
+        if (isThrow){
+            if (_itemType.Equals(""))
+                player_script.projectile = null;
+            else if (index != -1)
+                player_script.projectile = item_prehabs[index];
+        }else{
+            if (_itemType.Equals(""))
+                player_script.dropped_item = null;
+            else if (index != -1)
+                player_script.dropped_item = item_prehabs[index];
+        }
         
+    }
 
-    //     case "bomb1_0":
-        
-    //         Player.PickItem(Item.ItemType.Bomb_L);
-    //         break;
-    //     case "bomb2_0":
-    //         Player.PickItem(Item.ItemType.Bomb_Timer);
-    //         break;
-    //     case "bomb3_0":
-    //         Player.PickItem(Item.ItemType.Bomb_S);
-    //         break;
-    //     case "box_0":
-    //         Player.PickItem(Item.ItemType.Carton);
-    //         break;
-    //     case "gimu_0":
-    //         Player.PickItem(Item.ItemType.Lego);
-    //         break;
-    //     case "painting_0":
-    //         Player.PickItem(Item.ItemType.TransferGate);
-    //         break;
-    //     case "paper_0":
-    //         Player.PickItem(Item.ItemType.CardBoard);
-    //         break;
-    //     case "pillow_0":
-    //         Player.PickItem(Item.ItemType.Pillow);
-    //         break;
-    //     case "shampoo_0":
-    //         Player.PickItem(Item.ItemType.Bottle);
-    //         break;
-    //     case "teddy_0":
-    //         Player.PickItem(Item.ItemType.Teddy);
-    //         break;
-    // }
-
+    public void itemUsed()
+    {
+        GameObject prehab;
+        if (isThrow)
+            prehab = player_script.projectile;
+        else
+            prehab = player_script.dropped_item;
+        int index = item_prehabs.IndexOf(prehab);
+        // item_types[index]
+        Item item = new Item { itemType = Types[index]};
+        player_script.inventory.DeleteItem(item);
+    }
 
 }
