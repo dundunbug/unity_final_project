@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Flying : MonoBehaviour
 {
+    public int AttackMode;
 	private float windForce = 1.0f;
     private float Distance_from_player;
     private player player_script;
@@ -56,7 +57,7 @@ public class Flying : MonoBehaviour
         else // Player is in range
         {
             // Drop bomb when fly's x ~= player's x
-            if(timer >= 3.0f && Mathf.Abs(transform.position.x - player.transform.position.x) < 0.1f)
+            if(timer >= 3.0f && Mathf.Abs(transform.position.x - player.transform.position.x) < 7.0f)
             {
                 GenerateBomb();
                 timer = 0f;
@@ -83,11 +84,14 @@ public class Flying : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
 
     }
-	void GenerateBomb()
+
+	//attack
+    void GenerateBomb()
     {
         curBomb = Instantiate(Bomb, transform.position + new Vector3 (0.0f, - 0.5f, 0.0f), Quaternion.identity);
         Rigidbody2D curBomb_rb = curBomb.GetComponent<Rigidbody2D>();
         curBomb_rb.angularVelocity = 0f;
+        curBomb_rb.velocity += (AttackMode == 0)? new Vector2 ((player.transform.position.x - transform.position.x), (player.transform.position.y - transform.position.y)).normalized * new Vector2 ((player.transform.position.x - transform.position.x), (player.transform.position.y - transform.position.y)).magnitude : new Vector2(0,0) ;   
     }
 	// Update is called once per frame
 	void FixedUpdate() 
