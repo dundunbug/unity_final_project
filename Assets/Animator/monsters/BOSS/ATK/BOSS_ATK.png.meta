@@ -1,0 +1,413 @@
+fileFormatVersion: 2
+guid: 82bca77bde984244e8221b701474ea9e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4221071039035522115
+    second: BOSS_ATK_0
+  - first:
+      213: 566539732828524194
+    second: BOSS_ATK_1
+  - first:
+      213: 5120522796205908658
+    second: BOSS_ATK_2
+  - first:
+      213: -5070245791007505880
+    second: BOSS_ATK_3
+  - first:
+      213: 1156930727940181265
+    second: BOSS_ATK_4
+  - first:
+      213: -1135738705661375197
+    second: BOSS_ATK_5
+  - first:
+      213: 4592955111105525794
+    second: BOSS_ATK_6
+  - first:
+      213: 3905966358573109572
+    second: BOSS_ATK_7
+  - first:
+      213: -6129450263248110717
+    second: BOSS_ATK_8
+  - first:
+      213: 3571785906931868899
+    second: BOSS_ATK_9
+  - first:
+      213: -2555223039030938281
+    second: BOSS_ATK_10
+  - first:
+      213: 186514147426815687
+    second: BOSS_ATK_11
+  - first:
+      213: 277637436192883075
+    second: BOSS_ATK_12
+  - first:
+      213: -4951902470981988720
+    second: BOSS_ATK_13
+  - first:
+      213: 1595772259278143991
+    second: BOSS_ATK_14
+  - first:
+      213: -3556380050651234638
+    second: BOSS_ATK_15
+  - first:
+      213: -6208576685343597884
+    second: BOSS_ATK_16
+  - first:
+      213: 158226098290581102
+    second: BOSS_ATK_17
+  - first:
+      213: -8066715365152089548
+    second: BOSS_ATK_18
+  - first:
+      213: 5348727976309367724
+    second: BOSS_ATK_19
+  - first:
+      213: 752848318161562233
+    second: BOSS_ATK_20
+  - first:
+      213: -135615414498780262
+    second: BOSS_ATK_21
+  - first:
+      213: 984967040794264884
+    second: BOSS_ATK_22
+  - first:
+      213: 5939931117954105420
+    second: BOSS_ATK_23
+  - first:
+      213: -8545908508215586739
+    second: BOSS_ATK_24
+  - first:
+      213: 3022189641297905334
+    second: BOSS_ATK_25
+  - first:
+      213: -3863151751966954940
+    second: BOSS_ATK_26
+  - first:
+      213: 9151667767455615737
+    second: BOSS_ATK_27
+  - first:
+      213: 1891738557035914978
+    second: BOSS_ATK_28
+  - first:
+      213: 3392573620882828022
+    second: BOSS_ATK_0
+  - first:
+      213: -4834531429402055332
+    second: BOSS_ATK_1
+  - first:
+      213: -2057804755267275490
+    second: BOSS_ATK_2
+  - first:
+      213: -3979690275327952162
+    second: BOSS_ATK_3
+  - first:
+      213: -4472277166536403176
+    second: BOSS_ATK_4
+  - first:
+      213: 6939757717970144908
+    second: BOSS_ATK_5
+  - first:
+      213: 4354440965310277603
+    second: BOSS_ATK_6
+  - first:
+      213: 4306026241787085509
+    second: BOSS_ATK_7
+  - first:
+      213: 5663372794239861975
+    second: BOSS_ATK_8
+  - first:
+      213: -1642509712933933196
+    second: BOSS_ATK_9
+  - first:
+      213: -2708170877119298425
+    second: BOSS_ATK_10
+  - first:
+      213: -5871145535991311131
+    second: BOSS_ATK_11
+  - first:
+      213: 5155549957588725077
+    second: BOSS_ATK_12
+  - first:
+      213: 2351236697126309408
+    second: BOSS_ATK_13
+  - first:
+      213: -667830364379059557
+    second: BOSS_ATK_14
+  - first:
+      213: 4508962845838163304
+    second: BOSS_ATK_15
+  - first:
+      213: 5732947688978692072
+    second: BOSS_ATK_16
+  - first:
+      213: -496369701931758297
+    second: BOSS_ATK_17
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 30
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BOSS_ATK_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 431
+        width: 232
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fae41bcbb7d41f20800000000000000
+      internalID: 3392573620882828022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BOSS_ATK_1
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 431
+        width: 232
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5d6707874b48ecb0800000000000000
+      internalID: -4834531429402055332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BOSS_ATK_2
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 431
+        width: 232
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e153f215a753173e0800000000000000
+      internalID: -2057804755267275490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BOSS_ATK_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 216
+        width: 232
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eda3007a7cc45c8c0800000000000000
+      internalID: -3979690275327952162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BOSS_ATK_4
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 216
+        width: 232
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 817d187bc974fe1c0800000000000000
+      internalID: -4472277166536403176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BOSS_ATK_5
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 216
+        width: 232
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8ec2e640e8fe4060800000000000000
+      internalID: 6939757717970144908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BOSS_ATK_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 232
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e76ab4bcf41e6c30800000000000000
+      internalID: 4354440965310277603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BOSS_ATK_7
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 1
+        width: 232
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c2ca377d0412cb30800000000000000
+      internalID: 4306026241787085509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
