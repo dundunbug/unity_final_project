@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Flying : MonoBehaviour
 {
+    public Animator animator_flying;
     public int AttackMode;
 	private float windForce = 1.0f;
     private float Distance_from_player;
@@ -44,7 +45,7 @@ public class Flying : MonoBehaviour
         // normal flying
         if (Distance_from_player > 7.0f)
         {
-            
+            animator_flying.SetBool("Near", false);
             if (temp > 0.5f)
             {
                 rb.velocity += Vector2.left * slow;    
@@ -59,6 +60,7 @@ public class Flying : MonoBehaviour
             // Drop bomb when fly's x ~= player's x
             if(timer >= 3.0f && Mathf.Abs(transform.position.x - player.transform.position.x) < 7.0f)
             {
+                animator_flying.SetBool("Near", true);
                 GenerateBomb();
                 timer = 0f;
             }
