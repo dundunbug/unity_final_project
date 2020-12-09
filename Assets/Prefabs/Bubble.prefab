@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7922569594501956100}
   - component: {fileID: 3384010057616259014}
   - component: {fileID: 538516013941452877}
+  - component: {fileID: 2270725326486291454}
   m_Layer: 0
   m_Name: Bubble
   m_TagString: Untagged
@@ -978,7 +979,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 3
+        scalar: 15
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -4829,7 +4830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 1
-  timeBetweenAttack: 0.5
+  timeBetweenAttack: 0
 --- !u!212 &3384010057616259014
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4893,6 +4894,27 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.8}
+  m_Offset: {x: 0, y: 0.17}
   m_Size: {x: 1, y: 1.6}
   m_Direction: 1
+--- !u!50 &2270725326486291454
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6337084657113707346}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 0

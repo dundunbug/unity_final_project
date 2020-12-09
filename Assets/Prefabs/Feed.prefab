@@ -252,6 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37fac284903047444a106da9bd0696be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator_flying: {fileID: 2989979920150016553}
+  AttackMode: 0
   slow: 0
   fast: 0
   Bomb: {fileID: 5166582595985205136, guid: e5df10b23b70c10469f9952f885c7ae4, type: 3}

@@ -244,7 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 5
   jumpForce: 5
-  speed: 2.5
+  speed: 4.22
   jumpHeight: {x: 4, y: 12}
   distance: 2
   wallDis: 1

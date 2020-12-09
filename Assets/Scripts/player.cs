@@ -148,16 +148,19 @@ public class player : MonoBehaviour
         animator_player.SetFloat("Player_RunSpeed", Mathf.Abs(inputX));
 
         // jump
-        if (Input.GetButtonDown("Jump") && canJump){
-            canJump = false;
-            // print("jump");
-            if (inputX >= 0.2f || inputX <= -0.2f){
-                print(jumpHeight+ new Vector2(0f,8f));
-                rb.AddForce(jumpHeight+ new Vector2(0f,8f), ForceMode2D.Impulse);
-            }else{
-                rb.AddForce(jumpHeight, ForceMode2D.Impulse);
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetButtonDown("Jump")){
+            if ( canJump){
+                canJump = false;
+                // print("jump");
+                if (inputX >= 0.2f || inputX <= -0.2f){
+                    print(jumpHeight+ new Vector2(0f,8f));
+                    rb.AddForce(jumpHeight+ new Vector2(0f,8f), ForceMode2D.Impulse);
+                }else{
+                    rb.AddForce(jumpHeight, ForceMode2D.Impulse);
+                }
+                rb.gravityScale = naturalGravity;
             }
-            rb.gravityScale = naturalGravity;
+
         }
         // detect where player faces
         if (inputX_Raw != 0f){

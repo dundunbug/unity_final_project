@@ -20,6 +20,7 @@ public class objectParticle : MonoBehaviour
     }
     void OnTriggerStay2D(Collider2D other)
     {
+        print(other.gameObject.tag);
         if (other.gameObject.name == "player"){
             if (checkTime())
                 player_script.attacked(0,damageAmount);
