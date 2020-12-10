@@ -296,6 +296,7 @@ public class enemyBasic : MonoBehaviour
         if (!canFly)
             StartCoroutine(canMoveAfterSec(1f));
     }
+
     void dropObjects(){
         // initiate prehab
         float ranX = Random.Range(enemyCol.bounds.center.x - 2f, enemyCol.bounds.center.x + 2f);
@@ -333,5 +334,19 @@ public class enemyBasic : MonoBehaviour
         }  
     }
 
+    /*private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy"){
+            if(Mathf.Abs(transform.position.x - other.transform.position.x) < 0.02f)
+            {
+                OverlapAvoidance();
+            }
+        }  
+    }
+    void OverlapAvoidance()
+    {
+        float move_a_bit = Random.Range (-0.2f, 0.2f);
+        gameObject.transform.position += new Vector3 (move_a_bit, 0, 0);
+    }*/
 
 }
