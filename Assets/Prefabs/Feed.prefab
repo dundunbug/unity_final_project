@@ -304,7 +304,7 @@ MonoBehaviour:
   AttackMode: 0
   slow: 0
   fast: 0
-  Bomb: {fileID: 5166582595985205136, guid: e5df10b23b70c10469f9952f885c7ae4, type: 3}
+  Bomb: {fileID: 5166582595985205136, guid: ac7effd28b02d7a42ad9d4b71cda8308, type: 3}
   Drop: {fileID: 1637041270720909378, guid: f382a13ef9bb73345b699b9f6268fa94, type: 3}
 --- !u!95 &2989979920150016553
 Animator:

@@ -94,6 +94,11 @@ public class Flying : MonoBehaviour
         Rigidbody2D curBomb_rb = curBomb.GetComponent<Rigidbody2D>();
         curBomb_rb.angularVelocity = 0f;
         curBomb_rb.velocity += (AttackMode == 0)? new Vector2 ((player.transform.position.x - transform.position.x), (player.transform.position.y - transform.position.y)).normalized * new Vector2 ((player.transform.position.x - transform.position.x), (player.transform.position.y - transform.position.y)).magnitude : new Vector2(0,0) ;   
+        if (curBomb_rb.velocity.x > 0f)
+        {
+            SpriteRenderer SpriteRenderer = curBomb.GetComponent<SpriteRenderer>();
+            SpriteRenderer.flipX = true;
+        }
     }
 	// Update is called once per frame
 	void FixedUpdate() 
