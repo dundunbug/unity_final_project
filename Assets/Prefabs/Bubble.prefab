@@ -4830,7 +4830,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 1
-  timeBetweenAttack: 0
+  timeBetweenAttack: 0.3
+  burntime: 0.5
 --- !u!212 &3384010057616259014
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4895,7 +4896,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.17}
-  m_Size: {x: 1, y: 1.6}
+  m_Size: {x: 1.2, y: 1}
   m_Direction: 1
 --- !u!50 &2270725326486291454
 Rigidbody2D:

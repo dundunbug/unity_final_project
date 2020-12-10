@@ -28,6 +28,7 @@ Edvance
 */
 public class objectStatus : MonoBehaviour
 {
+    public static float timer;
     public bool isBomb = false;
     [Header("IF is Bomb")]
     public float radius = 4f;

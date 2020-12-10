@@ -21,6 +21,7 @@ TagManager:
   - shampoo_0
   - teddy_0
   - lava
+  - burn_plate
   layers:
   - Default
   - TransparentFX

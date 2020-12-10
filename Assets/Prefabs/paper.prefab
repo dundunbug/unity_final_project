@@ -69,10 +69,10 @@ GameObject:
   - component: {fileID: 744177598638441079}
   - component: {fileID: 6300369309958965371}
   - component: {fileID: 3695933332367108181}
-  - component: {fileID: 2486472301753669141}
+  - component: {fileID: -4676130925338810897}
   m_Layer: 12
   m_Name: paper
-  m_TagString: lava
+  m_TagString: burn_plate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,7 +187,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &2486472301753669141
+--- !u!95 &-4676130925338810897
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ Animator:
   m_GameObject: {fileID: 5142845595776725643}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 420e647e2b76d4c4592fcee62cb29659, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
