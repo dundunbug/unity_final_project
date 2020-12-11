@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: -1841839433426465562}
   - component: {fileID: 1853050321494909959}
   - component: {fileID: 7953714439662932806}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: painting
-  m_TagString: Untagged
+  m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -23,17 +23,17 @@ public class ScorePage : MonoBehaviour
     void Update()
     {
         T1.text = gameData.Name;
-        T2.text = player.DefeatedNum + "";
-        T3.text = gameData.min+" min "+gameData.PlayTime+" sec";
-        if(gameData.PlayTime < 20)
-            gameData.Score = player.DefeatedNum * 100 + 300;
-        else
-            gameData.Score = player.DefeatedNum * 100;
-        T4.text = gameData.Score + "";
-        if (gameObject.activeSelf)
-        {
-            Time.timeScale = 0f;
-        }
+        // T2.text = player.DefeatedNum + "";
+        // T3.text = gameData.min+" min "+gameData.PlayTime+" sec";
+        // if(gameData.PlayTime < 20)
+        //     gameData.Score = player.DefeatedNum * 100 + 300;
+        // else
+        //     gameData.Score = player.DefeatedNum * 100;
+        // T4.text = gameData.Score + "";
+        // if (gameObject.activeSelf)
+        // {
+        //     Time.timeScale = 0f;
+        // }
     }
 
     public void Continue()

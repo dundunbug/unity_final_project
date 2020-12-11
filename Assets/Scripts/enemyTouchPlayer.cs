@@ -17,6 +17,15 @@ public class enemyTouchPlayer : MonoBehaviour
         player = GameObject.Find("player");
         player_script = player.GetComponent<player>();
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag== "Teleport"){
+            // print(other.gameObject.tag);
+            if (objectPainting.onGround){
+                transform.parent.position = objectPainting.TeleportingGate;
+            }
+        }
+    }
     private void OnTriggerStay2D(Collider2D other) {
         // print(other.gameObject.tag);
         if (other.gameObject.name== "player"){

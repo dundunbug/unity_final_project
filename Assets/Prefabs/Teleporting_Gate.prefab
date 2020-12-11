@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 301403647599516318}
   - component: {fileID: 7303021368292441982}
   - component: {fileID: 4475668851933626796}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Teleporting_Gate
-  m_TagString: Teleport
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

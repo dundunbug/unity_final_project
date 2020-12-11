@@ -42,6 +42,7 @@ public class player : MonoBehaviour
     public Animator animator_player;
 
     [Header("Projectile")]
+    public Vector3 throwStart;
     private float charged_time = 1.0f; // for accumulated projectile charged time. 0 will become "drop".
     public float face_direction = 1.0f; // record where player faces. because transform.forward doesn't work in 2D
     public LineRenderer projectile_line; // trajectory
@@ -103,6 +104,7 @@ public class player : MonoBehaviour
         // MuseButton 0: left ; 1 : right.        
         // count accumlated charged time for projectile
         if (Input.GetMouseButton(0) && !inventoryCanvas.active && !EventSystem.current.IsPointerOverGameObject()){
+            
             animator_player.SetBool("IsThrow", true);
             projectile_line.enabled = true;
             charged_time += Time.deltaTime;
@@ -116,6 +118,7 @@ public class player : MonoBehaviour
         }
 
         if (Input.GetMouseButtonUp(0) && !inventoryCanvas.active && !EventSystem.current.IsPointerOverGameObject()){
+            throwStart = transform.position;
             animator_player.SetBool("IsThrow", false);
             projectile_line.enabled = false;
             ProjectItem();
@@ -317,7 +320,9 @@ public class player : MonoBehaviour
         // print(other.gameObject.tag);
         if (other.gameObject.tag== "Teleport"){
             // print(other.gameObject.tag);
-            transform.position = objectPainting.TeleportingGate;
+            if (objectPainting.onGround){
+                transform.position = objectPainting.TeleportingGate;
+            }
         }
     }
     public void attacked(int direction, int damageAmount){
