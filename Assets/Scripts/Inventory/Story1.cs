@@ -7,7 +7,8 @@ public class Story1 : MonoBehaviour
 {
     public Text text1;
     public int speed;
-    private string[] lines = new string[] { "便利商店停電??", "怎麼…這是?!", "我在哪", "你來到這裡，卻還不知道，前方，要面對的是什麼", "逃是唯一的出路" };
+    private string[] lines = new string[] { "怎麼了？突然什麼都看不見","7-11停電了嗎？", "不對，地面是...石頭？！", "（什麼東西、好刺眼！）",
+        "（前方像是有什麼打開了。突如其來的光線讓你閉上了眼睛）","（雖然充滿著對未知的恐懼，但心裡有個聲音不斷提醒你）" ,"『逃是唯一的出路』" };//[1,1,2,2,3,3,3]
     public Sprite[] sprite = new Sprite[6];
     public Image image;
     private int i;
