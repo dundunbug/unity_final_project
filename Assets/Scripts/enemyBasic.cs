@@ -285,6 +285,12 @@ public class enemyBasic : MonoBehaviour
                 if (animator)
                     animator.SetTrigger("isDead");
                 Destroy(gameObject,0.4f);
+                
+                if (GetComponent<Renderer>() != null){
+                    Color temp = GetComponent<Renderer>().material.color;
+                    StartCoroutine(IncreaseTransparency(temp));
+                }
+                
                 // drop objects after destroy
                 for (int i =0; i < dropObjectNum; i++){
                     dropObjects();
@@ -296,7 +302,11 @@ public class enemyBasic : MonoBehaviour
         if (!canFly)
             StartCoroutine(canMoveAfterSec(1f));
     }
-
+    private IEnumerator IncreaseTransparency(Color temp)
+    {
+        yield return new WaitForSecondsRealtime(0.01f);
+        temp.a -= 0.025f;
+    }
     void dropObjects(){
         // initiate prehab
         float ranX = Random.Range(enemyCol.bounds.center.x - 2f, enemyCol.bounds.center.x + 2f);

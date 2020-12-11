@@ -52,10 +52,16 @@ public class Story2 : MonoBehaviour
     public Image image;
     private int i;
 
+    private float letterPause = 0.2f;
+    [SerializeField] private AudioClip typeSound;
+    [SerializeField] private Text txtDisplay;
+    private string words;
+
     void Start()
     {
         i = 0;
         image.sprite = sprite[i];
+        StartCoroutine(display(lines[i]));
     }
 
     private void Update()
@@ -78,4 +84,25 @@ public class Story2 : MonoBehaviour
         SceneManager.LoadScene("Full_Cave");        
     }
 
+    public IEnumerator display(string displayStr)
+    {
+        words = displayStr;
+        lines[i] = "";
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(TypeText());
+    }
+
+    // 開啟打字效果
+    private IEnumerator TypeText()
+    {
+        txtDisplay.text = "";
+        foreach (var word in words)
+        {
+
+            txtDisplay.text += word;
+            yield return new WaitForSeconds(letterPause);
+            Debug.Log("typing" + word);
+        }
+
+    }
 }

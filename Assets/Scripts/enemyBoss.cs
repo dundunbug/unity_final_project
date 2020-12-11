@@ -9,20 +9,25 @@ public class enemyBoss : MonoBehaviour
     public GameObject fireball;
     public float transportTime = 3f;
     public float fireballTime = 1f;
+    public float teleport_interval = 2f;
     float transportLastTime = 0f;
     float fireballLastTime = 0f;
+    private Vector3 newPos;
     enemyBasic enemy_script;
     Transform[] groundsTS;
+    Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         enemy_script = GetComponent<enemyBasic>();
         groundsTS = grounds.GetComponentsInChildren<Transform>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        StartCoroutine(Enumerate_player_position());
         if (Time.time - transportLastTime >= transportTime){
             transportLastTime = Time.time;
             transport();
@@ -32,13 +37,18 @@ public class enemyBoss : MonoBehaviour
             fireballAttack();
         }
     }
+
+    private Vector3 UpdatePlayerPosition()
+    {
+        return player.transform.position;    
+    }
     void transport(){
         int index = checkWhichPlatform();
         int changeIndex = index;
         while (changeIndex == index){
             changeIndex = Random.Range(1,groundsTS.Length);
         }
-        Vector3 newPos = groundsTS[changeIndex].position + new Vector3(0,2f,0);
+        // Vector3 newPos = groundsTS[changeIndex].position + new Vector3(0,2f,0);
         transform.position = newPos;
     }
 
@@ -60,6 +70,7 @@ public class enemyBoss : MonoBehaviour
         return 0;
     }
     void fireballAttack(){
+        animator.SetTrigger("attack");
         Vector2 playerPos = player.transform.position;
         GameObject obj = GameObject.Instantiate(fireball, transform.position, 
     Quaternion.identity) as GameObject;
@@ -79,4 +90,11 @@ public class enemyBoss : MonoBehaviour
         float angle = Mathf.Atan2(v2.y, v2.x)*Mathf.Rad2Deg;
         return angle;
     }
+    private IEnumerator Enumerate_player_position()
+    {
+        Vector3 temp = UpdatePlayerPosition();
+        yield return new WaitForSecondsRealtime(teleport_interval);
+        newPos = temp;
+    }
+
 }

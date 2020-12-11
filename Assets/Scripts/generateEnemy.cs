@@ -10,6 +10,7 @@ public class generateEnemy : MonoBehaviour
     public int[] enemyCount = new int[4];
     private GameObject[] enemies = new GameObject[4];
     public float damageExpand = 1f;
+    //private GameObject prehab;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +24,15 @@ public class generateEnemy : MonoBehaviour
     void GenerateEnemy(){
         for(int i =0;i< enemyCount.Length; i++){
             for (int j=0; j< enemyCount[i]; j++){
-                GameObject prehab;
+                GameObject prehab = new GameObject();
                 if (!randomPosition){
-                    prehab = Instantiate(enemies[i], transform.position, Quaternion.identity, transform);
+                    StartCoroutine(Random_Delay(enemies[i],transform.position,prehab));
+                    //prehab = Instantiate(enemies[i], transform.position, Quaternion.identity, transform);
                 }else{
                     float ranX = Random.Range(transform.position.x-randomPositionRange,transform.position.x+randomPositionRange);
                     Vector3 ranPos = new Vector3(ranX,transform.position.y,transform.position.z);
-                    prehab = Instantiate(enemies[i], ranPos, Quaternion.identity, transform);
+                    StartCoroutine(Random_Delay(enemies[i],ranPos,prehab));
+                    //prehab = Instantiate(enemies[i], ranPos, Quaternion.identity, transform);
                 }
                 if (prehab.GetComponent<enemyBasic>()!=null){
                     // random flip
@@ -52,5 +55,12 @@ public class generateEnemy : MonoBehaviour
                 }
             }
         }
+    }
+
+    private IEnumerator Random_Delay(GameObject enemy, Vector3 generate_position, GameObject instantiate_assign)
+    {
+        float temptime = Random.Range (1.0f, 5.0f);
+        yield return new WaitForSecondsRealtime(temptime);
+        instantiate_assign = Instantiate(enemy, transform.position, Quaternion.identity, transform);
     }
 }

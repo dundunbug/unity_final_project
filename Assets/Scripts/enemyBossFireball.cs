@@ -10,10 +10,11 @@ public class enemyBossFireball : MonoBehaviour
     public Vector3 target;
     public float dieAfterSec = 0.5f;
     bool hasAttacked = false;
+    Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -65,11 +66,15 @@ public class enemyBossFireball : MonoBehaviour
                     objectStatus.attackObject(damageAmount);
                     gameObjectStatus();
             }
+            
         }
     }
     void gameObjectStatus(){
         canMove = false;
         hasAttacked = true;
+        if (animator != null)
+            print("destory animate");
+            animator.SetTrigger("isDestroy");
         Destroy(gameObject,dieAfterSec);
     }
     

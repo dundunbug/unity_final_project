@@ -15,6 +15,7 @@ public class UIchangeItem : MonoBehaviour
     public Image itemImage;
     public bool isThrow = true;
     public Text itemNumText;
+    public bool infiniteItem = false;
 
     public string[] item_types = new string[] {"Bomb_L","Bomb_Timer","Bomb_S","Carton",
     "Lego","TransferGate","CardBoard","Pillow","Bottle","Teddy"};
@@ -189,14 +190,17 @@ public class UIchangeItem : MonoBehaviour
 
     public void itemUsed()
     {
-        GameObject prehab;
-        if (isThrow)
-            prehab = player_script.projectile;
-        else
-            prehab = player_script.dropped_item;
-        int index = item_prehabs.IndexOf(prehab);
-        // item_types[index]
-        Item item = new Item { itemType = Types[index]};
-        player_script.inventory.DeleteItem(item);
+        if (!infiniteItem){
+            GameObject prehab;
+            if (isThrow)
+                prehab = player_script.projectile;
+            else
+                prehab = player_script.dropped_item;
+            int index = item_prehabs.IndexOf(prehab);
+            // item_types[index]
+            Item item = new Item { itemType = Types[index]};
+            player_script.inventory.DeleteItem(item);
+        }
+
     }
 }
