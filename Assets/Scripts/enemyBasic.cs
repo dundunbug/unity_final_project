@@ -44,9 +44,12 @@ public class enemyBasic : MonoBehaviour
     private Collider2D enemyCol;
     private bool isDead = false;
     public bool canFly = false;
+    public player player;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("player").GetComponent<player>();
+
         rb = GetComponent<Rigidbody2D>();
         if (canMove)
             rb.gravityScale = 5;
@@ -297,6 +300,7 @@ public class enemyBasic : MonoBehaviour
                 }
             }
             isDead = true;
+            player.DefeatedNum++;
         }
         // can move after n sec later
         if (!canFly)

@@ -35,6 +35,7 @@ public class GameData : MonoBehaviour
     public bool startCount = false;
 
     public GameObject panel_Score;
+    public int Score = 0;
   //  public static bool ins = false;
     public static GameData ins;
     public enum GameLevel

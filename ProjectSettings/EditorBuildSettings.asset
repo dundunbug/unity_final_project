@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/EndStories.unity
+    guid: 7bddd42415499fd48a0c013c63752c7c
   m_configObjects: {}

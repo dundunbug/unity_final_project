@@ -72,6 +72,7 @@ public class player : MonoBehaviour
     public GameObject Panel_End;
     public UIchangeItem changeThrowItem;
     public UIchangeItem changeDropItem;
+    public int DefeatedNum = 0;
 
 
 

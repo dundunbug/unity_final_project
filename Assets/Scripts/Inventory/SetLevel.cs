@@ -52,7 +52,7 @@ public class SetLevel : MonoBehaviour
     {
         Level = GameData.GameLevel.Normal;
    
-        Panel_Story2.SetActive(true);
+        Panel_Story.SetActive(true);
 
         panelSetLevel.SetActive(false);
 
@@ -63,7 +63,7 @@ public class SetLevel : MonoBehaviour
     {
         Level = GameData.GameLevel.Hard;
 
-        Panel_Story3.SetActive(true);
+        Panel_Story.SetActive(true);
 
         panelSetLevel.SetActive(false);
 
