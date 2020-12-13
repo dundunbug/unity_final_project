@@ -21,7 +21,7 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private void Awake()
     {
-        
+
     }
     void Start()
     {
@@ -142,7 +142,6 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     image.sprite = ItemAssets.Instance.DroppedItemSprite;
                     T.text = "Energy Orbs";
                     T2.text = "怪物掉落的能量球，你可以選擇要將他轉成能量點，或是轉換成任何物品(十分划算)";
-
                 }
                 break;
 

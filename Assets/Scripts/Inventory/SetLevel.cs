@@ -14,8 +14,6 @@ public class SetLevel : MonoBehaviour
     public GameObject button_NORMAL;
     public GameObject button_HARD;
     public GameObject Panel_Story;
-    public GameObject Panel_Story2;
-    public GameObject Panel_Story3;
     public enum GameLevel
     {
         Easy,

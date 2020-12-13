@@ -23,6 +23,7 @@ public class EnergySystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //num = 
         panel_droppedItem.SetActive(false);
         text1.text = num + "";
         upagradeNum.num = 0;

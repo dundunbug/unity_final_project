@@ -16,9 +16,9 @@ public class Inventory
         /*AddItem(new Item { itemType = Item.ItemType.CardBoard});
         AddItem(new Item { itemType = Item.ItemType.Pillow});
         AddItem(new Item { itemType = Item.ItemType.DroppedItem});
-        AddItem(new Item { itemType = Item.ItemType.DroppedItem});
+        AddItem(new Item { itemType = Item.ItemType.DroppedItem});*/
         AddItem(new Item { itemType = Item.ItemType.DroppedItem });
-        AddItem(new Item { itemType = Item.ItemType.DroppedItem });*/
+        AddItem(new Item { itemType = Item.ItemType.DroppedItem });
     }
 
     public void AddItem(Item item)
