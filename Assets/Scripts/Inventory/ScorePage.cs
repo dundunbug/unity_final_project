@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ScorePage : MonoBehaviour
 {
-    public TextMeshProUGUI T1;
+   /* public TextMeshProUGUI T1;
     public TextMeshProUGUI T2;
     public TextMeshProUGUI T3;
-    public TextMeshProUGUI T4;
+    public TextMeshProUGUI T4;*/
+    public Text T1;
+    public Text T2;
+    public Text T3;
+    public Text T4;
     public GameData gameData;
     public player player;
     // Start is called before the first frame update

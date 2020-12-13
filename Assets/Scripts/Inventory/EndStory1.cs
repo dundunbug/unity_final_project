@@ -15,8 +15,10 @@ public class EndStory1 : MonoBehaviour
 
 
     private float letterPause = 0.2f;
-    [SerializeField] private AudioClip typeSound;
-    /*[SerializeField] private */public Text txtDisplay;
+    public AudioClip typeSound;
+    public AudioSource source;
+    /*[SerializeField] private */
+    public Text txtDisplay;
     private string words;
     int num = 0;
     public Text text1;
@@ -64,6 +66,7 @@ public class EndStory1 : MonoBehaviour
             if (i >= 10)
             SceneManager.LoadScene("MainMenu");
 
+            source.Stop();
             StopCoroutine(TypeText());
             txtDisplay.text = "";
             words = "";
@@ -96,6 +99,7 @@ public class EndStory1 : MonoBehaviour
         num++;
         txtDisplay.text = "";
         Debug.Log("startTypingwords");
+        source.Play();
         foreach (var word in words)
         {
             // Debug.Log(num);
@@ -103,6 +107,6 @@ public class EndStory1 : MonoBehaviour
             txtDisplay.text += word;
             yield return new WaitForSeconds(letterPause);
         }
-
+        source.Stop();
     }
 }
