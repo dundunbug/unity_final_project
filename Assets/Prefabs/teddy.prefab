@@ -641,5 +641,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e619550ea824c424c8bb3cafc70479f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dieAfterSec: 5
+  dieAfterSec: 3
   explodeItem: {fileID: 0}

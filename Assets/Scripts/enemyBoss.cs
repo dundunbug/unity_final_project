@@ -70,12 +70,31 @@ public class enemyBoss : MonoBehaviour
         return 0;
     }
     void fireballAttack(){
-        animator.SetTrigger("attack");
         Vector2 playerPos = player.transform.position;
-        GameObject obj = GameObject.Instantiate(fireball, transform.position, 
+        int direction;
+        if (transform.position.x < playerPos.x){
+            direction = 1;//The object is on the right side of the enemy
+        }else{
+            direction = -1;//Object on the left side of the enemy
+        }
+        bool moveRight = enemy_script.movingRight;
+        if (moveRight && direction==-1){
+            enemy_script.flip();
+        }else if (!moveRight && direction==1){
+            enemy_script.flip();
+        }
+        enemy_script.canMove=false;
+
+        animator.SetTrigger("attack");
+        Vector3 fireball_pos;
+        if (direction==1){
+            fireball_pos = transform.position+ new Vector3(2,1,0);
+        }else{
+            fireball_pos = transform.position+ new Vector3(-2,1,0);
+        }
+        GameObject obj = GameObject.Instantiate(fireball, fireball_pos, 
     Quaternion.identity) as GameObject;
-        
-        float angle = GetAngle(transform.position,playerPos);
+        float angle = GetAngle(fireball_pos,playerPos);
         obj.transform.rotation = Quaternion.Euler(0,0,angle);
 
         enemyBossFireball fireball_script = obj.GetComponent<enemyBossFireball>();
@@ -83,6 +102,7 @@ public class enemyBoss : MonoBehaviour
         Vector3 vector = (player.transform.position-transform.position).normalized;
         fireball_script.target = vector;
         fireball_script.canMove = true;
+        enemy_script.canMove = true;
 
     }
     float GetAngle(Vector2 start, Vector2 end){

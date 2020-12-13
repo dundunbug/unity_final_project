@@ -138,10 +138,6 @@ public class player : MonoBehaviour
             changeThrowItem.refreshList();
         }
 
-
-    }
-    void FixedUpdate ()
-    {
         float inputX = Input.GetAxis("Horizontal");
         float inputX_Raw = Input.GetAxisRaw("Horizontal"); // record face direction
         float inputY = Input.GetAxis("Vertical");
@@ -198,6 +194,10 @@ public class player : MonoBehaviour
             move *= Time.deltaTime;
             transform.Translate(move);
         }
+    }
+    void FixedUpdate ()
+    {
+
         
     }
     
@@ -314,8 +314,6 @@ public class player : MonoBehaviour
             // print(other.gameObject.tag);
             canJump = true;
         }
-
-      
     }
     private void OnTriggerEnter2D(Collider2D other) {
         // print(other.gameObject.tag);
@@ -324,6 +322,8 @@ public class player : MonoBehaviour
             if (objectPainting.onGround){
                 transform.position = objectPainting.TeleportingGate;
             }
+        }else if (other.gameObject.tag== "Ground"){
+            canJump = true;
         }
     }
     public void attacked(int direction, int damageAmount){

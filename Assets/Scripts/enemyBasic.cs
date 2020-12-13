@@ -26,7 +26,7 @@ public class enemyBasic : MonoBehaviour
     public int healthMax = 20;
     public GameObject dropObject;
     public int dropObjectNum = 2;
-    private bool movingRight = true;
+    [HideInInspector]public bool movingRight = true;
     public Transform groundDetection;
     public Transform wallDetection;
     public int damageAmount = 10;
@@ -45,6 +45,7 @@ public class enemyBasic : MonoBehaviour
     private bool isDead = false;
     public bool canFly = false;
     public player player;
+    private audioController audioController;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +66,7 @@ public class enemyBasic : MonoBehaviour
             GameObject attackDec = transform.Find("attackDetector").gameObject;
             attackDec.GetComponent<enemyAttack>().damageAmount = damageAmount;
         }
+        audioController = GameObject.Find("audioController").GetComponent<audioController>();
     }
 
     private void Update()
@@ -283,6 +285,9 @@ public class enemyBasic : MonoBehaviour
             rb.AddForce(layback, ForceMode2D.Impulse);
         }
         healthSystem.Damage(damageAmount);
+        if (!isDead){
+            audioController.playerAttackMonSFX(gameObject.name);
+        }
         if (healthSystem.GetHealth() == 0){
             if (!isDead){
                 if (animator)

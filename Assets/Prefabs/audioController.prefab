@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7730593577362208862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7730593577362208860}
+  - component: {fileID: 7730593577362208861}
+  m_Layer: 0
+  m_Name: audioController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7730593577362208860
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730593577362208862}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 31.116194, y: -3.394733, z: -71.79231}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7730593577362208861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730593577362208862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4da00d869182548b1ef155ba847f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipList:
+  - {fileID: 8300000, guid: dccc880c52ed6084e924d9a20e460de1, type: 3}
+  - {fileID: 8300000, guid: 8341737399855674f92f540abeff461f, type: 3}
+  - {fileID: 8300000, guid: 10a858e19c46db448b4ec7e81839ecd4, type: 3}
+  - {fileID: 8300000, guid: 2a7c64811ac2f1344b2982cfc4b941b7, type: 3}
+  - {fileID: 8300000, guid: dbe2b8231a6bd9348a958a63d15f6dea, type: 3}
+  hurtSFX: {fileID: 8300000, guid: 2c676561fcf680744bd0ca3c95bee11a, type: 3}
+  bossHurtSFX: {fileID: 8300000, guid: 3ebefa622499bf94aa47314ead755b14, type: 3}
+  ghostSFX: {fileID: 8300000, guid: 3f0e014992f7bd047bcf476e3d487fd1, type: 3}
+  explosionSmallSFX: {fileID: 8300000, guid: eff52822828725e4eb13762fbf114c30, type: 3}
+  explosionBigSFX: {fileID: 8300000, guid: 799b550899dfe684789c50e30315eb03, type: 3}
+  attackMouse: {fileID: 8300000, guid: baca916eac115394483de29bfc33eab1, type: 3}
+  attackTub: {fileID: 8300000, guid: 7a43d48fd67d0804abd399e15c441347, type: 3}
+  attackDog: {fileID: 8300000, guid: ffe84e06c7d8d224caf69c4c768cff2f, type: 3}
+  attackFeed: {fileID: 8300000, guid: 51f562bd1dd137143894165654b7272c, type: 3}

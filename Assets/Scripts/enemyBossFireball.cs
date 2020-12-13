@@ -39,7 +39,7 @@ public class enemyBossFireball : MonoBehaviour
         if (other.gameObject.tag != "Ground"){
             attack(other);
         }else{
-            if (other.gameObject.name =="floor"){
+            if (other.gameObject.name !="floor" && other.gameObject.tag=="Ground"){
                 gameObjectStatus();
             }
         }

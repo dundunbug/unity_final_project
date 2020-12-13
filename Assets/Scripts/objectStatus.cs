@@ -66,6 +66,7 @@ public class objectStatus : MonoBehaviour
                         // grab?
                         GameObject child = gameObject.transform.GetChild(0).gameObject;
                         child.SetActive(true);
+                        Destroy(gameObject,dieAfterSec);
                     }else if (gameObject.name.Contains("lavaFloor")){
                         gameObject.GetComponent<objectLava>().dropLava(dieAfterSec);
                         Destroy(gameObject,dieAfterSec);
