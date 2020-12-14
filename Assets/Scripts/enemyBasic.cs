@@ -14,6 +14,7 @@ public class enemyBasic : MonoBehaviour
     public float speed = 3.5f;
     public Vector2 jumpHeight = new Vector2(4f,12f);
     [Header("detector")]
+    public int touch_wall_flag = 0;
     public float distance = 2f; // ground detector 
     public float wallDis = 2f; // wall detector
     public float findPlayerRadius = 5f;
@@ -110,9 +111,12 @@ public class enemyBasic : MonoBehaviour
                 // StartCoroutine(notNearWallAfterSec(0.5f));
                 if (isSamePlace){
                     flip();
+                    touch_wall_flag = 1;
                     StartCoroutine(notNearWallAfterSec(0.5f));
-                }else if (!advanceTrack || collider == null){
+                }
+                else if (!advanceTrack || collider == null){
                     flip();
+                    touch_wall_flag = 1;
                     // if ground dis too low, must do something
                     // climb up 
                 }
@@ -332,6 +336,31 @@ public class enemyBasic : MonoBehaviour
         if (other.gameObject.tag == "Ground"){
             canJump = true;
         }
+        if (other.gameObject.tag == "Enemy")
+        {
+            enemyBasic other_enemyBasic_script = other.gameObject.GetComponent<enemyBasic>();
+            if ((touch_wall_flag == 1 && other_enemyBasic_script.touch_wall_flag == 1) || (touch_wall_flag == 0 && other_enemyBasic_script.touch_wall_flag == 0))
+            {
+                if (!movingRight && other_enemyBasic_script.movingRight)
+                {
+                    if (gameObject.transform.position.x - other.transform.position.x > 0)
+                    {
+                        flip();
+                        //movingRight = true;
+                        touch_wall_flag = 1;
+                        other_enemyBasic_script.touch_wall_flag = 0;
+                    }
+                }
+            }
+            else if (touch_wall_flag == 0 && other_enemyBasic_script.touch_wall_flag == 1)
+            {
+                flip();
+                //movingRight = !movingRight;
+                touch_wall_flag = 1;
+                other_enemyBasic_script.touch_wall_flag = 0;
+            }
+        }        
+        /*
         if (other.gameObject.tag == "Enemy"){
             if(movingRight == true){
                 transform.eulerAngles = new Vector3(0, -180, 0);
@@ -340,11 +369,22 @@ public class enemyBasic : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 movingRight = true;
             }
-        }
+        }*/
     }
     private void OnCollisionStay2D(Collision2D other) {
         if (other.gameObject.tag == "Ground"){
             canJump = true;
+        }
+        if (other.gameObject.tag == "Enemy")
+        {
+            enemyBasic other_enemyBasic_script = other.gameObject.GetComponent<enemyBasic>();
+            float temp = Random.Range (0.0f, 1.0f);
+            if (temp > 0.8f)
+            {
+                flip();
+                touch_wall_flag = 1;
+                other_enemyBasic_script.touch_wall_flag = 0;
+            }
         }
     }
     private void OnCollisionExit2D(Collision2D other) {
@@ -352,20 +392,4 @@ public class enemyBasic : MonoBehaviour
             canJump = false;
         }  
     }
-
-    /*private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Enemy"){
-            if(Mathf.Abs(transform.position.x - other.transform.position.x) < 0.02f)
-            {
-                OverlapAvoidance();
-            }
-        }  
-    }
-    void OverlapAvoidance()
-    {
-        float move_a_bit = Random.Range (-0.2f, 0.2f);
-        gameObject.transform.position += new Vector3 (move_a_bit, 0, 0);
-    }*/
-
 }
