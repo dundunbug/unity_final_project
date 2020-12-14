@@ -12,7 +12,7 @@ public class enemyBasic : MonoBehaviour
     [Header("movement")]
     // move speed 
     public float speed = 3.5f;
-    public Vector2 jumpHeight = new Vector2(4f,12f);
+    public Vector2 jumpHeight = new Vector2(4f, 12f);
     [Header("detector")]
     public int touch_wall_flag = 0;
     public float distance = 2f; // ground detector 
@@ -27,7 +27,7 @@ public class enemyBasic : MonoBehaviour
     public int healthMax = 20;
     public GameObject dropObject;
     public int dropObjectNum = 2;
-    [HideInInspector]public bool movingRight = true;
+    [HideInInspector] public bool movingRight = true;
     public Transform groundDetection;
     public Transform wallDetection;
     public int damageAmount = 10;
@@ -55,15 +55,19 @@ public class enemyBasic : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if (canMove)
             rb.gravityScale = 5;
-        if (GetComponent<SpriteRenderer>()){
+        if (GetComponent<SpriteRenderer>())
+        {
             height = GetComponent<SpriteRenderer>().bounds.size.y;
-        }else{
+        }
+        else
+        {
             height = 2f;
         }
         animator = GetComponent<Animator>();
         healthSystem = new healthSystem(healthMax);
         enemyCol = GetComponent<Collider2D>();
-        if (transform.Find("attackDetector")){
+        if (transform.Find("attackDetector"))
+        {
             GameObject attackDec = transform.Find("attackDetector").gameObject;
             attackDec.GetComponent<enemyAttack>().damageAmount = damageAmount;
         }
@@ -71,17 +75,20 @@ public class enemyBasic : MonoBehaviour
     }
 
     private void Update()
-    { 
-        if (canMove){
+    {
+        if (canMove)
+        {
             Collider2D collider = null;
-            if (advanceTrack){
+            if (advanceTrack)
+            {
                 // check if player is near
                 int playerLayer = 1 << LayerMask.NameToLayer("player");
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, findPlayerRadius, playerLayer);
                 // check if it is player or attract item
                 if (colliders.Length != 0)
                     collider = checkPlayerOrItem(colliders);
-                else{
+                else
+                {
                     collider = null;
                 }
             }
@@ -90,94 +97,130 @@ public class enemyBasic : MonoBehaviour
             int groundLayer = 1 << LayerMask.NameToLayer("ground");
             RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance, groundLayer);
             // if player is not near, patrol
-            if (groundInfo.collider == false && collider==null){
+            if (groundInfo.collider == false && collider == null)
+            {
                 flip();
             }
 
             // check if bumping into wall 
             Vector2 direction;
-            if (movingRight){
+            if (movingRight)
+            {
                 direction = Vector2.right;
-            }else{
+            }
+            else
+            {
                 direction = Vector2.left;
             }
-            
+
             int wallLayer = 1 << LayerMask.NameToLayer("ground");
             int doorLayer = 1 << LayerMask.NameToLayer("door");
             int finalmask = wallLayer | doorLayer;
             RaycastHit2D wallInfo = Physics2D.Raycast(wallDetection.position, direction, wallDis, finalmask);
-            if (wallInfo.collider == true){
+            if (wallInfo.collider == true)
+            {
                 nearWall = true;
                 // StartCoroutine(notNearWallAfterSec(0.5f));
-                if (isSamePlace){
+                if (isSamePlace)
+                {
                     flip();
                     touch_wall_flag = 1;
                     StartCoroutine(notNearWallAfterSec(0.5f));
                 }
-                else if (!advanceTrack || collider == null){
+                else if (!advanceTrack || collider == null)
+                {
                     flip();
                     touch_wall_flag = 1;
                     // if ground dis too low, must do something
                     // climb up 
                 }
-            }else{
+            }
+            else
+            {
                 nearWall = false;
             }
 
             // advance
-            if (collider != null && advanceTrack){
+            if (collider != null && advanceTrack)
+            {
                 // print(collider.gameObject.tag);
                 if (animator)
-                    animator.SetBool("isAttacking",false);
+                    animator.SetBool("isAttacking", false);
                 GameObject player = collider.gameObject;
                 checkPlayerPos(player.transform.position);
-                float range = player.transform.position.y- (transform.position.y - height*1/2);
+                float range = player.transform.position.y - (transform.position.y - height * 1 / 2);
                 // print(canJump);
-                if (range >= yrange && nearWall && canJump){
-                    if(!isSamePlace){
+                if (range >= yrange && nearWall && canJump && range <= yrange + 5f)
+                {
+                    if (!isSamePlace)
+                    {
                         int dir;
                         // print(transform.position.x - player.transform.position.x );
-                        if (transform.position.x - player.transform.position.x <= -0.5f){
+                        if (transform.position.x - player.transform.position.x <= -0.5f)
+                        {
                             dir = 1;
-                        }else if (transform.position.x - player.transform.position.x >= 0.5f){
+                        }
+                        else if (transform.position.x - player.transform.position.x >= 0.5f)
+                        {
                             dir = -1;
-                        }else{
+                        }
+                        else
+                        {
                             dir = 0;
                         }
-                        jump(player,dir);
+                        jump(player, dir);
                     }
                 }
 
-                if (Mathf.Abs(transform.position.x- player.transform.position.x) <= xDisPlayer && range >= -2f){
+                if (Mathf.Abs(transform.position.x - player.transform.position.x) <= xDisPlayer && range >= -2f && range <= yrange)
+                {
                     // move or attack 
                     // print("move or attack");
-                    if (!canAttack){
+                    if (!canAttack)
+                    {
                         // check which direction facing 
-                        if (transform.position.x - player.transform.position.x <= -0.5f){
+                        if (transform.position.x - player.transform.position.x <= -0.5f)
+                        {
                             transform.eulerAngles = new Vector3(0, 0, 0);
                             movingRight = true;
-                        }else if (transform.position.x - player.transform.position.x >= 0.5f){
+                        }
+                        else if (transform.position.x - player.transform.position.x >= 0.5f)
+                        {
                             transform.eulerAngles = new Vector3(0, -180, 0);
                             movingRight = false;
                         }
                         transform.Translate(Vector2.right * speed * Time.deltaTime); // move
-                    }else{
+                    }
+                    else
+                    {
                         // print("attack");
                         attack(); // attack
                     }
-                }else if (!isSamePlace){
-                    // print("track");
+                }
+                else if (!isSamePlace)
+                {
                     if (canAttack)
                         gameObject.transform.Find("attackDetector").gameObject.SetActive(false);
-                    track(collider.gameObject);
-                }else{
+                    if (range <= yrange || range >= -1f * yrange)
+                    {
+                        track(collider.gameObject);
+                    }
+                    else
+                    {
+                        transform.Translate(Vector2.right * speed * Time.deltaTime);
+                    }
+                }
+                else
+                {
                     if (canAttack)
                         gameObject.transform.Find("attackDetector").gameObject.SetActive(false);
                     transform.Translate(Vector2.right * speed * Time.deltaTime);
                 }
-            }else{
+            }
+            else
+            {
                 if (animator)
-                    animator.SetBool("isAttacking",false);
+                    animator.SetBool("isAttacking", false);
                 if (canAttack)
                     gameObject.transform.Find("attackDetector").gameObject.SetActive(false);
                 transform.Translate(Vector2.right * speed * Time.deltaTime);
@@ -201,15 +244,20 @@ public class enemyBasic : MonoBehaviour
             // }
         }
     }
-    Collider2D checkPlayerOrItem(Collider2D[] colliders){
+    Collider2D checkPlayerOrItem(Collider2D[] colliders)
+    {
         float dis = 1000f;
         Collider2D collider = colliders[0];
-        if (colliders.Length >= 1){
-            foreach(Collider2D col in colliders){
+        if (colliders.Length >= 1)
+        {
+            foreach (Collider2D col in colliders)
+            {
                 // chase item first
-                if (col.gameObject.name != "player"){
+                if (col.gameObject.name != "player")
+                {
                     Vector2 disBetweenEnemy = transform.position - col.transform.position;
-                    if (disBetweenEnemy.magnitude < dis){
+                    if (disBetweenEnemy.magnitude < dis)
+                    {
                         dis = disBetweenEnemy.magnitude;
                         collider = col;
                     }
@@ -218,58 +266,75 @@ public class enemyBasic : MonoBehaviour
         }
         return collider;
     }
-    IEnumerator notNearWallAfterSec(float time){
-        yield return new WaitForSeconds (time);
+    IEnumerator notNearWallAfterSec(float time)
+    {
+        yield return new WaitForSeconds(time);
         nearWall = false;
     }
-    public void flip(){
-        if(movingRight == true){
+    public void flip()
+    {
+        if (movingRight == true)
+        {
             transform.eulerAngles = new Vector3(0, -180, 0);
             movingRight = false;
-        }else{
+        }
+        else
+        {
             transform.eulerAngles = new Vector3(0, 0, 0);
             movingRight = true;
         }
     }
-    void jump(GameObject player, int dir){
+    void jump(GameObject player, int dir)
+    {
         canJump = false;
         canMove = false;
-        rb.AddForce(new Vector2(jumpHeight.x*dir,jumpHeight.y), ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(jumpHeight.x * dir, jumpHeight.y), ForceMode2D.Impulse);
         StartCoroutine(canMoveAfterSec(0.5f));
-        if (Vector2.Distance(lastPos, transform.position) <= 1f){
+        if (Vector2.Distance(lastPos, transform.position) <= 1f)
+        {
             countSamePlace += 1;
-            if ( countSamePlace >= 3 && nearWall){
+            if (countSamePlace >= 3 && nearWall)
+            {
                 flip();
                 playerLastPos = player.transform.position;
                 countSamePlace = 0;
                 isSamePlace = true;
             }
-        }else{
+        }
+        else
+        {
             countSamePlace = 0;
         }
         lastPos = transform.position;
     }
-    void checkPlayerPos(Vector2 pos){
-        if (isSamePlace && Vector2.Distance(playerLastPos, pos) >= 10f){
+    void checkPlayerPos(Vector2 pos)
+    {
+        if (isSamePlace && Vector2.Distance(playerLastPos, pos) >= 10f)
+        {
             isSamePlace = false;
         }
     }
-    public void track(GameObject player){
+    public void track(GameObject player)
+    {
         // check which direction facing 
-        if (transform.position.x < player.transform.position.x){
+        if (transform.position.x < player.transform.position.x)
+        {
             transform.eulerAngles = new Vector3(0, 0, 0);
             movingRight = true;
-        }else{
+        }
+        else
+        {
             transform.eulerAngles = new Vector3(0, -180, 0);
             movingRight = false;
         }
         Vector2 pos = new Vector2(player.transform.position.x, transform.position.y);
         transform.position = Vector2.MoveTowards(transform.position, pos, speed * Time.deltaTime);
     }
-    void attack(){
+    void attack()
+    {
         canMove = false;
         if (animator)
-            animator.SetBool("isAttacking",true);
+            animator.SetBool("isAttacking", true);
         // print("attack");
         // transform.position += Vector3.left * 0.1f;
         // transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.left*10, 2 * speed * Time.deltaTime);
@@ -277,34 +342,42 @@ public class enemyBasic : MonoBehaviour
         if (!canFly)
             StartCoroutine(canMoveAfterSec(0.5f));
     }
-    IEnumerator deactiveAttackDetection(float time){
-        yield return new WaitForSeconds (time);
+    IEnumerator deactiveAttackDetection(float time)
+    {
+        yield return new WaitForSeconds(time);
         // print("stop attack");
         gameObject.transform.Find("attackDetector").gameObject.SetActive(false);
     }
-    public void attacked(int direction, int damageAmount){
+    public void attacked(int direction, int damageAmount)
+    {
         canMove = false;
-        if (direction != 0){
-            Vector2 layback = new Vector2(direction*moveForce,jumpForce);
+        if (direction != 0)
+        {
+            Vector2 layback = new Vector2(direction * moveForce, jumpForce);
             rb.AddForce(layback, ForceMode2D.Impulse);
         }
         healthSystem.Damage(damageAmount);
-        if (!isDead){
+        if (!isDead)
+        {
             audioController.playerAttackMonSFX(gameObject.name);
         }
-        if (healthSystem.GetHealth() == 0){
-            if (!isDead){
+        if (healthSystem.GetHealth() == 0)
+        {
+            if (!isDead)
+            {
                 if (animator)
                     animator.SetTrigger("isDead");
-                Destroy(gameObject,0.4f);
-                
-                if (GetComponent<Renderer>() != null){
+                Destroy(gameObject, 0.4f);
+
+                if (GetComponent<Renderer>() != null)
+                {
                     Color temp = GetComponent<Renderer>().material.color;
                     StartCoroutine(IncreaseTransparency(temp));
                 }
-                
+
                 // drop objects after destroy
-                for (int i =0; i < dropObjectNum; i++){
+                for (int i = 0; i < dropObjectNum; i++)
+                {
                     dropObjects();
                 }
             }
@@ -320,20 +393,24 @@ public class enemyBasic : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.01f);
         temp.a -= 0.025f;
     }
-    void dropObjects(){
+    void dropObjects()
+    {
         // initiate prehab
         float ranX = Random.Range(enemyCol.bounds.center.x - 2f, enemyCol.bounds.center.x + 2f);
         float ranY = enemyCol.bounds.min.y + 0.3f;
         Vector2 newPos = new Vector2(ranX, ranY);
-        GameObject obj = GameObject.Instantiate(dropObject, newPos, 
+        GameObject obj = GameObject.Instantiate(dropObject, newPos,
             Quaternion.identity) as GameObject;
     }
-    IEnumerator canMoveAfterSec(float time){
-        yield return new WaitForSeconds (time);
+    IEnumerator canMoveAfterSec(float time)
+    {
+        yield return new WaitForSeconds(time);
         canMove = true;
     }
-    private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.tag == "Ground"){
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
             canJump = true;
         }
         if (other.gameObject.tag == "Enemy")
@@ -359,7 +436,7 @@ public class enemyBasic : MonoBehaviour
                 touch_wall_flag = 1;
                 other_enemyBasic_script.touch_wall_flag = 0;
             }
-        }        
+        }
         /*
         if (other.gameObject.tag == "Enemy"){
             if(movingRight == true){
@@ -371,14 +448,16 @@ public class enemyBasic : MonoBehaviour
             }
         }*/
     }
-    private void OnCollisionStay2D(Collision2D other) {
-        if (other.gameObject.tag == "Ground"){
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
             canJump = true;
         }
         if (other.gameObject.tag == "Enemy")
         {
             enemyBasic other_enemyBasic_script = other.gameObject.GetComponent<enemyBasic>();
-            float temp = Random.Range (0.0f, 1.0f);
+            float temp = Random.Range(0.0f, 1.0f);
             if (temp > 0.8f)
             {
                 flip();
@@ -387,9 +466,11 @@ public class enemyBasic : MonoBehaviour
             }
         }
     }
-    private void OnCollisionExit2D(Collision2D other) {
-        if (other.gameObject.tag == "Ground"){
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
             canJump = false;
-        }  
+        }
     }
 }
