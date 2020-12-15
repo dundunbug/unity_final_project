@@ -56,7 +56,7 @@ public class Story2 : MonoBehaviour
     [SerializeField] private AudioClip typeSound;
     [SerializeField] private Text txtDisplay;
     private string words;
-
+    public AudioSource source;
     void Start()
     {
         i = 0;
@@ -69,14 +69,17 @@ public class Story2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             i++;
+
+            source.Stop();
+            StopAllCoroutines();
+            txtDisplay.text = "";
+            words = "";
+            StartCoroutine(display(lines[i]));
+            image.sprite = sprite[i];
         }
 
         if (i >= 5)
             SceneManager.LoadScene("Full_Cave");
-
-        image.sprite = sprite[i];
-        text1.text = lines[i];
-
     }
 
     public void Skip()
@@ -96,6 +99,7 @@ public class Story2 : MonoBehaviour
     private IEnumerator TypeText()
     {
         txtDisplay.text = "";
+        source.Play();
         foreach (var word in words)
         {
 

@@ -9,7 +9,7 @@ public class EndStory1 : MonoBehaviour
     private string[] lines = new string[] { "呼，到這裡應該不會再有怪物了吧。但是哪裡才是出去的路？", "（你環顧四周，卻看不見像是出口的地方）",
         "而且這該死的手環跟頭盔肯定有問題，但竟然拔不掉？！","（不管你怎麼嘗試，都無法將手環脫下。而就在此時．．．）", "（手環上的珠子突然發出了強光，讓你不得不閉上眼睛）",
         "（當你再張開眼睛，一股違和感襲來，你好像忘了什麼，但有個聲音．．．）" ,"怎麼了？突然什麼都看不見","7-11停電了嗎？" ,"．．．" ,"『逃是唯一的出路』"};//[1,1,2,2,3,3,4,,4,4,4,4]
-    public Sprite[] sprite = new Sprite[11];
+    public Sprite[] sprite = new Sprite[12];
     public Image image;
     private int i = -1;
 
@@ -22,37 +22,13 @@ public class EndStory1 : MonoBehaviour
     private string words;
     int num = 0;
     public Text text1;
-    /*  void Start()
-      {
-
-      }
-
-      private void Update()
-      {
-        //  Debug.Log(i);
-          if (i == -1) {
-              StartCoroutine(display(lines[++i]));
-          }
-
-          if (Input.GetKeyDown(KeyCode.Space))
-          {
-              i++;
-              if (i > 10)
-              SceneManager.LoadScene("MainMenu");
-              image.sprite = sprite[i];
-              StopCoroutine(TypeText());
-              txtDisplay.text = "";
-              words = "";
-              StartCoroutine(display(lines[i]));
-          }
-
-      }*/
 
     void Start()
     {
         i = 0;
         image.sprite = sprite[i];
         StartCoroutine(display(lines[i]));
+
     }
 
     private void Update()
@@ -67,11 +43,10 @@ public class EndStory1 : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
 
             source.Stop();
-            StopCoroutine(TypeText());
+            StopAllCoroutines();
             txtDisplay.text = "";
             words = "";
             StartCoroutine(display(lines[i]));
-
             image.sprite = sprite[i];
         }
 
@@ -88,8 +63,8 @@ public class EndStory1 : MonoBehaviour
     {
         Debug.Log("startTyping:"+ displayStr);
         words = displayStr;
-        lines[i] = "";
         yield return new WaitForSeconds(1f);
+        txtDisplay.text = lines[i];
         StartCoroutine(TypeText());
     }
 
@@ -102,7 +77,6 @@ public class EndStory1 : MonoBehaviour
         source.Play();
         foreach (var word in words)
         {
-            // Debug.Log(num);
             Debug.Log("typing:"+word);
             txtDisplay.text += word;
             yield return new WaitForSeconds(letterPause);

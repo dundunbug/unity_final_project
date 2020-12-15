@@ -18,6 +18,8 @@ public class Story1 : MonoBehaviour
     [SerializeField] private Text txtDisplay;
     private string words;
     int num = 0;
+
+    public AudioSource source;
     void Start()
     {
         i = 0;
@@ -30,7 +32,9 @@ public class Story1 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             i++;
-            StopCoroutine(TypeText());
+
+            source.Stop();
+            StopAllCoroutines();
             txtDisplay.text = "";
             words = "";
             StartCoroutine(display(lines[i]));
@@ -61,13 +65,13 @@ public class Story1 : MonoBehaviour
     {
         num++;
         txtDisplay.text = "";
+        source.Play();
         foreach (var word in words)
         {
-Debug.Log(num);
             txtDisplay.text += word;
             yield return new WaitForSeconds(letterPause);
         }
-
+        source.Stop();
     }
 }
 

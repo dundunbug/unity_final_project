@@ -203,7 +203,7 @@ public class GameData : MonoBehaviour
             Debug.Log("DeleteUsedSave");
             PlayerPrefs.DeleteKey("usedSave");
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (SceneManager.GetActiveScene().name == "Full_Cave" && Input.GetKeyDown(KeyCode.C))
         {
             panel_Score = GameObject.Find("Canvas (2)").transform.GetChild(1).gameObject;
             if(panel_Score.activeSelf==false)

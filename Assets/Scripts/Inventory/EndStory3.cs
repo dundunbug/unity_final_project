@@ -21,6 +21,7 @@ public class EndStory3 : MonoBehaviour
     [SerializeField] private AudioClip typeSound;
     [SerializeField] private Text txtDisplay;
     private string words;
+    public AudioSource source;
 
     void Start()
     {
@@ -33,16 +34,16 @@ public class EndStory3 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             i++;
-            StopCoroutine(TypeText());
+            if (i >= 12)
+                SceneManager.LoadScene("MainMenu");
+
+            source.Stop();
+            StopAllCoroutines();
             txtDisplay.text = "";
             words = "";
             StartCoroutine(display(lines[i]));
-
             image.sprite = sprite[i];
         }
-
-        if (i >= 12)
-            SceneManager.LoadScene("MainMenu");
     }
 
     public void Skip()
@@ -62,13 +63,13 @@ public class EndStory3 : MonoBehaviour
     private IEnumerator TypeText()
     {
         txtDisplay.text = "";
+        source.Play();
         foreach (var word in words)
         {
-
             txtDisplay.text += word;
             yield return new WaitForSeconds(letterPause);
             Debug.Log("typing" + word);
         }
-
+        source.Stop();
     }
 }

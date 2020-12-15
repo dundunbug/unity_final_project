@@ -41,13 +41,18 @@ public class ScorePage : MonoBehaviour
          {
              Time.timeScale = 0f;
          }
+         else
+            Time.timeScale = 1f;
     }
 
     public void Continue()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("EndStories");
+         SceneManager.LoadScene("EndStories");
     }
 
+    private void OnDestroy()
+    {
+        Time.timeScale = 1f;
+    }
 
 }
