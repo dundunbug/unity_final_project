@@ -73,11 +73,9 @@ public class EndStory1 : MonoBehaviour
     {
         num++;
         txtDisplay.text = "";
-        Debug.Log("startTypingwords");
         source.Play();
         foreach (var word in words)
         {
-            Debug.Log("typing:"+word);
             txtDisplay.text += word;
             yield return new WaitForSeconds(letterPause);
         }

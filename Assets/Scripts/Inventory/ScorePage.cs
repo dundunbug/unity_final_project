@@ -36,13 +36,6 @@ public class ScorePage : MonoBehaviour
              gameData.Score = player.DefeatedNum * 100;
 
          T4.text = gameData.Score + "";
-
-         if (gameObject.activeSelf)
-         {
-             Time.timeScale = 0f;
-         }
-         else
-            Time.timeScale = 1f;
     }
 
     public void Continue()

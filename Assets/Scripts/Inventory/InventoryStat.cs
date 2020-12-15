@@ -9,6 +9,7 @@ public class InventoryStat : MonoBehaviour
     public GameObject inventoryCanvas;
     public GameObject Panel_droppedItem;
     public GameObject Panel_Setting;
+    public GameObject Panel_End;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,9 +30,10 @@ public class InventoryStat : MonoBehaviour
                 
         }
 
-        if (inventoryCanvas.activeSelf == true)
+        if (inventoryCanvas.activeSelf|| Panel_End.activeSelf)
             Time.timeScale = 0f;
         else
             Time.timeScale = 1f;
+
     }
 }

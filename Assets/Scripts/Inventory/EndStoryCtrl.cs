@@ -27,7 +27,7 @@ public class EndStoryCtrl : MonoBehaviour
             
             panel1.SetActive(true);
         }
-        if (gameData.LevelPassed == GameData.GameLevel.Normal)
+        if (gameData.LevelPassed == GameData.GameLevel.Easy)
         {
             panel2.SetActive(true);
         }
