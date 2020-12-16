@@ -35,7 +35,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isDestroy
+    m_ConditionEvent: IsDestroy
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3695919085876579158}
@@ -112,7 +112,7 @@ AnimatorController:
   m_Name: paper
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: isDestroy
+  - m_Name: IsDestroy
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0

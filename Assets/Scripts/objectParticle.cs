@@ -40,9 +40,9 @@ public class objectParticle : MonoBehaviour
                     enemyBasic.attacked(0,damageAmount);
             }
             objectStatus objectStatus = other.gameObject.GetComponent<objectStatus>();
-            if (gameObject.tag == "burnp_late")
+            if (other.gameObject.tag == "burn_plate")
                 {
-                    burn(burntime);
+                    burn(burntime, other);
                 }
             else{
                 if (objectStatus != null){
@@ -54,11 +54,11 @@ public class objectParticle : MonoBehaviour
     }
 
     // dedicated for paper
-    private void burn(float burntime)
+    private void burn(float burntime, Collider2D other)
     {
-        Destroy(gameObject, burntime);
-        Animator paper_animation = gameObject.GetComponent<Animator>();
+        Animator paper_animation = other.gameObject.GetComponent<Animator>();
         paper_animation.SetBool("IsDestroy", true);
+        Destroy(other.gameObject, burntime);
     }
     /*
     void OnParticleCollision(GameObject other)
