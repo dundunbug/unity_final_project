@@ -57,7 +57,7 @@ public class UI_Inventory : MonoBehaviour
 
             itemslotRTransform.anchoredPosition = new Vector2(-300 + x * itemslotCellSize, 130 - y * itemslotCellSize);
 
-            itemslotRTransform.GetComponent<ShowInfo>().SetType(item, inventory);
+            itemslotRTransform.GetComponent<showInfo>().SetType(item, inventory);
 
             Image image = itemslotRTransform.Find("image").GetComponent<Image>();
 

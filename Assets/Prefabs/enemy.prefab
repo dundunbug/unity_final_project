@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5439005729094976991}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.87, y: -0.957, z: 0}
+  m_LocalPosition: {x: 0.542, y: -0.957, z: 0}
   m_LocalScale: {x: 0.14217232, y: 0.045247685, z: 0}
   m_Children: []
   m_Father: {fileID: 5439005729122912321}
@@ -164,7 +164,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01745595, y: -0.24994934}
+  m_Offset: {x: -0.017455935, y: -0.2745329}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -175,7 +175,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.89313126, y: 1.5410781}
+  m_Size: {x: 0.89313126, y: 1.4919109}
   m_EdgeRadius: 0
 --- !u!114 &5439005729122912319
 MonoBehaviour:
@@ -193,6 +193,7 @@ MonoBehaviour:
   jumpForce: 5
   speed: 1
   jumpHeight: {x: 4, y: 13}
+  touch_wall_flag: 0
   distance: 0.5
   wallDis: 1
   findPlayerRadius: 8
@@ -204,11 +205,13 @@ MonoBehaviour:
   dropObject: {fileID: 1637041270720909378, guid: f382a13ef9bb73345b699b9f6268fa94,
     type: 3}
   dropObjectNum: 3
+  movingRight: 1
   groundDetection: {fileID: 5439005729094976990}
   wallDetection: {fileID: 5439005729031173002}
   damageAmount: 10
   canMove: 1
   canFly: 0
+  player: {fileID: 0}
 --- !u!50 &5439005729122912320
 Rigidbody2D:
   serializedVersion: 4
@@ -262,7 +265,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01745595, y: -0.24994934}
+  m_Offset: {x: -0.017455935, y: -0.28067887}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -273,7 +276,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.89313126, y: 1.5410781}
+  m_Size: {x: 0.89313126, y: 1.479619}
   m_EdgeRadius: 0
 --- !u!1 &5439005729463154156
 GameObject:

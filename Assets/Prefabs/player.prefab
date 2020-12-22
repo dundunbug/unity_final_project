@@ -135,6 +135,7 @@ MonoBehaviour:
   rope: {fileID: 0}
   climb: 0
   animator_player: {fileID: 2286634086909154323}
+  throwStart: {x: 0, y: 0, z: 0}
   face_direction: 1
   projectile_line: {fileID: 0}
   point_number: 100
@@ -149,6 +150,7 @@ MonoBehaviour:
   Panel_End: {fileID: 0}
   changeThrowItem: {fileID: 0}
   changeDropItem: {fileID: 0}
+  DefeatedNum: 0
 --- !u!95 &2286634086909154323
 Animator:
   serializedVersion: 3
@@ -197,6 +199,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.07}
   m_Size: {x: 0.3, y: 0.6399999}
   m_Direction: 0
