@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GameData : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class GameData : MonoBehaviour
     public int strength;
     public int speed;
     public int vitality;
-   // public Owned_Item items;
+    public int totalScore;
+    // public Owned_Item items;
 
     public string[] SaveFileName;
     //[SerializeField] public bool[] usedSave;
@@ -26,7 +28,7 @@ public class GameData : MonoBehaviour
     public int targetNum;
     public bool InSave = false;
     public bool Restart = true;
-   
+
     /*Game timer*/
     public int PlayTime = 0;
     public int min = 0;
@@ -35,8 +37,10 @@ public class GameData : MonoBehaviour
     public bool startCount = false;
 
     public GameObject panel_Score;
-    public int Score = 0;
-  //  public static bool ins = false;
+    public int[] Score;
+    //public List<Member> Rank = new List<Member>();
+    public List<Member> Rank = new List<Member>();
+    //  public static bool ins = false;
     public static GameData ins;
     public enum GameLevel
     {
@@ -61,17 +65,20 @@ public class GameData : MonoBehaviour
             DestroyImmediate(gameObject);
         }
     }
-    
-  
+
+
     // Start is called before the first frame update
     private void Start()
     {
+        Score = new int[3] { 0, 0, 0 };
         Restart = true;
         LoadGameSaveRecord();
+        // if (usedSave.Rank_name != null && usedSave.Rank_name.Any()) Debug.Log("got sth in the List");
     }
-    
+
     public void LoadGameSaveRecord()
     {
+        // Debug.Log("LoadGameSaveRecord()");
         SaveFileName = new string[5] { "Save1", "Save2", "Save3", "Save4", "Save5" };
         /*處理現在是save幾，從來沒存過就新增一個usedSave*/
         string str = PlayerPrefs.GetString("usedSave");
@@ -79,17 +86,34 @@ public class GameData : MonoBehaviour
         {
             usedSave = JsonUtility.FromJson<UsedSave>(str);
             Debug.Log("Not A New Game");
+            /*Load GameRank*/
+            if (usedSave.Rank_name != null && usedSave.Rank_name.Any())
+            {
+                int i = 0;
+                foreach (var player in usedSave.Rank_name)
+                {
+                    if (usedSave.Rank_score[i] != 0)
+                        Rank.Add(new Member { name = player, score = usedSave.Rank_score[i] });
+                    i++;
+                    Debug.Log("ReadRank");
+                }
+            }
+
+
         }
         else
         {
             usedSave = new UsedSave();
             usedSave.usedSave = new bool[5];
+            usedSave.Rank_name = new string[3];
+            usedSave.Rank_score = new int[3];
             FileNum = 0;
             Debug.Log("Create NewGame");
 
             string jsonUsedSave = JsonUtility.ToJson(usedSave);
             PlayerPrefs.SetString("usedSave", jsonUsedSave);
         }
+        Restart = true;
     }
 
     public void LoadGame()
@@ -104,6 +128,7 @@ public class GameData : MonoBehaviour
             {
                 Debug.Log("DataLoaded");
                 origin_FileNum = targetNum;
+                Name = LoadedData.PlayerName;
             }
             Restart = false;
             SceneManager.LoadScene("Full_Cave");
@@ -113,7 +138,7 @@ public class GameData : MonoBehaviour
             Debug.Log("Nothing to Load");
         }
 
-        
+
     }
 
     public void SaveGame(int currentFile)
@@ -129,6 +154,9 @@ public class GameData : MonoBehaviour
         gameSave.speed = speed;
         gameSave.vitality = vitality;
         //gameSave.playTime = 
+        for (int i = 0; i < 3; i++)
+            gameSave.Score += Score[i];
+        if (LoadedData.Score > gameSave.Score) gameSave.Score = LoadedData.Score;
         gameSave.PlayerName = Name;
         //gameSave.rank = 
         /*items*/
@@ -138,15 +166,15 @@ public class GameData : MonoBehaviour
         /*Save UsedSaveFile*/
 
         if (currentFile == 0 || !InSave) //"currentFile" for save opcode, 0 for new save, 1 for save; "InSave" for if ever loaded or already in a save, either should create a new Savefile 
-        { 
-            for(int i = 0; i < FileLimit; i++) 
+        {
+            for (int i = 0; i < FileLimit; i++)
             {
                 if (!usedSave.usedSave[i])
                 {
                     usedSave.usedSave[i] = true;
                     FileNum = i;
                     Debug.Log("SaveFile[" + i + "]");
-                    if (!InSave)origin_FileNum = FileNum;//if never load and not in an existed save, make it the origin_FileNum
+                    if (!InSave) origin_FileNum = FileNum;//if never load and not in an existed save, make it the origin_FileNum
                     break;
                 }
             }
@@ -158,19 +186,37 @@ public class GameData : MonoBehaviour
             FileNum = origin_FileNum;
             Debug.Log("SaveFile[CurrentBranch]");
         }
-        
+
+        /*UpdateRank*/
+        if (Rank != null && Rank.Any())
+        {
+            Rank.Sort();
+            int i = 0;
+            if (i < 3)
+                foreach (var player in Rank)
+                {
+                    usedSave.Rank_name[i] = player.name;
+                    usedSave.Rank_score[i] = player.score;
+                    Debug.Log("SaveRank:" + player.name);
+                    i++;
+                }
+        }
+
+
+
+
         InSave = true;//set bool to note already in a save, so the following option "Save" would use the origin FileNum
 
         /*Json*/
         string json = JsonUtility.ToJson(gameSave);
-        
+
         PlayerPrefs.SetString(SaveFileName[FileNum], json);
-        
+
 
         string jsonUsedSave = JsonUtility.ToJson(usedSave);
         PlayerPrefs.SetString("usedSave", jsonUsedSave);
     }
-    
+
     public void DeleteGameSave()
     {
         if (!usedSave.usedSave[targetNum])
@@ -187,12 +233,12 @@ public class GameData : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            for(int i = 0; i < FileLimit; i++)
+            for (int i = 0; i < FileLimit; i++)
             {
                 targetNum = i;
                 DeleteGameSave();
             }
-            
+
 
             Debug.Log("DeleteGameSave");
         }
@@ -206,7 +252,7 @@ public class GameData : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Full_Cave" && Input.GetKeyDown(KeyCode.C))
         {
             panel_Score = GameObject.Find("Canvas (2)").transform.GetChild(1).gameObject;
-            if(panel_Score.activeSelf==false)
+            if (panel_Score.activeSelf == false)
                 panel_Score.SetActive(true);
             else
                 panel_Score.SetActive(false);
@@ -222,7 +268,7 @@ public class GameData : MonoBehaviour
         /*每次重新回到MainMenu都要重新load一次目前有的save array*/
         if (SceneManager.GetActiveScene().name == "MainMenu" && !Restart)
         {
-            usedSave=null; 
+            usedSave = null;
             LoadGameSaveRecord();
             Restart = true;
         }
@@ -319,4 +365,3 @@ public class GameData : MonoBehaviour
 
     }
 }
-

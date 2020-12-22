@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         // When Unity Build, Scenes are queued with Index (like 0.GameMenu, 1.GameScene ...)
-        gameData.Restart = false;
+        //gameData.Restart = false;
         SceneManager.LoadScene("Story1");
     }
 
