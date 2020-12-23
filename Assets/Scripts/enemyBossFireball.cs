@@ -12,11 +12,13 @@ public class enemyBossFireball : MonoBehaviour
     bool hasAttacked = false;
     Animator animator;
     public smoothCameraFollow camera;
+    public audioController audioController;
     // Start is called before the first frame update
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
         camera = GameObject.Find("Main Camera").GetComponent<smoothCameraFollow>();
+        audioController = GameObject.Find("audioController").GetComponent<audioController>();
 
     }
 
@@ -73,6 +75,7 @@ public class enemyBossFireball : MonoBehaviour
         }
     }
     void gameObjectStatus(){
+        audioController.playExplosionBigSFX();
         camera.enableShake = true;
         canMove = false;
         hasAttacked = true;

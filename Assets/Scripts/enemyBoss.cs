@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class enemyBoss : MonoBehaviour
 {
-    public GameObject player; 
-    public GameObject grounds;
+    private GameObject player; 
+    //public GameObject grounds;
     public GameObject fireball;
     public float transportTime = 3f;
     public float fireballTime = 1f;
@@ -20,7 +20,8 @@ public class enemyBoss : MonoBehaviour
     void Start()
     {
         enemy_script = GetComponent<enemyBasic>();
-        groundsTS = grounds.GetComponentsInChildren<Transform>();
+        // groundsTS = grounds.GetComponentsInChildren<Transform>();
+        player = GameObject.Find("player");
         animator = GetComponent<Animator>();
     }
 
@@ -43,11 +44,11 @@ public class enemyBoss : MonoBehaviour
         return player.transform.position;    
     }
     void transport(){
-        int index = checkWhichPlatform();
-        int changeIndex = index;
-        while (changeIndex == index){
+        // int index = checkWhichPlatform();
+        // int changeIndex = index;
+        /*while (changeIndex == index){
             changeIndex = Random.Range(1,groundsTS.Length);
-        }
+        }*/
         // Vector3 newPos = groundsTS[changeIndex].position + new Vector3(0,2f,0);
         transform.position = newPos;
     }

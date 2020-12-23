@@ -118,6 +118,7 @@ MonoBehaviour:
   jumpForce: 5
   speed: 1.03
   jumpHeight: {x: 4, y: 12}
+  touch_wall_flag: 0
   distance: 2
   wallDis: 2
   findPlayerRadius: 5
@@ -129,12 +130,14 @@ MonoBehaviour:
   dropObject: {fileID: 1637041270720909378, guid: f382a13ef9bb73345b699b9f6268fa94,
     type: 3}
   dropObjectNum: 2
+  movingRight: 1
   groundDetection: {fileID: 7663623414894218100}
   wallDetection: {fileID: 7663623415111170653}
   damageAmount: 10
   canMove: 1
   canFly: 0
   player: {fileID: 0}
+  panel_Score: {fileID: 0}
 --- !u!70 &7663623414892526055
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -171,7 +174,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &7663623414892525979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,8 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7055bec9e520ceb45b556fa45e984445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  grounds: {fileID: 0}
   fireball: {fileID: 8873101575468355894, guid: e168ac888f24cfa44ab1b7671a3bc0a1,
     type: 3}
   transportTime: 3

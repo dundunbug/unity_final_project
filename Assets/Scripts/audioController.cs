@@ -49,6 +49,14 @@ public class audioController : MonoBehaviour
                 break;
         }
     }
+    public void changetoBOSSBGM()
+    {
+        audioSource.Stop();
+        audioSource.clip = clipList[4];
+        audioSource.Play();
+    }
+
+
     public void playExplosionBigSFX(){
         audioOneShot.PlayOneShot(explosionBigSFX);
     }

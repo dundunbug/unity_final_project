@@ -50,6 +50,7 @@ public class enemyBasic : MonoBehaviour
     public bool canFly = false;
     public player player;
     private audioController audioController;
+    public GameObject panel_Score;
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +80,11 @@ public class enemyBasic : MonoBehaviour
 
     private void Update()
     {
+        if (isDead && GetComponent<SpriteRenderer>() != null)
+        {
+            Color temp = gameObject.GetComponent<SpriteRenderer>().color;
+            StartCoroutine(IncreaseTransparency(temp));
+        }
         if (!flip_cooldown)
         {
             flip_timer += Time.deltaTime;
@@ -381,13 +387,7 @@ public class enemyBasic : MonoBehaviour
             {
                 if (animator)
                     animator.SetTrigger("isDead");
-                Destroy(gameObject, 0.4f);
-
-                if (GetComponent<Renderer>() != null)
-                {
-                    Color temp = GetComponent<Renderer>().material.color;
-                    StartCoroutine(IncreaseTransparency(temp));
-                }
+                Destroy(gameObject, 1.0f);
 
                 // drop objects after destroy
                 for (int i = 0; i < dropObjectNum; i++)
@@ -396,16 +396,17 @@ public class enemyBasic : MonoBehaviour
                 }
             }
             isDead = true;
+            if (gameObject.name.Contains("boss") && isDead)
+            {
+                panel_Score = GameObject.Find("Canvas (2)").transform.GetChild(1).gameObject;
+                panel_Score.SetActive(true);
+            }
+
             player.DefeatedNum++;
         }
         // can move after n sec later
         if (!canFly)
             StartCoroutine(canMoveAfterSec(1f));
-    }
-    private IEnumerator IncreaseTransparency(Color temp)
-    {
-        yield return new WaitForSecondsRealtime(0.01f);
-        temp.a -= 0.025f;
     }
     void dropObjects()
     {
@@ -438,7 +439,7 @@ public class enemyBasic : MonoBehaviour
                     {
                         // flip();
                         print("touchwall flip");
-                        
+
                         if (flip_cooldown)
                         {
                             flip();
@@ -504,4 +505,13 @@ public class enemyBasic : MonoBehaviour
             canJump = false;
         }
     }
+    private IEnumerator IncreaseTransparency(Color temp)
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        temp.a -= 0.1f;
+        print(temp.a);
+        gameObject.GetComponent<SpriteRenderer>().color = temp;
+    }
 }
+
+

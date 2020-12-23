@@ -40,12 +40,14 @@ public class objectStatus : MonoBehaviour
     private healthSystem healthSystem;
     private objectScript objectScript;
     private Animator animator_object;
+    audioController audioController;
     // Start is called before the first frame update
     void Start()
     {
         objectScript = new objectScript(gameObject);
         healthSystem = new healthSystem(healthMax);
         animator_object = GetComponent<Animator>();
+        audioController = GameObject.Find("audioController").GetComponent<audioController>();
     }
     public void attackObject(int damageAmount){
         if (healthSystem.GetHealth() != 0){
@@ -82,6 +84,7 @@ public class objectStatus : MonoBehaviour
     IEnumerator explodeAfter(float time){
         yield return new WaitForSeconds (time);
         objectScript.Explode(radius, explodeAmount);
+        audioController.playExplosionBigSFX();
     }
    /* private void OnTriggerEnter2D(Collider2D other)
     {
