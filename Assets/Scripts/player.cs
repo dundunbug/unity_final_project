@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 public class player : MonoBehaviour
 {
+    public int HealthMax=100;
     public int DeathCount;
     [Header("movement")]
     // controller;
@@ -30,7 +31,7 @@ public class player : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer SpriteRenderer;
     private bar bar;
-    private healthSystem healthSystem = new healthSystem(100);
+    private healthSystem healthSystem;
     // Start is called before the first frame update
     [Header("Status_Bool")]
     private bool canJump = false;
@@ -90,6 +91,7 @@ public class player : MonoBehaviour
         uiInventory.SetInventory(inventory);
         energySystem.SetInventory(inventory);
         DeathCount = (DeathCount < 1) ? 1: DeathCount;
+        healthSystem = new healthSystem(HealthMax);
     }
 
     // Update is called once per frame

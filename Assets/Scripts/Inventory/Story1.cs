@@ -17,11 +17,13 @@ public class Story1 : MonoBehaviour
     [SerializeField] private AudioClip typeSound;
     [SerializeField] private Text txtDisplay;
     private string words;
+    public bool Done;
     int num = 0;
 
     public AudioSource source;
     void Start()
     {
+        Done = false;
         i = 0;
         image.sprite = sprite[i];
         StartCoroutine(display(lines[i]));
@@ -31,15 +33,22 @@ public class Story1 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            i++;
+            
 
             source.Stop();
             StopAllCoroutines();
-            txtDisplay.text = "";
+            txtDisplay.text = lines[i];
             words = "";
-            StartCoroutine(display(lines[i]));
-
-            image.sprite = sprite[i];
+            
+            if (Done)
+            {
+                i++;
+                Done = false;
+                StartCoroutine(display(lines[i]));
+                image.sprite = sprite[i];
+            }
+            else 
+                Done = true;
         }
 
         if (i >= 6)
@@ -55,7 +64,7 @@ public class Story1 : MonoBehaviour
     public IEnumerator display(string displayStr)
     {
         words = displayStr;
-        lines[i] = "";
+        //lines[i] = "";
         yield return new WaitForSeconds(1f);
         StartCoroutine(TypeText());
     }
@@ -72,6 +81,7 @@ public class Story1 : MonoBehaviour
             yield return new WaitForSeconds(letterPause);
         }
         source.Stop();
+        Done = true;
     }
 }
 

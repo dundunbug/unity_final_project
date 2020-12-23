@@ -24,6 +24,9 @@ public class enemyBasic : MonoBehaviour
     public float xDisPlayer = 1f;
     public bool canAttack = true;
     [Header("status")]
+    private bool flip_cooldown = true;
+    private float restricted_flip_time = 3.0f;
+    private float flip_timer;
     public int healthMax = 20;
     public GameObject dropObject;
     public int dropObjectNum = 2;
@@ -76,6 +79,16 @@ public class enemyBasic : MonoBehaviour
 
     private void Update()
     {
+        if (!flip_cooldown)
+        {
+            flip_timer += Time.deltaTime;
+            if (flip_timer >= restricted_flip_time)
+            {
+                flip_cooldown = true;
+                flip_timer = 0f;
+            }
+        }
+
         if (canMove)
         {
             Collider2D collider = null;
@@ -423,21 +436,36 @@ public class enemyBasic : MonoBehaviour
                 {
                     if (gameObject.transform.position.x - other.transform.position.x > 0)
                     {
+                        // flip();
                         print("touchwall flip");
-                        flip();
+                        
+                        if (flip_cooldown)
+                        {
+                            flip();
+                            flip_cooldown = false;
+                            touch_wall_flag = 1;
+                            other_enemyBasic_script.touch_wall_flag = 0;
+                        }
+
                         //movingRight = true;
-                        touch_wall_flag = 1;
-                        other_enemyBasic_script.touch_wall_flag = 0;
+
                     }
                 }
             }
             else if (touch_wall_flag == 0 && other_enemyBasic_script.touch_wall_flag == 1)
             {
                 print("touchwall flip");
-                flip();
+                // flip();
+                if (flip_cooldown)
+                {
+                    flip();
+                    flip_cooldown = false;
+                    touch_wall_flag = 1;
+                    other_enemyBasic_script.touch_wall_flag = 0;
+                }
+
                 //movingRight = !movingRight;
-                touch_wall_flag = 1;
-                other_enemyBasic_script.touch_wall_flag = 0;
+
             }
         }
         /*

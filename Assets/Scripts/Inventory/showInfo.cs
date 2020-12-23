@@ -157,52 +157,52 @@ public class showInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             default:
             case Item.ItemType.Bomb_L:
                 {
-                    inventory.DeleteItem(item);
+                    //inventory.DeleteItem(item);
                 }
                 break;
             case Item.ItemType.Bomb_S:
                 {
-                    inventory.DeleteItem(item);
+                    //inventory.DeleteItem(item);
                 }
                 break;
             case Item.ItemType.Bomb_Timer:
                 {
-                    inventory.DeleteItem(item);
+                    //inventory.DeleteItem(item);
                 }
                 break;
             case Item.ItemType.Teddy:
                 {
-                    inventory.DeleteItem(item);
+                    //inventory.DeleteItem(item);
                 }
                 break;
             case Item.ItemType.TransferGate:
                 {
-                    inventory.DeleteItem(item);
+                    //inventory.DeleteItem(item);
                 }
                 break;
             case Item.ItemType.Lego:
                 {
-                    inventory.DeleteItem(item);
+                    //inventory.DeleteItem(item);
                 }
                 break;
             case Item.ItemType.CardBoard:
                 {
-                    inventory.DeleteItem(item);
+                    //inventory.DeleteItem(item);
                 }
                 break;
             case Item.ItemType.Bottle:
                 {
-                    inventory.DeleteItem(item);
+                    //inventory.DeleteItem(item);
                 }
                 break;
             case Item.ItemType.Carton:
                 {
-                    inventory.DeleteItem(item);
+                    //inventory.DeleteItem(item);
                 }
                 break;
             case Item.ItemType.Pillow:
                 {
-                    inventory.DeleteItem(item);
+                    //inventory.DeleteItem(item);
                 }
                 break;
             case Item.ItemType.DroppedItem:

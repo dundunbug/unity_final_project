@@ -22,9 +22,11 @@ public class EndStory1 : MonoBehaviour
     private string words;
     int num = 0;
     public Text text1;
+    private bool Done;
 
     void Start()
     {
+        Done = false;
         i = 0;
         image.sprite = sprite[i];
         StartCoroutine(display(lines[i]));
@@ -38,19 +40,26 @@ public class EndStory1 : MonoBehaviour
         else text1.color = Color.white;
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            i++;
-            if (i >= 10)
-            SceneManager.LoadScene("MainMenu");
+
 
             source.Stop();
             StopAllCoroutines();
-            txtDisplay.text = "";
+            txtDisplay.text = lines[i];
             words = "";
-            StartCoroutine(display(lines[i]));
-            image.sprite = sprite[i];
+
+            if (Done)
+            {
+                i++;
+                Done = false;
+                StartCoroutine(display(lines[i]));
+                image.sprite = sprite[i];
+            }
+            else
+                Done = true;
         }
 
-      
+        if (i >= 10)
+            SceneManager.LoadScene("MainMenu");
     }
 
     public void Skip()
@@ -80,5 +89,6 @@ public class EndStory1 : MonoBehaviour
             yield return new WaitForSeconds(letterPause);
         }
         source.Stop();
+        Done = true;
     }
 }

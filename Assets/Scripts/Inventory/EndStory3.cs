@@ -22,28 +22,37 @@ public class EndStory3 : MonoBehaviour
     [SerializeField] private Text txtDisplay;
     private string words;
     public AudioSource source;
+    private bool Done;
 
     void Start()
     {
-        i = 0;
+        Done = false;
+        i = 0; 
         image.sprite = sprite[i];
+        StartCoroutine(display(lines[i]));
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            i++;
-            if (i >= 12)
-                SceneManager.LoadScene("MainMenu");
-
             source.Stop();
             StopAllCoroutines();
-            txtDisplay.text = "";
+            txtDisplay.text = lines[i];
             words = "";
-            StartCoroutine(display(lines[i]));
-            image.sprite = sprite[i];
+
+            if (Done)
+            {
+                i++;
+                Done = false;
+                StartCoroutine(display(lines[i]));
+                image.sprite = sprite[i];
+            }
+            else
+                Done = true;
         }
+        if (i >= 12)
+                SceneManager.LoadScene("MainMenu");
     }
 
     public void Skip()
@@ -70,5 +79,6 @@ public class EndStory3 : MonoBehaviour
             yield return new WaitForSeconds(letterPause);
         }
         source.Stop();
+        Done = true;
     }
 }

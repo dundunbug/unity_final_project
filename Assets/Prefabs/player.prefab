@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9465d38442b3dc84482f7fa6fc06eec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthMax: 150
   DeathCount: 1
   runSpeed: 7
   climbSpeed: 6

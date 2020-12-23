@@ -7,15 +7,17 @@ public class bar : MonoBehaviour
 {
     private Text healthText;
     public int num = 0;
-    int health = 100;
+    int health;
     int healthMax = 100;
-
+    public player player_script;
     // Start is called before the first frame update
     void Start()
     {
+        healthMax = player_script.HealthMax;
+        health = healthMax;
         healthText = GameObject.Find("value").GetComponent<Text>();
         transform.localScale = new Vector3(1,1,1);
-        healthText.text = health.ToString()+"/"+healthMax.ToString();
+        healthText.text = healthMax.ToString()+"/"+healthMax.ToString();
     }
 
     public void ChangeHealthStatus(int health){

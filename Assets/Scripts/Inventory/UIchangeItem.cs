@@ -20,10 +20,8 @@ public class UIchangeItem : MonoBehaviour
     public string[] item_types = new string[] {"Bomb_L","Bomb_Timer","Bomb_S","Carton",
     "Lego","TransferGate","CardBoard","Pillow","Bottle","Teddy"};
     public List<GameObject> item_prehabs = new List<GameObject>();
-    public string[] throw_types = new string[] {"Bomb_L","Bomb_Timer","Bomb_S","Carton"
-    ,"TransferGate","Pillow","Bottle","Teddy"};
-    public string[] drop_types = new string[] {"Bomb_L","Bomb_Timer","Carton",
-    "Lego","TransferGate","CardBoard","Pillow"};
+    private string[] throw_types = new string[] {"Bomb_Timer","Bomb_S","TransferGate","Bottle","Teddy"};
+    private string[] drop_types = new string[] {"Bomb_L","Carton","Lego","CardBoard","Pillow"};
     List<Item.ItemType> Types = new List<Item.ItemType> {
         Item.ItemType.Bomb_L,Item.ItemType.Bomb_Timer,Item.ItemType.Bomb_S,
         Item.ItemType.Carton,Item.ItemType.Lego,Item.ItemType.TransferGate,
