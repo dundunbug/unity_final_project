@@ -24,43 +24,43 @@ public class generateEnemy : MonoBehaviour
     void GenerateEnemy(){
         for(int i =0;i< enemyCount.Length; i++){
             for (int j=0; j< enemyCount[i]; j++){
-                GameObject prehab = new GameObject();
+                // GameObject prehab = new GameObject();
                 if (!randomPosition){
-                    StartCoroutine(Random_Delay(enemies[i],transform.position,prehab));
+                    StartCoroutine(Random_Delay(enemies[i],transform.position));
                     //prehab = Instantiate(enemies[i], transform.position, Quaternion.identity, transform);
                 }else{
                     float ranX = Random.Range(transform.position.x-randomPositionRange,transform.position.x+randomPositionRange);
                     Vector3 ranPos = new Vector3(ranX,transform.position.y,transform.position.z);
-                    StartCoroutine(Random_Delay(enemies[i],ranPos,prehab));
+                    StartCoroutine(Random_Delay(enemies[i],ranPos));
                     //prehab = Instantiate(enemies[i], ranPos, Quaternion.identity, transform);
-                }
-                if (prehab.GetComponent<enemyBasic>()!=null){
-                    // random flip
-                    int flipEnemy = Random.Range(0,2);
-                    if (flipEnemy == 1){
-                        prehab.GetComponent<enemyBasic>().flip();
-                    }
-                    // damageAmount
-                    if (damageExpand != 1f){
-                        prehab.GetComponent<enemyBasic>().damageAmount 
-                            = (int)Mathf.Round(prehab.GetComponent<enemyBasic>().damageAmount*damageExpand);
-                        prehab.GetComponent<enemyBasic>().dropObjectNum 
-                            = (int)Mathf.Round(prehab.GetComponent<enemyBasic>().dropObjectNum*damageExpand);
-                        prehab.GetComponent<enemyBasic>().speed += damageExpand;
-                    }
-                }
-                if (i ==3 && damageExpand != 1f){ // if it is tub
-                    prehab.GetComponent<enemyTubAttack>().damageAmount 
-                        = (int)Mathf.Round(prehab.GetComponent<enemyTubAttack>().damageAmount*damageExpand);
                 }
             }
         }
     }
 
-    private IEnumerator Random_Delay(GameObject enemy, Vector3 generate_position, GameObject instantiate_assign)
+    private IEnumerator Random_Delay(GameObject enemy, Vector3 generate_position)
     {
         float temptime = Random.Range (1.0f, 5.0f);
         yield return new WaitForSecondsRealtime(temptime);
-        instantiate_assign = Instantiate(enemy, transform.position, Quaternion.identity, transform);
+        GameObject instantiate_assign = Instantiate(enemy, transform.position, Quaternion.identity, transform);
+        if (instantiate_assign.GetComponent<enemyBasic>()!=null){
+            // random flip
+            int flipEnemy = Random.Range(0,2);
+            if (flipEnemy == 1){
+                instantiate_assign.GetComponent<enemyBasic>().flip();
+            }
+            // damageAmount
+            if (damageExpand != 1f){
+                instantiate_assign.GetComponent<enemyBasic>().damageAmount 
+                    = (int)Mathf.Round(instantiate_assign.GetComponent<enemyBasic>().damageAmount*damageExpand);
+                instantiate_assign.GetComponent<enemyBasic>().dropObjectNum 
+                    = (int)Mathf.Round(instantiate_assign.GetComponent<enemyBasic>().dropObjectNum*damageExpand);
+                instantiate_assign.GetComponent<enemyBasic>().speed += damageExpand;
+            }
+        }
+        if (instantiate_assign.name.Contains("tub") && damageExpand != 1f){ // if it is tub
+            instantiate_assign.GetComponent<enemyTubAttack>().damageAmount 
+                = (int)Mathf.Round(instantiate_assign.GetComponent<enemyTubAttack>().damageAmount*damageExpand);
+        }
     }
 }
