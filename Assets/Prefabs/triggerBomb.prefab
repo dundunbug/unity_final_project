@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7246702046252665611}
   m_Layer: 12
   m_Name: triggerBomb
-  m_TagString: Untagged
+  m_TagString: triggerBomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timing: 3
   radius: 3
+  explodeAmount: 10
 --- !u!212 &4055300466975091812
 SpriteRenderer:
   m_ObjectHideFlags: 0

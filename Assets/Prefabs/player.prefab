@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2286634086909154325}
   - component: {fileID: 2286634086909154326}
   - component: {fileID: 2286634086909154327}
+  - component: {fileID: 5586670702104284009}
   - component: {fileID: 2286634086909154324}
   - component: {fileID: 2286634086909154323}
   - component: {fileID: 2138997490}
@@ -108,6 +109,28 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5586670702104284009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2286634086909154329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a5d120463129e43b5b5b7ae150b52f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthAdd: 10
+  speedAdd: 0.3
+  damageAdd: 2
+  item_prehabs_hasDamage:
+  - {fileID: 302027978495613263, guid: a6867931d62bae746aad5fc7c446dabf, type: 3}
+  - {fileID: 5096115686268443645, guid: 58e228c84202d7d45912ece04cdd4364, type: 3}
+  - {fileID: 5166582595985205136, guid: e5df10b23b70c10469f9952f885c7ae4, type: 3}
+  - {fileID: 5988586725799224599, guid: 4532a2c649dd23a44a83b75e1739b70b, type: 3}
+  - {fileID: 6337084657113707346, guid: a55e2ed3ccdd6ac4fb20346c758892e0, type: 3}
+  - {fileID: 3326466207031408817, guid: bf0bfdd578e2b524c82db3e7cdf1cc4b, type: 3}
 --- !u!114 &2286634086909154324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9465d38442b3dc84482f7fa6fc06eec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthMax: 150
+  HealthMax: 200
   DeathCount: 1
   runSpeed: 7
   climbSpeed: 6
@@ -134,6 +157,7 @@ MonoBehaviour:
   projectile: {fileID: 1598555531742825061, guid: c86c71270680ce543b0c0c672b76d366,
     type: 3}
   rope: {fileID: 0}
+  bar: {fileID: 0}
   climb: 0
   animator_player: {fileID: 2286634086909154323}
   throwStart: {x: 0, y: 0, z: 0}

@@ -16,11 +16,13 @@ public class EnergyBar : MonoBehaviour
     public int Num = 10;
     private Upagradenum upagradenum;
     public GameData gameData;
+    player_ability player_Ability;
 
    // public event EventHandler BarChanged;
 
     private void Awake()
     {
+        player_Ability = GameObject.Find("player").GetComponent<player_ability>();
         gameData = GameObject.Find("GameData").GetComponent<GameData>();
        
         if (gameData.LoadedData != null)
@@ -86,16 +88,19 @@ public class EnergyBar : MonoBehaviour
                 case "energyBar":
                     {
                         gameData.strength = energy;
+                        player_Ability.itemStatChange();
                     }
                     break;
                 case "energyBar(1)":
                     {
                         gameData.speed = energy;
+                        player_Ability.speedChange();
                     }
                     break;
                 case "energyBar(2)":
                     {
-                    gameData.vitality = energy;
+                        gameData.vitality = energy;
+                        player_Ability.healthChange();
                     }
                     break;
             }

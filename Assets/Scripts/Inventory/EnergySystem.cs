@@ -15,7 +15,8 @@ public class EnergySystem : MonoBehaviour
     public int num;
     private int selected;
 
-
+    public UIchangeItem changeThrowItem;
+    public UIchangeItem changeDropItem;
     public void SetInventory(Inventory inventory)
     {
         this.inventory = inventory;
@@ -85,7 +86,8 @@ public class EnergySystem : MonoBehaviour
                     break;
             }
 
-
+            changeThrowItem.refreshList();
+            changeDropItem.refreshList();
             num--;
             text1.text = num + "";
             inventory.DeleteItem(new Item { itemType = Item.ItemType.DroppedItem }) ;

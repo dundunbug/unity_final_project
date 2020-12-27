@@ -1,16 +1,22 @@
 ﻿
 public class healthSystem
 {
-    int healthMax = 100;
+    public int healthMax = 100;
     int health;
 
-    public healthSystem(int healthMax){
-        this.healthMax = healthMax;
-        health = healthMax;
+    public healthSystem(int max){
+        this.healthMax = max;
+        health = max;
     }
-
+    public void changeMax(int changeHealthMax){
+        health += changeHealthMax;
+        healthMax += changeHealthMax;
+    }
     public int GetHealth(){
         return health;
+    }
+    public int GetHealthMax(){
+        return healthMax;
     }
 
     public float GetHealthPercent(){

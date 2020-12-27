@@ -22,6 +22,8 @@ TagManager:
   - teddy_0
   - lava
   - burn_plate
+  - bomb
+  - triggerBomb
   layers:
   - Default
   - TransparentFX

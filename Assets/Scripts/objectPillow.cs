@@ -10,17 +10,17 @@ public class objectPillow : MonoBehaviour
     public float xRange = 5f;
     public float yRange = 4f;
     // Start is called before the first frame update
-    
+    player_ability player_Ability;
     private void Start() {
-        
+        player_Ability = GameObject.Find("player").GetComponent<player_ability>();
     }
     public void FlyFeathers(){
         for(int i =0; i<featherNum ;i++){
             GameObject obj = GameObject.Instantiate(feather, gameObject.transform.position, Quaternion.identity, gameObject.transform) as GameObject;
             Vector2 newPos = GetRandomPos();
-            print(newPos);
             obj.GetComponent<objectFeather>().target = newPos;
             obj.GetComponent<objectFeather>().hasPos = true;
+            player_Ability.itemDamageAdd(feather,obj);
         }
     }
 

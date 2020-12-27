@@ -99,6 +99,7 @@ MonoBehaviour:
   explodeAmount: 10
   healthMax: 10
   dieAfterSec: 3
+  explodeAfterSec: 0
 --- !u!212 &2232488698396766097
 SpriteRenderer:
   m_ObjectHideFlags: 0

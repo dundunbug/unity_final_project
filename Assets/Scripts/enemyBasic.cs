@@ -118,7 +118,7 @@ public class enemyBasic : MonoBehaviour
             // if player is not near, patrol
             if (groundInfo.collider == false && collider == null)
             {
-                print("ground flip");
+                // print("ground flip");
                 flip();
             }
 
@@ -438,7 +438,7 @@ public class enemyBasic : MonoBehaviour
                     if (gameObject.transform.position.x - other.transform.position.x > 0)
                     {
                         // flip();
-                        print("touchwall flip");
+                        // print("touchwall flip");
 
                         if (flip_cooldown)
                         {
@@ -455,7 +455,7 @@ public class enemyBasic : MonoBehaviour
             }
             else if (touch_wall_flag == 0 && other_enemyBasic_script.touch_wall_flag == 1)
             {
-                print("touchwall flip");
+                // print("touchwall flip");
                 // flip();
                 if (flip_cooldown)
                 {

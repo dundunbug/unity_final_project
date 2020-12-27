@@ -10,6 +10,7 @@ public class bar : MonoBehaviour
     int health;
     int healthMax = 100;
     public player player_script;
+    healthSystem healthSystem;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,9 @@ public class bar : MonoBehaviour
     }
 
     public void ChangeHealthStatus(int health){
+        healthSystem = player_script.healthSystem;
+        healthMax = healthSystem.GetHealthMax();
+        health = healthSystem.GetHealth();
         float percentage = (float) health / healthMax;
         transform.localScale = new Vector3(percentage,1,1);
         healthText.text = health.ToString()+"/"+healthMax.ToString();

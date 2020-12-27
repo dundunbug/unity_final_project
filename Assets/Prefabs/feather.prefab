@@ -101,9 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBomb: 1
   radius: 3
-  explodeAmount: 10
+  explodeAmount: 5
   healthMax: 1
   dieAfterSec: 10
+  explodeAfterSec: 0
 --- !u!50 &5988586725799224586
 Rigidbody2D:
   serializedVersion: 4

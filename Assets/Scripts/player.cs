@@ -30,8 +30,8 @@ public class player : MonoBehaviour
     // private bool crouch = false;
     private Rigidbody2D rb;
     private SpriteRenderer SpriteRenderer;
-    private bar bar;
-    private healthSystem healthSystem;
+    [HideInInspector] public bar bar;
+    [HideInInspector] public healthSystem healthSystem;
     // Start is called before the first frame update
     [Header("Status_Bool")]
     private bool canJump = false;
@@ -75,7 +75,7 @@ public class player : MonoBehaviour
     public UIchangeItem changeDropItem;
     public int DefeatedNum = 0;
 
-
+    private player_ability player_Ability;
 
     void Start()
     {
@@ -92,6 +92,7 @@ public class player : MonoBehaviour
         energySystem.SetInventory(inventory);
         DeathCount = (DeathCount < 1) ? 1: DeathCount;
         healthSystem = new healthSystem(HealthMax);
+        player_Ability = GetComponent<player_ability>();
     }
 
     // Update is called once per frame
@@ -218,6 +219,7 @@ public class player : MonoBehaviour
         Rigidbody2D cur_projectile_rb = cur_projectile.GetComponent<Rigidbody2D>();
         cur_projectile_rb.angularVelocity = 0f;
         cur_projectile_rb.velocity += projectile_velocity;
+        player_Ability.itemDamageAdd(projectile, cur_projectile);
     }
     
     private IEnumerator DrawTrajectory(Vector2 prefab_velocity){
@@ -301,6 +303,7 @@ public class player : MonoBehaviour
         cur_dropped_item = Instantiate(dropped_item, transform.position, Quaternion.identity);
         Rigidbody2D cur_dropped_rb = cur_dropped_item.GetComponent<Rigidbody2D>();
         cur_dropped_rb.angularVelocity = 0f;
+        player_Ability.itemDamageAdd(dropped_item, cur_dropped_item);
     }
 
     public void PickItem(Item.ItemType type)

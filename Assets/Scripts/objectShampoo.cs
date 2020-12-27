@@ -12,12 +12,14 @@ public class objectShampoo : MonoBehaviour
     private GameObject player;
     private Rigidbody2D rb;
     private int count = 1;
+    player_ability player_Ability;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         objectScript = new objectScript(gameObject);
         player = GameObject.Find("player");
         player_script = player.GetComponent<player>();
+        player_Ability = player.GetComponent<player_ability>();
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
@@ -33,6 +35,7 @@ public class objectShampoo : MonoBehaviour
             count = count -1 ;
             Destroy(gameObject, 7.0f);
             cur_bubble = Instantiate(bubble, transform.position, Quaternion.identity);
+            player_Ability.itemDamageAdd(bubble,cur_bubble);
             Destroy(cur_bubble, 7.0f);
         }
     }

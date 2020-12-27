@@ -196,7 +196,7 @@ MonoBehaviour:
   touch_wall_flag: 0
   distance: 0.5
   wallDis: 1
-  findPlayerRadius: 8
+  findPlayerRadius: 4
   advanceTrack: 1
   yrange: 1.5
   xDisPlayer: 1
@@ -212,6 +212,7 @@ MonoBehaviour:
   canMove: 1
   canFly: 0
   player: {fileID: 0}
+  panel_Score: {fileID: 0}
 --- !u!50 &5439005729122912320
 Rigidbody2D:
   serializedVersion: 4
