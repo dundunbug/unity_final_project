@@ -72,7 +72,7 @@ public class ScorePage : MonoBehaviour
             gameData.Rank.Sort();
         }
 
-
+        gameData.LevelPassed = gameData.Level;
 
         SceneManager.LoadScene("EndStories");
     }
@@ -80,6 +80,11 @@ public class ScorePage : MonoBehaviour
     private void OnDestroy()
     {
         Time.timeScale = 1f;
+    }
+
+    public void Lose()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
 }

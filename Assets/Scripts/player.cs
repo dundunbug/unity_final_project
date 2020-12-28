@@ -70,7 +70,7 @@ public class player : MonoBehaviour
     GameData gameData;
 
     [Header("ScorePage")]
-    public GameObject Panel_End;
+    public GameObject Panel_Lose;
     public UIchangeItem changeThrowItem;
     public UIchangeItem changeDropItem;
     public int DefeatedNum = 0;
@@ -375,8 +375,8 @@ public class player : MonoBehaviour
     public void Restart(){
         if (DeathCount <= 0)
         {
-            Panel_End.SetActive(true);
-            gameData.LevelPassed = gameData.Level;
+            Panel_Lose.SetActive(true);
+            //gameData.LevelPassed = gameData.Level;
         }
         transform.position = startPos;
         healthSystem.Reset();

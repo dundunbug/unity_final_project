@@ -12,7 +12,7 @@ public class GameData : MonoBehaviour
     public player player;
     public string Name;
     public GameSave gameSave;
-    public GameSave LoadedData;
+    public GameSave LoadedData = null;
     public UsedSave usedSave;
     public int strength;
     public int speed;
@@ -73,6 +73,7 @@ public class GameData : MonoBehaviour
         Score = new int[3] { 0, 0, 0 };
         Restart = true;
         LoadGameSaveRecord();
+        LoadedData = null;
         // if (usedSave.Rank_name != null && usedSave.Rank_name.Any()) Debug.Log("got sth in the List");
     }
 
@@ -156,7 +157,7 @@ public class GameData : MonoBehaviour
         //gameSave.playTime = 
         for (int i = 0; i < 3; i++)
             gameSave.Score += Score[i];
-        if (LoadedData.Score > gameSave.Score) gameSave.Score = LoadedData.Score;
+        if (LoadedData != null && LoadedData.Score > gameSave.Score) gameSave.Score = LoadedData.Score;
         gameSave.PlayerName = Name;
         //gameSave.rank = 
         /*items*/
@@ -271,6 +272,7 @@ public class GameData : MonoBehaviour
             usedSave = null;
             LoadGameSaveRecord();
             Restart = true;
+            LoadedData = null;
         }
 
     }

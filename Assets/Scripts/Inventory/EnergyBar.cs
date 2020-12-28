@@ -25,7 +25,7 @@ public class EnergyBar : MonoBehaviour
         player_Ability = GameObject.Find("player").GetComponent<player_ability>();
         gameData = GameObject.Find("GameData").GetComponent<GameData>();
        
-        if (gameData.LoadedData != null)
+        /*if (gameData.LoadedData != null)
         {
             switch (this.gameObject.name)
             {
@@ -42,10 +42,11 @@ public class EnergyBar : MonoBehaviour
         }
         else
         energy = 1;
+        Debug.Log("Energy=" + energy);*/
     }
     private void Start()
     {
-       /*   gameData = GameObject.Find("GameData").GetComponent<GameData>();
+          gameData = GameObject.Find("GameData").GetComponent<GameData>();
               if (gameData.LoadedData != null)
           {
               Debug.Log("sthindata!!");
@@ -64,7 +65,7 @@ public class EnergyBar : MonoBehaviour
           }
           else
               energy = 1;
-      */
+        Debug.Log("Energy=" + energy);
 
         upagradenum = GameObject.Find("remainNum").GetComponent<Upagradenum>(); ;
     }
@@ -77,6 +78,7 @@ public class EnergyBar : MonoBehaviour
         {
             GameObject ob = this.gameObject.transform.GetChild(i).gameObject;
             ob.SetActive(true);
+            Debug.Log("Loha Energy="+energy);
         }
     }
 
