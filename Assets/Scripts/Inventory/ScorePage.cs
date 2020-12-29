@@ -74,6 +74,25 @@ public class ScorePage : MonoBehaviour
 
         gameData.LevelPassed = gameData.Level;
 
+        /*save record*/
+        if (gameData.Rank != null && gameData.Rank.Any())
+        {
+            gameData.Rank.Sort();
+            int j = 0;
+            if (j < 3)
+                foreach (var player in gameData.Rank)
+                {
+                    gameData.usedSave.Rank_name[j] = player.name;
+                    gameData.usedSave.Rank_score[j] = player.score;
+                    Debug.Log("SaveRank:" + player.name);
+                    j++;
+                }
+        }
+
+        string jsonUsedSave = JsonUtility.ToJson(gameData.usedSave);
+        PlayerPrefs.SetString("usedSave", jsonUsedSave);
+        /*done saving*/
+
         SceneManager.LoadScene("EndStories");
     }
 
