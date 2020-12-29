@@ -22,12 +22,12 @@ public class EndStoryCtrl : MonoBehaviour
         Debug.Log("cool");
         gameData = GameObject.Find("GameData").GetComponent<GameData>();
         Debug.Log("passedLel=" + gameData.LevelPassed);
-        if(gameData.LevelPassed== GameData.GameLevel.NothingYet)
+        if(gameData.LevelPassed== GameData.GameLevel.Easy)
         {
             
             panel1.SetActive(true);
         }
-        if (gameData.LevelPassed == GameData.GameLevel.Easy)
+        if (gameData.LevelPassed == GameData.GameLevel.Normal)
         {
             panel2.SetActive(true);
         }
