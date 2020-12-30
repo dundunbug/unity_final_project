@@ -40,8 +40,6 @@ public class EndStory1 : MonoBehaviour
         else text1.color = Color.white;
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
-
             source.Stop();
             StopAllCoroutines();
             txtDisplay.text = lines[i];

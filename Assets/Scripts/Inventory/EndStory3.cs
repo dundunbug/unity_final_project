@@ -62,9 +62,10 @@ public class EndStory3 : MonoBehaviour
 
     public IEnumerator display(string displayStr)
     {
+        Debug.Log("startTyping:" + displayStr);
         words = displayStr;
-        lines[i] = "";
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
+        txtDisplay.text = lines[i];
         StartCoroutine(TypeText());
     }
 
