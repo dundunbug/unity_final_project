@@ -171,7 +171,7 @@ MonoBehaviour:
   image: {fileID: 1144049352}
   typeSound: {fileID: 8300000, guid: ccc4c2454aafcfc428ffb0958c239c13, type: 3}
   txtDisplay: {fileID: 140275472}
-  source: {fileID: 0}
+  source: {fileID: 1652335864}
 --- !u!114 &140275472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1603,7 +1603,7 @@ MonoBehaviour:
   image: {fileID: 924970165}
   typeSound: {fileID: 8300000, guid: ccc4c2454aafcfc428ffb0958c239c13, type: 3}
   txtDisplay: {fileID: 1257622880}
-  source: {fileID: 0}
+  source: {fileID: 1652335864}
 --- !u!114 &1257622880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2487,96 +2487,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2045622873}
   m_CullTransparentMesh: 0
---- !u!1 &2046295475
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2046295477}
-  - component: {fileID: 2046295476}
-  m_Layer: 0
-  m_Name: GameData
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &2046295476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046295475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7191a9f44764ab9458642bea960737cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Level: 0
-  LevelPassed: 3
-  player: {fileID: 0}
-  Name: 
-  gameSave:
-    checkpoint: 0
-    Level: 0
-    strength: 0
-    speed: 0
-    vitality: 0
-    playTime: 0
-    PlayerName: 
-    rank: 0
-    items: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    Score: 0
-  LoadedData:
-    checkpoint: 0
-    Level: 0
-    strength: 0
-    speed: 0
-    vitality: 0
-    playTime: 0
-    PlayerName: 
-    rank: 0
-    items: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    Score: 0
-  usedSave:
-    usedSave: 
-    Rank_name: []
-    Rank_score: 
-  strength: 0
-  speed: 0
-  vitality: 0
-  totalScore: 0
-  SaveFileName:
-  - Save1
-  - Save2
-  FileLimit: 5
-  FileNum: 0
-  origin_FileNum: 0
-  targetNum: 0
-  InSave: 0
-  Restart: 0
-  PlayTime: 0
-  min: 0
-  scene:
-    m_Handle: 0
-  startCount: 0
-  panel_Score: {fileID: 0}
-  Score: 
---- !u!4 &2046295477
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046295475}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 728.31885, y: 541.0343, z: -90.672714}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -92,7 +92,7 @@ public class ScorePage : MonoBehaviour
         string jsonUsedSave = JsonUtility.ToJson(gameData.usedSave);
         PlayerPrefs.SetString("usedSave", jsonUsedSave);
         /*done saving*/
-
+        Debug.Log("passedLevel=" + gameData.LevelPassed);
         SceneManager.LoadScene("EndStories");
     }
 
