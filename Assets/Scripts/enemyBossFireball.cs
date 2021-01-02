@@ -68,11 +68,7 @@ public class enemyBossFireball : MonoBehaviour
             }
         }else{
             print(other.gameObject.name);
-            objectStatus objectStatus = other.gameObject.GetComponent<objectStatus>();
-            if (objectStatus != null){
-                    objectStatus.attackObject(damageAmount);
-                    gameObjectStatus();
-            }
+            fireBallExplode(3f,damageAmount);
             
         }
     }
@@ -85,6 +81,28 @@ public class enemyBossFireball : MonoBehaviour
             print("destory animate");
             animator.SetTrigger("isDestroy");
         Destroy(gameObject,dieAfterSec);
+
     }
-    
+    //fireball attack
+    public void fireBallExplode(float radius, int explodeAmount){
+        //stop object
+        // gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        // gameObject.GetComponent<Rigidbody2D>().gravityScale =0;
+
+        // Get nearby objects
+        int enemyLayer = 1 << LayerMask.NameToLayer("enemyOnGround");
+        int itemLayer = 1 << LayerMask.NameToLayer("item");
+        int itemBrickLayer = 1 << LayerMask.NameToLayer("itemBrick");
+        int finalmask = enemyLayer | itemLayer | itemBrickLayer;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, radius, finalmask);
+        foreach(Collider2D nearbyObject in colliders){
+            // damage
+            int damageAmount = explodeAmount;
+            objectStatus objectStatus = nearbyObject.gameObject.GetComponent<objectStatus>();
+            if (objectStatus != null){
+                objectStatus.attackObject(damageAmount);
+            }
+        }
+        gameObjectStatus();
+    }
 }

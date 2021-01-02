@@ -34,7 +34,7 @@ public class enemyBasic : MonoBehaviour
     public Transform groundDetection;
     public Transform wallDetection;
     public int damageAmount = 10;
-    private healthSystem healthSystem;
+    public healthSystem healthSystem;
     private Rigidbody2D rb;
     public bool canMove = true;
     private bool nearWall = false;
@@ -377,6 +377,9 @@ public class enemyBasic : MonoBehaviour
             rb.AddForce(layback, ForceMode2D.Impulse);
         }
         healthSystem.Damage(damageAmount);
+        if (gameObject.name.Contains("boss")){
+            GameObject.Find("bossHP").GetComponent<bossBar>().ChangeHealthStatus();
+        }
         if (!isDead)
         {
             audioController.playerAttackMonSFX(gameObject.name);

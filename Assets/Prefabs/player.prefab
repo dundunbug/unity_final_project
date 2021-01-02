@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9465d38442b3dc84482f7fa6fc06eec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthMax: 200
+  HealthMax: 999
   DeathCount: 1
   runSpeed: 7
   climbSpeed: 6
@@ -172,7 +172,7 @@ MonoBehaviour:
   uiInventory: {fileID: 0}
   inventoryCanvas: {fileID: 0}
   dropItemCount: 0
-  Panel_End: {fileID: 0}
+  Panel_Lose: {fileID: 0}
   changeThrowItem: {fileID: 0}
   changeDropItem: {fileID: 0}
   DefeatedNum: 0

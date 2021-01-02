@@ -56,8 +56,5 @@ public class objectScript
         Object.Destroy(gameObject,0.6f);
     }
 
-    //teddy attack
-    public void TeddyAttack(){
 
     }
-}

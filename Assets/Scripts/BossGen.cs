@@ -11,6 +11,8 @@ public class BossGen : MonoBehaviour
     private int BossCount = 1;
     public GameObject audioCont;
     audioController audioControll;
+    public GameObject bossHealthBar;
+    public bossBar bossBar;
     void Start()
     {
         audioControll = audioCont.GetComponent<audioController>();
@@ -20,6 +22,9 @@ public class BossGen : MonoBehaviour
             audioControll.changetoBOSSBGM();
             cur_Boss = Instantiate(Boss, BossPosition.transform.position, Quaternion.identity);
             BossCount -= 1;
-            }
+            bossHealthBar.SetActive(true);
+            bossBar.boss = cur_Boss;
+            bossBar.healthSystem = cur_Boss.GetComponent<enemyBasic>().healthSystem;
+        }
     }
 }

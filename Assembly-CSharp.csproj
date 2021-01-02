@@ -39,6 +39,9 @@
      <Compile Include="Assets\Scripts\BossGen.cs" />
      <Compile Include="Assets\Scripts\DoorTrigger.cs" />
      <Compile Include="Assets\Scripts\Flying.cs" />
+     <Compile Include="Assets\Scripts\Inventory\EndStory1.cs" />
+     <Compile Include="Assets\Scripts\Inventory\EndStory2.cs" />
+     <Compile Include="Assets\Scripts\Inventory\EndStory3.cs" />
      <Compile Include="Assets\Scripts\Inventory\EndStoryCtrl.cs" />
      <Compile Include="Assets\Scripts\Inventory\EnergyBar.cs" />
      <Compile Include="Assets\Scripts\Inventory\EnergySystem.cs" />
@@ -55,6 +58,7 @@
      <Compile Include="Assets\Scripts\Inventory\MainMenuButtons.cs" />
      <Compile Include="Assets\Scripts\Inventory\PickItem.cs" />
      <Compile Include="Assets\Scripts\Inventory\Rank.cs" />
+     <Compile Include="Assets\Scripts\Inventory\ScorePage.cs" />
      <Compile Include="Assets\Scripts\Inventory\SetLevel.cs" />
      <Compile Include="Assets\Scripts\Inventory\Story1.cs" />
      <Compile Include="Assets\Scripts\Inventory\Story2.cs" />
@@ -70,6 +74,7 @@
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\audioController.cs" />
      <Compile Include="Assets\Scripts\bar.cs" />
+     <Compile Include="Assets\Scripts\bossBar.cs" />
      <Compile Include="Assets\Scripts\dropItem.cs" />
      <Compile Include="Assets\Scripts\enemyAttack.cs" />
      <Compile Include="Assets\Scripts\enemyBasic.cs" />
