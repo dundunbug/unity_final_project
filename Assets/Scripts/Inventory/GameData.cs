@@ -64,6 +64,18 @@ public class GameData : MonoBehaviour
 
             DestroyImmediate(gameObject);
         }
+        if (GameObject.Find("GameMode")){
+            int lv = 0;
+            if (Level == GameLevel.Easy){
+                lv = 0;
+            }else if (Level == GameLevel.Normal){
+                lv = 1;
+            }else if (Level == GameLevel.Hard){
+                lv = 2;
+            }
+            print("level"+lv);
+            GameObject.Find("GameMode").GetComponent<gameMode>().GameMode = lv;
+        }
     }
 
 

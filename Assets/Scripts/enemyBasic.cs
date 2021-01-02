@@ -509,7 +509,7 @@ public class enemyBasic : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(0.1f);
         temp.a -= 0.1f;
-        print(temp.a);
+        // print(temp.a);
         gameObject.GetComponent<SpriteRenderer>().color = temp;
     }
 }

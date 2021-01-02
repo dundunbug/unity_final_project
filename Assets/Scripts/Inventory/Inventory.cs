@@ -63,7 +63,6 @@ public class Inventory
 
         ListChanged?.Invoke(this, EventArgs.Empty);
     }
-
     public List<Item> GetList()
     {
         return itemList;

@@ -62,10 +62,12 @@ public class enemyBossFireball : MonoBehaviour
                 player_script.attacked(direction, damageAmount);
                 gameObjectStatus();
             }else{
+                print(other.gameObject.name);
                 other.gameObject.GetComponent<objectStatus>().attackObject(damageAmount);
                 gameObjectStatus();
             }
         }else{
+            print(other.gameObject.name);
             objectStatus objectStatus = other.gameObject.GetComponent<objectStatus>();
             if (objectStatus != null){
                     objectStatus.attackObject(damageAmount);

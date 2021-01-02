@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class gameMode : MonoBehaviour
 {
     public enum PROPERTY
@@ -10,19 +9,20 @@ public class gameMode : MonoBehaviour
         NORMAL=1,
         HARD=2
     }
-    public PROPERTY GameMode;
+    public int GameMode=0;
     // Start is called before the first frame update
-    private void Awake() {
+    private void Start() {
+        print("gamemode "+GameMode);
         ChangeMode();
     }
     void ChangeMode(){
         float expand = 1f;
-        if(GameMode == PROPERTY.NORMAL){
+        if(GameMode == 1){
             expand = 1.5f;
-        }else if (GameMode == PROPERTY.HARD){
-            expand = 2f;
+        }else if (GameMode == 2){
+            expand = 3f;
         }
-        if (GameMode != PROPERTY.EASY)
+        if (GameMode != 0)
             foreach(Transform child in transform){
                 generateEnemy script = child.gameObject.GetComponent<generateEnemy>();
                 // print(script.enemyCount);

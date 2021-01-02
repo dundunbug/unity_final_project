@@ -55,7 +55,7 @@ public class generateEnemy : MonoBehaviour
                     = (int)Mathf.Round(instantiate_assign.GetComponent<enemyBasic>().damageAmount*damageExpand);
                 instantiate_assign.GetComponent<enemyBasic>().dropObjectNum 
                     = (int)Mathf.Round(instantiate_assign.GetComponent<enemyBasic>().dropObjectNum*damageExpand);
-                instantiate_assign.GetComponent<enemyBasic>().speed += damageExpand;
+                instantiate_assign.GetComponent<enemyBasic>().speed += damageExpand/2;
             }
         }
         if (instantiate_assign.name.Contains("tub") && damageExpand != 1f){ // if it is tub

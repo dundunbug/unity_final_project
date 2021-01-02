@@ -34,6 +34,13 @@ public class UIchangeItem : MonoBehaviour
     {
         player_script = GameObject.Find("player").GetComponent<player>();
         inventory = player_script.inventory;
+        StartCoroutine(refreshAfterSec(0.5f));
+    }
+
+
+    IEnumerator refreshAfterSec(float time){
+        yield return new WaitForSeconds (time);
+        refreshList();
     }
     public void checkItemNum(){
         inventory = player_script.inventory;
@@ -57,18 +64,23 @@ public class UIchangeItem : MonoBehaviour
         }
         int index = itemList.Count;
         if (itemList.Count >= 1){
+            bool getItemFromType = false;
             for (int i = 0; i < itemList.Count; i++){
                 Item item = itemList[i];
                 if (item.itemType.ToString().Equals(itemType)){
+                    getItemFromType = true;
                     index = i;
                     break;
                 }
+            }
+            if (!getItemFromType){
+                index = 0;
             }
             int nextIndex = -1;
             if (right && itemList.Count >1){
                 if (index+1 < itemList.Count){
                     nextIndex = index+1;
-                }else if (index+1 == itemList.Count ){
+                }else if (index+1 >= itemList.Count ){
                     nextIndex = 0;
                 }
             }else if (!right && itemList.Count >1){
@@ -96,14 +108,10 @@ public class UIchangeItem : MonoBehaviour
             itemNumText.text = "";
             switchPlayerItem("");
         }
-
-        
     }
 
     public void refreshList(){
         inventory = player_script.inventory;
-        throwList.Clear();
-        dropList.Clear();
         string itemType;
         if (isThrow){
             if (throwList.Count == 0){
@@ -116,17 +124,25 @@ public class UIchangeItem : MonoBehaviour
             }
             itemType = dropType;
         }
+
         bool gotItem = false;
         foreach (Item item in inventory.GetList()){
             if (item.itemType.ToString().Equals(itemType)){
                 gotItem = true;
                 itemNumText.text = item.Num.ToString();
             }
+        }
+        if (!gotItem){
+            itemType = "";
+        }
+        foreach (Item item in inventory.GetList()){
+            throwList.Clear();
+            dropList.Clear();
             if (isThrow){
                 for (var i = 0; i < throw_types.Length; i++){
                     if (item.itemType.ToString().Equals(throw_types[i])){
                         throwList.Add(item);
-                        if (throwType.Equals("")){
+                        if (itemType.Equals("")){
                             throwType = item.itemType.ToString();
                             itemImage.sprite = item.GetSprite();
                             itemNumText.text = item.Num.ToString();
@@ -139,7 +155,7 @@ public class UIchangeItem : MonoBehaviour
                 for (var i = 0; i < drop_types.Length; i++){
                     if (item.itemType.ToString().Equals(drop_types[i])){
                         dropList.Add(item);
-                        if (dropType.Equals("")){
+                        if (itemType.Equals("")){
                             dropType = item.itemType.ToString();
                             itemImage.sprite = item.GetSprite();
                             itemNumText.text = item.Num.ToString();
@@ -153,10 +169,8 @@ public class UIchangeItem : MonoBehaviour
         if (!gotItem){
             itemImage.gameObject.SetActive(false);
             if (isThrow && throwList.Count >= 1){
-                print(1);
                 switchItem(false);
             }else if (!isThrow && dropList.Count >= 1){
-                print(2);
                 switchItem(false);
             }else{
                 print(3);
@@ -164,7 +178,6 @@ public class UIchangeItem : MonoBehaviour
                 itemNumText.text = "";
                 switchPlayerItem("");
             }
-
         }
         else
             itemImage.gameObject.SetActive(true);
@@ -173,32 +186,40 @@ public class UIchangeItem : MonoBehaviour
     void switchPlayerItem(string _itemType){
         int index = Array.IndexOf(item_types, _itemType);
         if (isThrow){
-            if (_itemType.Equals(""))
+            if (_itemType.Equals("")){
                 player_script.projectile = null;
-            else if (index != -1)
+            }
+            else if (index != -1){
                 player_script.projectile = item_prehabs[index];
+            }
         }else{
-            if (_itemType.Equals(""))
+            if (_itemType.Equals("")){
                 player_script.dropped_item = null;
-            else if (index != -1)
+            }
+            else if (index != -1){
                 player_script.dropped_item = item_prehabs[index];
+            }
+                
         }
         
     }
 
     public void itemUsed()
     {
+        // bool checkDelete = true;
         if (!infiniteItem){
             GameObject prehab;
             if (isThrow)
                 prehab = player_script.projectile;
             else
                 prehab = player_script.dropped_item;
-            int index = item_prehabs.IndexOf(prehab);
-            // item_types[index]
-            Item item = new Item { itemType = Types[index]};
-            player_script.inventory.DeleteItem(item);
-        }
+            if (prehab != null){
+                int index = item_prehabs.IndexOf(prehab);
+                // item_types[index]
+                Item item = new Item { itemType = Types[index]};
+                player_script.inventory.DeleteItem(item);
+            }
 
+        }
     }
 }

@@ -93,6 +93,7 @@ public class player : MonoBehaviour
         DeathCount = (DeathCount < 1) ? 1: DeathCount;
         healthSystem = new healthSystem(HealthMax);
         player_Ability = GetComponent<player_ability>();
+
     }
 
     // Update is called once per frame
@@ -129,7 +130,7 @@ public class player : MonoBehaviour
             charged_time = 1f;
             changeThrowItem.itemUsed();
             changeThrowItem.refreshList();
-            changeDropItem.refreshList(); 
+            changeDropItem.refreshList();
         }
         
         if (Input.GetMouseButtonUp(1) && !inventoryCanvas.active){
@@ -215,11 +216,13 @@ public class player : MonoBehaviour
     }
     // project prefab from (player's coordinate + some hight)
     private void ProjectItem(){
-        cur_projectile = Instantiate(projectile, transform.position + new Vector3 (0.0f,0.5f,0.0f), Quaternion.identity);
-        Rigidbody2D cur_projectile_rb = cur_projectile.GetComponent<Rigidbody2D>();
-        cur_projectile_rb.angularVelocity = 0f;
-        cur_projectile_rb.velocity += projectile_velocity;
-        player_Ability.itemDamageAdd(projectile, cur_projectile);
+        if (projectile != null){
+            cur_projectile = Instantiate(projectile, transform.position + new Vector3 (0.0f,0.5f,0.0f), Quaternion.identity);
+            Rigidbody2D cur_projectile_rb = cur_projectile.GetComponent<Rigidbody2D>();
+            cur_projectile_rb.angularVelocity = 0f;
+            cur_projectile_rb.velocity += projectile_velocity;
+            player_Ability.itemDamageAdd(projectile, cur_projectile);
+        }
     }
     
     private IEnumerator DrawTrajectory(Vector2 prefab_velocity){
@@ -300,10 +303,12 @@ public class player : MonoBehaviour
 
     // drop prefab from player's coordinate
     private void DropItem(){
-        cur_dropped_item = Instantiate(dropped_item, transform.position, Quaternion.identity);
-        Rigidbody2D cur_dropped_rb = cur_dropped_item.GetComponent<Rigidbody2D>();
-        cur_dropped_rb.angularVelocity = 0f;
-        player_Ability.itemDamageAdd(dropped_item, cur_dropped_item);
+        if (dropped_item != null){
+            cur_dropped_item = Instantiate(dropped_item, transform.position, Quaternion.identity);
+            Rigidbody2D cur_dropped_rb = cur_dropped_item.GetComponent<Rigidbody2D>();
+            cur_dropped_rb.angularVelocity = 0f;
+            player_Ability.itemDamageAdd(dropped_item, cur_dropped_item);
+        }
     }
 
     public void PickItem(Item.ItemType type)

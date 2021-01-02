@@ -30,34 +30,36 @@ public class player_ability : MonoBehaviour
         damageAddTotal += damageAdd;
     }
     public void itemDamageAdd(GameObject prehab, GameObject item){
-        if (item_prehabs_hasDamage.Contains(prehab)){
-            print("add damage");
-            if (item.name.Contains("teddy")){
-                //two hands
-                GameObject hand1 = item.transform.GetChild(0).GetChild(1).gameObject;
-                GameObject hand2 = item.transform.GetChild(0).GetChild(2).gameObject;
+        if (damageAddTotal!=0){
+            if (item_prehabs_hasDamage.Contains(prehab)){
+                print("add damage");
+                if (item.name.Contains("teddy")){
+                    //two hands
+                    GameObject hand1 = item.transform.GetChild(0).GetChild(1).gameObject;
+                    GameObject hand2 = item.transform.GetChild(0).GetChild(2).gameObject;
 
-                int damageAmount = hand1.GetComponent<objectTeddy>().damageAmount;
-                hand1.GetComponent<objectTeddy>().damageAmount = newDamage(damageAmount);
+                    int damageAmount = hand1.GetComponent<objectTeddy>().damageAmount;
+                    hand1.GetComponent<objectTeddy>().damageAmount = newDamage(damageAmount);
 
-                int damageAmount2 = hand2.GetComponent<objectTeddy>().damageAmount;
-                hand2.GetComponent<objectTeddy>().damageAmount = newDamage(damageAmount2);
-            }else if (item.name.Contains("Bubble")){
-                int damageAmount = item.GetComponent<objectParticle>().damageAmount;
-                item.GetComponent<objectParticle>().damageAmount = newDamage(damageAmount);
-            }else if (item.tag=="bomb"){
-                int explodeAmount = item.GetComponent<objectBomb>().explodeAmount;
-                item.GetComponent<objectBomb>().explodeAmount = newDamage(explodeAmount);
-            }else if (item.tag=="triggerBomb"){
-                int explodeAmount = item.GetComponent<objectBombTrigger>().explodeAmount;
-                item.GetComponent<objectBombTrigger>().explodeAmount = newDamage(explodeAmount);
+                    int damageAmount2 = hand2.GetComponent<objectTeddy>().damageAmount;
+                    hand2.GetComponent<objectTeddy>().damageAmount = newDamage(damageAmount2);
+                }else if (item.name.Contains("Bubble")){
+                    int damageAmount = item.GetComponent<objectParticle>().damageAmount;
+                    item.GetComponent<objectParticle>().damageAmount = newDamage(damageAmount);
+                }else if (item.tag=="bomb"){
+                    int explodeAmount = item.GetComponent<objectBomb>().explodeAmount;
+                    item.GetComponent<objectBomb>().explodeAmount = newDamage(explodeAmount);
+                }else if (item.tag=="triggerBomb"){
+                    int explodeAmount = item.GetComponent<objectBombTrigger>().explodeAmount;
+                    item.GetComponent<objectBombTrigger>().explodeAmount = newDamage(explodeAmount);
+                }else{
+                    // feather BigBomb
+                    int explodeAmount = item.GetComponent<objectStatus>().explodeAmount;
+                    item.GetComponent<objectStatus>().explodeAmount = newDamage(explodeAmount);
+                }
             }else{
-                // feather BigBomb
-                int explodeAmount = item.GetComponent<objectStatus>().explodeAmount;
-                item.GetComponent<objectStatus>().explodeAmount = newDamage(explodeAmount);
+                print("not int ");
             }
-        }else{
-            print("not int ");
         }
     }
 
