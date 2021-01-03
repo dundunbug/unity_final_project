@@ -51,6 +51,7 @@ public class enemyBasic : MonoBehaviour
     public player player;
     private audioController audioController;
     public GameObject panel_Score;
+    public GameObject panel_Win;
     // Start is called before the first frame update
     void Start()
     {
@@ -390,7 +391,14 @@ public class enemyBasic : MonoBehaviour
             {
                 if (animator)
                     animator.SetTrigger("isDead");
-                Destroy(gameObject, 1.0f);
+                if (gameObject.name.Contains("boss"))
+                {
+                    Destroy(gameObject, 3.0f);
+                    panel_Win = GameObject.Find("Canvas (2)").transform.GetChild(3).gameObject;
+                    panel_Win.SetActive(true);
+                }                    
+                else
+                    Destroy(gameObject, 1.0f);                
 
                 // drop objects after destroy
                 for (int i = 0; i < dropObjectNum; i++)
@@ -399,11 +407,11 @@ public class enemyBasic : MonoBehaviour
                 }
             }
             isDead = true;
-            if (gameObject.name.Contains("boss") && isDead)
+            /*if (gameObject.name.Contains("boss") && isDead)
             {
                 panel_Score = GameObject.Find("Canvas (2)").transform.GetChild(1).gameObject;
                 panel_Score.SetActive(true);
-            }
+            }*/
 
             player.DefeatedNum++;
         }
@@ -514,6 +522,16 @@ public class enemyBasic : MonoBehaviour
         temp.a -= 0.1f;
         // print(temp.a);
         gameObject.GetComponent<SpriteRenderer>().color = temp;
+    }
+
+    private void OnDestroy()
+    {
+        if (gameObject.name.Contains("boss") && isDead)
+        {
+            panel_Win.SetActive(false);
+            panel_Score = GameObject.Find("Canvas (2)").transform.GetChild(1).gameObject;
+            panel_Score.SetActive(true);
+        }
     }
 }
 
