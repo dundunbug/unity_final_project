@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 
 public class EnergySystem : MonoBehaviour
 {
+    private int[ , ] buying_history = new int[20, 2]; // Increase buying price
     public GameObject panel_droppedItem;
     public Upagradenum upagradeNum;
     public Inventory inventory;
@@ -24,6 +25,13 @@ public class EnergySystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //init buying_history
+        for (int i = 0; i < 20; i++)
+        {
+            buying_history[i, 0] = 0;
+            buying_history[i, 1] = 1;
+        }
+
         //num = 
         panel_droppedItem.SetActive(false);
         text1.text = num + "";
@@ -60,7 +68,7 @@ public class EnergySystem : MonoBehaviour
 
     public void DecreaseIntoItem()
     {
-        if (num > 0)
+        if (num - (int)Mathf.Pow(buying_history[selected, 1],0.5f) > 0)
         {
 
             switch (selected)
@@ -88,7 +96,15 @@ public class EnergySystem : MonoBehaviour
 
             changeThrowItem.refreshList();
             changeDropItem.refreshList();
-            num--;
+            
+            num = num - (int)Mathf.Pow(buying_history[selected, 1],0.5f);
+            
+            // startfib operation
+            int temp = buying_history[selected, 1];
+            buying_history[selected, 1] += buying_history[selected, 0];
+            buying_history[selected, 0] = temp;
+            // end fib operation
+
             text1.text = num + "";
             inventory.DeleteItem(new Item { itemType = Item.ItemType.DroppedItem }) ;
         }
