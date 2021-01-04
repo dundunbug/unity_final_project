@@ -10867,8 +10867,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -220.97, y: 21}
-  m_SizeDelta: {x: 49.32483, y: 10.620445}
+  m_AnchoredPosition: {x: -189.4, y: 21}
+  m_SizeDelta: {x: 59.860497, y: 10.620445}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1296277796
 MonoBehaviour:
@@ -10896,13 +10896,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ---
+  m_Text: '    ---'
 --- !u!222 &1296277797
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12523,8 +12523,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -220.74, y: -77}
-  m_SizeDelta: {x: 49.78746, y: 10.620445}
+  m_AnchoredPosition: {x: -190.3, y: -77}
+  m_SizeDelta: {x: 59.940018, y: 10.620445}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1582652812
 MonoBehaviour:
@@ -12552,13 +12552,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ---
+  m_Text: '    ---'
 --- !u!222 &1582652813
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14085,8 +14085,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -221.16, y: 120}
-  m_SizeDelta: {x: 48.94699, y: 10.620445}
+  m_AnchoredPosition: {x: -188.4, y: 120}
+  m_SizeDelta: {x: 59.86577, y: 10.620445}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1858083524
 MonoBehaviour:
@@ -14114,13 +14114,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ---
+  m_Text: '    ---'
 --- !u!222 &1858083525
 CanvasRenderer:
   m_ObjectHideFlags: 0

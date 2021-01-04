@@ -60,6 +60,7 @@ public class ScorePage : MonoBehaviour
         int i = 0;
         if (gameData.Rank.Any())
         {
+            gameData.Rank.Sort();
             foreach (var player in gameData.Rank)
             {
                 Debug.Log("gameData.Rank[]=" + player.name);
@@ -69,7 +70,7 @@ public class ScorePage : MonoBehaviour
             {
                 gameData.Rank.RemoveAt(3);
             }
-            gameData.Rank.Sort();
+            //gameData.Rank.Sort();
         }
 
         gameData.LevelPassed = gameData.Level;
