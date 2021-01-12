@@ -52,14 +52,15 @@ public class showInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         Type = item.itemType;
         itemNum = item.Num;
 
+        Vector2 pos = new Vector2(455f,670f);
         /*image*/
         image = itemImage.GetComponent<Image>();
-        image.transform.position = new Vector2(810f, 450f);
+        image.transform.position = pos+ new Vector2(566f, -60f);
         itemImage.gameObject.SetActive(false);
 
         /*text*/
-        T.transform.position = new Vector2(780f, 310f);
-        T2.transform.position = new Vector2(790f, 230f);
+        T.transform.position = pos+ new Vector2(567f, -196.2f);
+        T2.transform.position = pos+ new Vector2(578.75f, -263.68f);
         T.gameObject.SetActive(false);
         T2.gameObject.SetActive(false);
 

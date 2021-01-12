@@ -46,7 +46,7 @@ public class UIchangeItem : MonoBehaviour
         inventory = player_script.inventory;
         foreach (Item item in inventory.GetList()){
             print(item.itemType);
-            print(item.GetSprite());
+            // print(item.GetSprite());
             print(item.Num);
             // itemImage.sprite = item.GetSprite();
         }
@@ -102,6 +102,7 @@ public class UIchangeItem : MonoBehaviour
                 }
             }
         }else{
+            print("no");
             throwType = "";
             dropType = "";
             itemImage.sprite = null;
@@ -135,9 +136,9 @@ public class UIchangeItem : MonoBehaviour
         if (!gotItem){
             itemType = "";
         }
+        throwList.Clear();
+        dropList.Clear();
         foreach (Item item in inventory.GetList()){
-            throwList.Clear();
-            dropList.Clear();
             if (isThrow){
                 for (var i = 0; i < throw_types.Length; i++){
                     if (item.itemType.ToString().Equals(throw_types[i])){

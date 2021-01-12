@@ -267,6 +267,7 @@ MonoBehaviour:
   canFly: 0
   player: {fileID: 0}
   panel_Score: {fileID: 0}
+  panel_Win: {fileID: 0}
 --- !u!95 &525399619151666123
 Animator:
   serializedVersion: 3
@@ -325,7 +326,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -9220398543458808526, guid: e120911e8f91adf44814f64a536ed5b3,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -333,7 +335,7 @@ SpriteRenderer:
   m_Size: {x: 2.32, y: 2.15}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3126744529576213028
